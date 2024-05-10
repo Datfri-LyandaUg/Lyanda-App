@@ -80,7 +80,7 @@ const OtpScreen = ({ navigation }) => {
     if (resendingOtpMutation.isSuccess) {
       setVisible(true);
     }
-  }, [resendingOtpMutation.isSuccess ]);
+  }, [resendingOtpMutation.isSuccess]);
 
 
   return (
@@ -120,14 +120,10 @@ const OtpScreen = ({ navigation }) => {
                 />
               </View>
             </View>
-            <View className="items-center">
-              <View className="border-[#E0E0E0] border-[0.5px] px-3 w-80 mt-2"></View>
+            <View className="pl-3">
+              <View className="border-[#E0E0E0] border-[0.5px] px-3 w-80 mt-2 my-2"></View>
 
-              {touched.otp && errors.otp && (
-                <Text className="text-sm text-red-400 my-1">
-                  {errors.otp}
-                </Text>
-              )}
+            <ErrorMessage error={errors['otp']} visible={touched['otp']} />
 
             </View>
             <View className="items-center">
