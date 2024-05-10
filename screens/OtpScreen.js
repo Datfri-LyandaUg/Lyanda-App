@@ -55,7 +55,6 @@ const OtpScreen = ({ navigation }) => {
 
     try {
       const { data } = await otpVerificationMutation.mutateAsync(values.otp);
-      console.log(data);
       dispatch(setToken(data));
     } catch (ex) {
       if (ex.response) {
