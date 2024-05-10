@@ -18,9 +18,11 @@ import { useDispatch } from 'react-redux';
 import { setToken } from '../redux/slices/authSlice';
 import { useRoute } from '@react-navigation/native';
 import OtpNotificationModal from '../components/OtpNotificationModal';
+import ErrorNotificationModal from '../components/ErrorNotificationModal';
+import { ErrorMessage } from '../components/forms';
 
 const validationSchema = Yup.object().shape({
-  otp: Yup.string().min(6).max(6).required('Enter valid otp to continue').label('Otp'),
+  otp: Yup.string().min(6).max(6).required('Enter valid otp to continue.').label('Otp'),
 });
 
 
@@ -29,7 +31,9 @@ const OtpScreen = ({ navigation }) => {
   const route = useRoute();
   const userData = route.params;
   const [visible, setVisible] = useState(false);
-  const dispatch = useDispatch()
+  const [errorDetails, setErrorDetails] = useState("");
+  const [showErrorNotification, setShowErrorNotification] = useState(false);
+  const dispatch = useDispatch();
 
   const otpVerificationMutation = useMutation((otpVerificationParameters) =>
     verifyOtp(otpVerificationParameters)
@@ -43,14 +47,21 @@ const OtpScreen = ({ navigation }) => {
     setVisible(!visible);
   };
 
+  const toggleErrorNotificationVisibility = () => {
+    setShowErrorNotification(!showErrorNotification);
+  };
+
   const handleVerifyOtp = async (values) => {
 
     try {
       const { data } = await otpVerificationMutation.mutateAsync(values.otp);
-      dispatch(setToken(data))
+      console.log(data);
+      dispatch(setToken(data));
     } catch (ex) {
       if (ex.response) {
         console.log(ex.response.data);
+        setErrorDetails(ex.response.data);
+        setShowErrorNotification(true);
       }
 
     };
@@ -67,6 +78,7 @@ const OtpScreen = ({ navigation }) => {
 
       const { data } = await resendingOtpMutation.mutateAsync(resendParameters);
 
+
     } catch (ex) {
       if (ex.response) {
         console.log(ex.response.data);
@@ -80,7 +92,7 @@ const OtpScreen = ({ navigation }) => {
     if (resendingOtpMutation.isSuccess) {
       setVisible(true);
     }
-  }, [resendingOtpMutation.isSuccess ]);
+  }, [resendingOtpMutation.isSuccess]);
 
 
   return (
@@ -120,23 +132,20 @@ const OtpScreen = ({ navigation }) => {
                 />
               </View>
             </View>
-            <View className="items-center">
-              <View className="border-[#E0E0E0] border-[0.5px] px-3 w-80 mt-2"></View>
+            <View className="pl-3">
+              <View className="border-[#E0E0E0] border-[0.5px] px-3 w-80 mt-2 my-2"></View>
 
-              {touched.otp && errors.otp && (
-                <Text className="text-sm text-red-400 my-1">
-                  {errors.otp}
-                </Text>
-              )}
+              <ErrorMessage error={errors['otp']} visible={touched['otp']} />
 
             </View>
+
             <View className="items-center">
 
               <MyCustomButton handleModel={handleSubmit} isLoading={otpVerificationMutation.isLoading} title='Continue' loadingText='Verifying Otp...' />
 
             </View>
 
-            <View className="items-center mt-5 ">
+            <View className="items-center mt-5">
               <TouchableOpacity onPress={handleResendOtp}>
                 <Text className=" text-[#2C7721] font-[600] text-[17px]">
                   I did not receive the code
@@ -148,8 +157,9 @@ const OtpScreen = ({ navigation }) => {
         )}
       </Formik>
 
-      {/* Notify  */}
+      {/* Notifications */}
       <OtpNotificationModal visible={visible} setVisible={setVisible} handleClose={tongleModel} />
+      <ErrorNotificationModal showError={showErrorNotification} errorMessage={errorDetails} handleClose={toggleErrorNotificationVisibility} />
     </SafeAreaView>
   );
 };
