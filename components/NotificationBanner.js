@@ -4,37 +4,36 @@ import NetInfo from '@react-native-community/netinfo';
 import { ChevronRightIcon, WifiIcon } from 'react-native-heroicons/solid';
 
 const NotificationBanner = () => {
-  const [isConnected, setIsConnected] = useState(null); // To track the current network state
-  const [showOnlineBanner, setShowOnlineBanner] = useState(false); // To control the temporary display of the "Back Online" banner
+  const [isConnected, setIsConnected] = useState(null);
+  const [showOnlineBanner, setShowOnlineBanner] = useState(false);
+  const [prevConnection, setPrevConnection] = useState(null);  // Track the previous connection status
 
   useEffect(() => {
     // Check the initial network state when the component mounts
     NetInfo.fetch().then(state => {
       setIsConnected(state.isConnected);
-      if (state.isConnected) {
-        triggerOnlineBanner();
-      }
+      setPrevConnection(state.isConnected);  // Initialize the previous connection state
     });
 
     // Subscribe to network state changes
     const unsubscribe = NetInfo.addEventListener(state => {
       setIsConnected(state.isConnected);
-      if (state.isConnected) {
+      if (state.isConnected && !prevConnection) {  // Only trigger if going from offline to online
         triggerOnlineBanner();
       }
+      setPrevConnection(state.isConnected);  // Update the previous connection state after handling
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [prevConnection]);
 
   const triggerOnlineBanner = () => {
-    setShowOnlineBanner(true); // Show the online banner
+    setShowOnlineBanner(true);
     setTimeout(() => {
-      setShowOnlineBanner(false); // Hide the online banner after 3 seconds
+      setShowOnlineBanner(false);
     }, 3000);
   };
 
-  // Logic to render the banners based on the network state and whether the online banner should be shown temporarily
   if (showOnlineBanner) {
     return (
       <SafeAreaView style={styles.bannerOnline}>
@@ -43,7 +42,7 @@ const NotificationBanner = () => {
             <WifiIcon color="white" />
             <Text style={styles.text}>Back Online</Text>
           </View>
-          <ChevronRightIcon color="white" size={24} />
+          
         </View>
       </SafeAreaView>
     );
@@ -54,8 +53,8 @@ const NotificationBanner = () => {
           <View style={[styles.row, styles.spaceX5]}>
             <WifiIcon color="white" />
             <View style={styles.row}>
-              <Text style={styles.text}>No internet connection </Text>
-              
+              <Text style={styles.text}>No internet connection  </Text>
+          
             </View>
           </View>
           <ChevronRightIcon color="white" size={24} />
@@ -64,7 +63,7 @@ const NotificationBanner = () => {
     );
   }
 
-  return null;  // If the connection is online and the online banner is not being shown, render nothing
+  return null;  // No banner is shown when the internet is connected and no transition has happened
 };
 
 const styles = StyleSheet.create({

@@ -20,7 +20,7 @@ import { useRoute } from '@react-navigation/native';
 import OtpNotificationModal from '../components/OtpNotificationModal';
 
 const validationSchema = Yup.object().shape({
-  otp: Yup.string().min(6).max(6).required('Enter valid otp to continue').label('Otp'),
+  otp: Yup.string().min(6).max(6).required('Enter valid OTP to continue').label('OTP'),
 });
 
 

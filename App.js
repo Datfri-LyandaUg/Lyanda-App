@@ -6,7 +6,6 @@ import { store } from './redux/store';
 import AppNav from './Navigation/AppNav';
 import NotificationBanner from './components/NotificationBanner';
 import { View, StyleSheet, SafeAreaView } from 'react-native';
-
 const queryClient = new QueryClient();
 
 const App = () => {

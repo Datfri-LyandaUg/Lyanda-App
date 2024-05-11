@@ -19,7 +19,7 @@ const GetStartedModel = ({ visible }) => {
       backdropTransitionInTiming={1000}
       backdropTransitionOutTiming={500}
       backdropColor="rgba(0,0,0,0.3)" // Semi-transparent black color for the overlay
-      backdropOpacity={1} // Full opacity of the color specified
+      backdropOpacity={1}   // Full opacity of the color specified
       style={{
         justifyContent: 'flex-end',
         margin: 0,
@@ -29,17 +29,17 @@ const GetStartedModel = ({ visible }) => {
       <View
         style={{
           backgroundColor: 'white',
-          height: 280,
-          width: 348,
+          height: '40%', // Adjusted for assumed screen height of 667px
+          width: '92.8%',
           shadowColor: '#000',
           shadowOffset: { width: 0, height: 10 },
           shadowOpacity: 0.8,
-          shadowRadius: 12,
+          shadowRadius: 28,
           elevation: 28,
           alignSelf: 'center',
         }}
-        className="rounded-[30px] items-center">
-        <View className="flex-row py-4 mx-3 space-x-4 items-center mt-3">
+        className="rounded-[28px]  items-center pt-14">
+        <View className="flex-row  mx-3 space-x-4  ">
           <Image source={require('./../assets/Icon(40x40).png')} />
 
           <View>
@@ -72,7 +72,7 @@ const GetStartedModel = ({ visible }) => {
           </View>
         </View>
 
-        <MyCustomButton handleModel={handleNextNavigation} title='Contnue' />
+        <MyCustomButton handleModel={handleNextNavigation} title='Continue' />
 
       </View>
     </Modal>
