@@ -8,6 +8,7 @@ import React from 'react';
 import {
   ChevronLeftIcon,
 } from 'react-native-heroicons/solid';
+import MyCustomButton from '../components/MyCustomButton';
 const TermsAndConditons = ({ navigation }) => {
   return (
     <SafeAreaView className="relative flex-1 bg-white">
@@ -45,12 +46,8 @@ const TermsAndConditons = ({ navigation }) => {
         </View>
       </View>
 
-      <View className="items-center  mb-6  ">
-        <TouchableOpacity
-          onPress={() => navigation.navigate('NotificationScreen')}
-          className="w-[361] h-[52]  justify-center items-center bg-[#2C7721] rounded-[12px] mt-6">
-          <Text className="text-white text-[17px] font-[600]">Continue</Text>
-        </TouchableOpacity>
+      <View className="items-center  mb-8  ">
+        <MyCustomButton title='Continue' handleModel={() => navigation.navigate('NotificationScreen')} />
       </View>
     </SafeAreaView>
   );
