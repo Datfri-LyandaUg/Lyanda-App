@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { store } from './redux/store';
 import AppNav from './Navigation/AppNav';
 import NotificationBanner from './components/NotificationBanner';
+
 import { StyleSheet, SafeAreaView } from 'react-native';
 
 const queryClient = new QueryClient();

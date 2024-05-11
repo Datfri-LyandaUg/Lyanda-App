@@ -6,7 +6,12 @@ module.exports = {
     './screens/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+
+      width: {
+        '82': '20.5rem', // Using '82' as a key for 20.5rem
+      }
+    },
   },
   plugins: [],
 };

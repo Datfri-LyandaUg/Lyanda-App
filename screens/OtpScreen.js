@@ -22,7 +22,9 @@ import ErrorNotificationModal from '../components/ErrorNotificationModal';
 import { ErrorMessage } from '../components/forms';
 
 const validationSchema = Yup.object().shape({
+
   otp: Yup.string().min(6).max(6).required('Enter valid otp to continue.').label('Otp'),
+
 });
 
 
