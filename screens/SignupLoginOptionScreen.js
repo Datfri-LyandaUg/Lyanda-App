@@ -18,8 +18,8 @@ const SignupLoginOptionScreen = () => {
 
   const title = 'Get started'
   return (
-    <SafeAreaView className="bg-[#FFFFFF] h-full w-full  flex-1">
-      <View className="mt-36 items-center flex-1 ">
+    <SafeAreaView className="bg-[#FFFFFF] h-full w-full flex-1">
+      <View className="mt-36 items-center flex-1">
         <ImageBackground
           source={require('./../assets/image30.png')}
           className="h-[337px] w-[327px]  relative  justify-end  items-center "
@@ -31,7 +31,7 @@ const SignupLoginOptionScreen = () => {
           </View>
         </ImageBackground>
 
-        <View className="items-center mt-7">
+        <View className="items-center mt-7   ">
           <View className=''>
             <Text className="text-[#242424] font-[600] mb-4 text-[17px]">
               Battery swapping stations at your fingertips
@@ -48,7 +48,7 @@ const SignupLoginOptionScreen = () => {
 
       </View>
 
-      <View className='items-center mb-7 px-3'>
+      <View className='items-center  px-3  mb-7 '>
         <MyCustomButton handleModel={() => setVisible(true)} title={title} />
       </View>
 

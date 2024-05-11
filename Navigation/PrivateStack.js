@@ -20,7 +20,7 @@ const PrivateStack = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="LoactionScreen"
+        name="LocationScreen"
         component={LocationScreen}
         options={{ headerShown: false }}
       />

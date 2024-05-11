@@ -9,6 +9,7 @@ import {
 } from 'react-native-heroicons/solid';
 // import Icon from 'react-native-vector-icons/MaterialIcons';
 import MyCustomButton from '../components/MyCustomButton';
+import SecondaryButton from '../components/SecondaryButton';
 const NotificationScreen = ({ navigation }) => {
   async function enableNotificationAccess() {
     if (Platform.OS === 'android') {
@@ -127,14 +128,13 @@ const NotificationScreen = ({ navigation }) => {
         </View>
       </View>
 
-      <View className="items-center  mb-6">
+      <View className="items-center  mb-8">
 
         <MyCustomButton handleModel={enableNotificationAccess} title='Turn on notifications' />
-        <TouchableOpacity
-          onPress={() => navigation.navigate('LoactionScreen')}
-          className="w-[361] h-[52] justify-center items-center bg-white border border-[#2C7721] rounded-[12px] mt-6">
-          <Text className="text-[#2C7721] text-[17px] font-[600]">Not now</Text>
-        </TouchableOpacity>
+       
+
+        <SecondaryButton title='Not Now ' handleOnPress={()=>navigation.navigate('LocationScreen')}/>
+    
       </View>
     </SafeAreaView>
   );

@@ -6,6 +6,7 @@ import AppNav from './Navigation/AppNav';
 import NotificationBanner from './components/NotificationBanner';
 
 import { StyleSheet, SafeAreaView } from 'react-native';
+import SignupLoginOptionScreen from './screens/SignupLoginOptionScreen';
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,8 @@ const App = () => {
         </SafeAreaView>
       </QueryClientProvider>
     </Provider>
+
+
   );
 };
 

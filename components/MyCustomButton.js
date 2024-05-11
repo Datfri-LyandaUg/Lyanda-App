@@ -11,7 +11,7 @@ const MyCustomButton = ({ isLoading, handleModel, title, loadingText }) => {
       style={styles.button}>
 
       {isLoading ? (
-        <View className="flex flex-row items-center space-x-1 justify-center">
+        <View className="flex flex-row items-center space-x-2 justify-center">
           <View className="flex items-center justify-center">
             <Text className="mr-2"><ActivityIndicator size="small" color="white" /></Text>
           </View>
@@ -32,11 +32,12 @@ const MyCustomButton = ({ isLoading, handleModel, title, loadingText }) => {
 const styles = StyleSheet.create({
   button: {
     backgroundColor: '#2c7721',
-    height: '27%',
+   paddingBottom:20,
+   paddingTop:20,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 12,
-    width: '87%',
+    width: '85%',
     marginTop: 15,
   },
   buttonText: {
