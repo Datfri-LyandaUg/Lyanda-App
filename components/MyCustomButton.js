@@ -11,7 +11,7 @@ const MyCustomButton = ({ isLoading, handleModel, title, loadingText }) => {
       style={styles.button}>
 
       {isLoading ? (
-        <View className="flex flex-row items-center space-x-2 justify-center">
+        <View className="flex flex-row items-center space-x-1 justify-center">
           <View className="flex items-center justify-center">
             <Text className="mr-2"><ActivityIndicator size="small" color="white" /></Text>
           </View>

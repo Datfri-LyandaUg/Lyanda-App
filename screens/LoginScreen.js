@@ -14,9 +14,10 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useMutation } from 'react-query';
 import { registerUser } from '../services/userService';
+import { ErrorMessage } from '../components/forms';
 
 const validationSchema = Yup.object().shape({
-  phoneNumber: Yup.string().required('Enter the phone number to continue').label('PhoneNumber'),
+  phoneNumber: Yup.string().required('Enter a valid phone number to continue.').label('PhoneNumber'),
 });
 
 const LoginScreen = ({ navigation }) => {
@@ -99,12 +100,9 @@ const LoginScreen = ({ navigation }) => {
             </View>
             <View className="pl-3">
 
-              <View className="border-[#E0E0E0] border-[0.5px] px-3 w-80 mt-2"></View>
-              {touched.phoneNumber && errors.phoneNumber && (
-                <Text className="text-sm text-red-400 my-1">
-                  {errors.phoneNumber}
-                </Text>
-              )}
+              <View className="border-[#E0E0E0] border-[0.5px] px-3 w-80 mt-2 my-2" />
+      
+              <ErrorMessage error={errors['phoneNumber']} visible={touched['phoneNumber']} />
 
             </View>
             <View className="items-center mb-72">

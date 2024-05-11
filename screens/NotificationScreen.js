@@ -132,7 +132,7 @@ const NotificationScreen = ({ navigation }) => {
         <MyCustomButton handleModel={enableNotificationAccess} title='Turn on notifications' />
         <TouchableOpacity
           onPress={() => navigation.navigate('LoactionScreen')}
-          className="w-[361] h-[52]  justify-center items-center bg-white border border-[#2C7721] rounded-[12px] mt-6">
+          className="w-[361] h-[52] justify-center items-center bg-white border border-[#2C7721] rounded-[12px] mt-6">
           <Text className="text-[#2C7721] text-[17px] font-[600]">Not now</Text>
         </TouchableOpacity>
       </View>
