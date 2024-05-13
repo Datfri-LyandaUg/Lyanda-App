@@ -10,10 +10,11 @@ import GetStartedModel from '../components/GetStartedModel';
 import MyCustomButton from '../components/MyCustomButton';
 
 const SignupLoginOptionScreen = () => {
+
   const [visible, setVisible] = useState(false);
 
-  const handleModel = () => {
-    setVisible(true)
+  const toggleModalVisibility = () => {
+    setVisible(true);
   }
 
   const title = 'Get started'
@@ -49,10 +50,11 @@ const SignupLoginOptionScreen = () => {
       </View>
 
       <View className='items-center  px-3  mb-7 '>
-        <MyCustomButton handleModel={() => setVisible(true)} title={title} />
+        <MyCustomButton handleModel={toggleModalVisibility} title={title} />
       </View>
 
-      <GetStartedModel visible={visible} setVisible={setVisible} />
+      <GetStartedModel visible={visible} />
+
     </SafeAreaView>
   );
 };

@@ -18,12 +18,12 @@ const GetStartedModel = ({ visible }) => {
       animationOutTiming={500}
       backdropTransitionInTiming={1000}
       backdropTransitionOutTiming={500}
-      backdropColor="rgba(0,0,0,0.3)" // Semi-transparent black color for the overlay
-      backdropOpacity={1}   // Full opacity of the color specified
+      backdropColor="rgba(0,0,0,0.3)"
+      backdropOpacity={1}
       style={{
         justifyContent: 'flex-end',
         margin: 0,
-        marginBottom: 30,
+        marginBottom: 20,
       }}
       className="items-center">
       <View

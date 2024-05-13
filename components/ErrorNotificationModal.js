@@ -18,7 +18,7 @@ const ErrorNotificationModal = ({ showError, handleClose, errorMessage }) => {
         <Modal
             isVisible={showError}
             animationIn="bounceInDown"
-            animationOut="bounceOutDown"
+            animationOut="bounceOutUp"
             animationInTiming={900}
             animationOutTiming={500}
             backdropTransitionInTiming={1000}
@@ -29,6 +29,7 @@ const ErrorNotificationModal = ({ showError, handleClose, errorMessage }) => {
                 justifyContent: '',
                 margin: 0,
                 marginBottom: 30,
+                marginTop: 15
             }}
             className="items-center">
             <View
@@ -36,7 +37,7 @@ const ErrorNotificationModal = ({ showError, handleClose, errorMessage }) => {
                     backgroundColor: 'white',
                     height: 50,
                     width: 311,
-                    alignItems : "center",
+                    alignItems: "center",
                     justifyContent: "center",
                     shadowColor: '#000',
                     shadowOffset: { width: 0, height: 10 },
@@ -46,13 +47,13 @@ const ErrorNotificationModal = ({ showError, handleClose, errorMessage }) => {
                     alignSelf: 'center',
                 }}
                 className="rounded-[12px] items-center">
-                <View className="flex-row  space-x-2 items-center justify-between p-2 w-full px-4">
+                <View className="flex-row  space-x-2 items-center justify-between  w-full  py-2 px-4">
                     <TouchableOpacity className="flex items-center justify-center bg-red-500 w-5 h-5 rounded-full">
                         <XMarkIcon color="white" size={10} />
                     </TouchableOpacity>
 
                     <View className="items-center">
-                        <Text className="text-[#242424] text-[15px] font-[400]">
+                        <Text className="text-[#242424] text-center text-[15px] font-[400]">
                             {errorMessage}
                         </Text>
 

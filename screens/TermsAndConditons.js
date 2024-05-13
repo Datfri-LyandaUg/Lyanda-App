@@ -9,11 +9,12 @@ import {
   ChevronLeftIcon,
 } from 'react-native-heroicons/solid';
 import MyCustomButton from '../components/MyCustomButton';
+
 const TermsAndConditons = ({ navigation }) => {
   return (
     <SafeAreaView className="relative flex-1 bg-white">
       <View className="flex-1">
-        <View className="flex-row items-center mt-7   mb-2 justify-center relative ">
+        <View className="flex-row items-center mt-7  mb-2 justify-center relative ">
           <TouchableOpacity
             className="absolute left-2.5"
             onPress={() => { }}>
