@@ -17,7 +17,7 @@ const OtpNotificationModal = ({ visible, handleClose }) => {
     <Modal
       isVisible={visible}
       animationIn="bounceInDown"
-      animationOut="bounceOutDown"
+      animationOut="bounceOutUp"
       animationInTiming={900}
       animationOutTiming={500}
       backdropTransitionInTiming={1000}
@@ -28,8 +28,9 @@ const OtpNotificationModal = ({ visible, handleClose }) => {
         justifyContent: '',
         margin: 0,
         marginBottom: 30,
+        marginTop : 15
       }}
-      className="  items-center ">
+      className="items-center">
       <View
         style={{
           backgroundColor: 'white',
@@ -43,7 +44,7 @@ const OtpNotificationModal = ({ visible, handleClose }) => {
           alignSelf: 'center',
         }}
         className="rounded-[12px] items-center  pb-3">
-        <View className="flex-row  space-x-2 items-center p-2 pb-4  ">
+        <View className="flex-row  space-x-2 items-center py-2 px-4">
           <TouchableOpacity>
             <CheckIcon color="#616161" size={20} />
           </TouchableOpacity>

@@ -18,8 +18,8 @@ const SecondaryButton = ({title, handleOnPress}) => {
 const styles = StyleSheet.create({
     button: {
       backgroundColor: 'white',
-     paddingBottom:20,
-     paddingTop:20,
+     paddingBottom:13,
+     paddingTop:13,
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 12,
