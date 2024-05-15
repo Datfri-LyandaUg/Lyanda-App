@@ -6,19 +6,25 @@ import AppNav from './Navigation/AppNav';
 import NotificationBanner from './components/NotificationBanner';
 import { StyleSheet, SafeAreaView } from 'react-native';
 
+import  ProfileScreen from './screens/ProfileScreen'
+import SplashScreen from './screens/SplashScreen';
+
 
 const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <QueryClientProvider client={queryClient}>
-        <SafeAreaView style={styles.container}>
-          <NotificationBanner />
-          <AppNav />
-        </SafeAreaView>
-      </QueryClientProvider>
-    </Provider>
+    // <Provider store={store}>
+    //   <QueryClientProvider client={queryClient}>
+    //     <SafeAreaView style={styles.container}>
+    //       <NotificationBanner />
+    //       <AppNav />
+    //     </SafeAreaView>
+    //   </QueryClientProvider>
+    // </Provider>
+    <ProfileScreen />
+
+    // <SplashScreen />
   );
 };
 
