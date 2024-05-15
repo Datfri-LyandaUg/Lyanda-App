@@ -1,8 +1,8 @@
 import { SafeAreaView, AreaView, Text, View, Pressable } from 'react-native'
 import React from 'react'
-import { ArrowLeftCircleIcon, ArrowLeftIcon, ChevronLeftIcon, ChevronRightIcon, UserCircleIcon } from 'react-native-heroicons/solid'
+import { ArchiveBoxIcon, ArrowLeftCircleIcon, ArrowLeftIcon,    ChevronLeftIcon, ChevronRightIcon,    MapIcon,  QuestionMarkCircleIcon,  UserCircleIcon } from 'react-native-heroicons/solid'
 import CustomSettingButton from '../components/CustomSettingButton'
-
+import {BellIcon,ArrowUpOnSquareStackIcon, MapPinIcon ,ChatBubbleLeftIcon , InformationCircleIcon,BookmarkIcon , ExclamationCircleIcon ,StarIcon, ShareIcon, Square2StackIcon} from 'react-native-heroicons/outline'
 const ProfileScreen = () => {
   return (
     <SafeAreaView className='bg-white h-full'>
@@ -41,8 +41,30 @@ const ProfileScreen = () => {
       </Pressable>
      </View>
 
-     <View className='bg-[#808080] h-96'>
-      <CustomSettingButton />
+     <View className='items-center mt-5'>
+     <View className='bg-[#FAFAFA] h-80 rounded-[12px] w-96 '>
+      <CustomSettingButton title="Appearance"  icon1={<ArrowUpOnSquareStackIcon size={30} color='#808080'/>} icon2={<ChevronRightIcon size={30} color='#808080'/>}/>
+
+      <CustomSettingButton title="Notifications"  icon1={<BellIcon size={30} color='#808080'/>} icon2={<ChevronRightIcon size={30} color='#808080'/>}/>
+
+      <CustomSettingButton title="Location"  icon1={<MapPinIcon size={30} color='#808080'/>} icon2={<ChevronRightIcon size={30} color='#808080'/>}/>
+
+      <CustomSettingButton title="Rate app on store"  icon1={< StarIcon size={30} color='#808080'/>} icon2={<ChevronRightIcon size={30} color='#808080'/>}/>
+      <CustomSettingButton title="Share app"  icon1={< ShareIcon size={30} color='#808080'/>} icon2={<ChevronRightIcon size={30} color='#808080'/>}/>
+     </View>
+     </View>
+
+     <View className='items-center mt-3'>
+     <View className='bg-[#FAFAFA] h-68 rounded-[12px] w-96 '>
+      <CustomSettingButton title="Terms of service"  icon1={<BookmarkIcon size={30} color='#808080'/>} icon2={<ChevronRightIcon size={30} color='#808080'/>}/>
+
+      <CustomSettingButton title="Help"  icon1={<Square2StackIcon size={30} color='#808080'/>} icon2={<ChevronRightIcon size={30} color='#808080'/>}/>
+
+      
+    
+      <CustomSettingButton title="Feedback"  icon1={<ChatBubbleLeftIcon size={30} color='#808080'/>} icon2={<ChevronRightIcon size={30} color='#808080'/>}/>
+      <CustomSettingButton title="About"  icon1={<InformationCircleIcon size={30} color='#808080'/>} icon2={<ChevronRightIcon size={30} color='#808080'/>}/>
+     </View>
      </View>
     </SafeAreaView>
   )

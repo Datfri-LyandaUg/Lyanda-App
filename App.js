@@ -8,6 +8,7 @@ import { StyleSheet, SafeAreaView } from 'react-native';
 
 import  ProfileScreen from './screens/ProfileScreen'
 import SplashScreen from './screens/SplashScreen';
+import ProfileUser from './screens/ProfileUser';
 
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => {
     //   </QueryClientProvider>
     // </Provider>
     <ProfileScreen />
+    // <ProfileUser />
 
     // <SplashScreen />
   );
