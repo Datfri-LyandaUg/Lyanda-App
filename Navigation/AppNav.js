@@ -3,6 +3,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import PrivateStack from './PrivateStack';
 import AuthStack from './AuthStack';
 import { useSelector } from 'react-redux';
+import LoginScreen from '../screens/LoginScreen';
+import NotificationScreen from '../screens/NotificationScreen';
+import BikeManufactureDetailsScreen from '../screens/BikeManufactureDetailsScreen';
 
 
 const AppNav = () => {

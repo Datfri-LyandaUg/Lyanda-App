@@ -10,7 +10,7 @@ const MyCustomButton = ({ isLoading, handleModel, title, loadingText }) => {
       onPress={handleModel}
       style={styles.button}>
 
-      {isLoading ? (
+      { isLoading ? (
         <View className="flex flex-row items-center space-x-1 justify-center">
           <View className="flex items-center justify-center">
             <Text className="mr-2"><ActivityIndicator size="small" color="white" /></Text>
