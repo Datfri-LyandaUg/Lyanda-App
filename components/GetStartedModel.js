@@ -72,7 +72,9 @@ const GetStartedModel = ({ visible }) => {
           </View>
         </View>
 
-        <MyCustomButton handleModel={handleNextNavigation} title='Continue' />
+        <View className="w-full items-center px-4">
+          <MyCustomButton handleModel={handleNextNavigation} title='Continue' />
+        </View>
 
       </View>
     </Modal>

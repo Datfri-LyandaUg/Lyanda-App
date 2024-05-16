@@ -18,6 +18,7 @@ const SignupLoginOptionScreen = () => {
   }
 
   const title = 'Get started'
+
   return (
     <SafeAreaView className="bg-[#FFFFFF] h-full w-full flex-1">
       <View className="mt-36 items-center flex-1">
@@ -49,7 +50,7 @@ const SignupLoginOptionScreen = () => {
 
       </View>
 
-      <View className='items-center  px-3  mb-7 '>
+      <View className='items-center px-4 mb-7'>
         <MyCustomButton handleModel={toggleModalVisibility} title={title} />
       </View>
 

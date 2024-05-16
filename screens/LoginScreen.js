@@ -105,10 +105,9 @@ const LoginScreen = ({ navigation }) => {
               <ErrorMessage error={errors['phoneNumber']} visible={touched['phoneNumber']} />
 
             </View>
-            <View className="items-center mb-72">
 
+            <View className="items-center mb-72 px-4">
               <MyCustomButton handleModel={handleSubmit} isLoading={signUpMutation.isLoading} title='Continue' loadingText='Continuing...' />
-
             </View>
           </>
         )}

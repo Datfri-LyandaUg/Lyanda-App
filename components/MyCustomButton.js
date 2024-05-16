@@ -32,12 +32,12 @@ const MyCustomButton = ({ isLoading, handleModel, title, loadingText }) => {
 const styles = StyleSheet.create({
   button: {
     backgroundColor: '#2c7721',
-   paddingBottom:13,
-   paddingTop:13,
+    paddingBottom: 13,
+    paddingTop: 13,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 12,
-    width: '85%',
+    width: '100%',
     marginTop: 15,
   },
   buttonText: {
