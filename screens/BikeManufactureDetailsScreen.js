@@ -95,7 +95,7 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
                             <ErrorMessage error={errors['bikeManufacturer']} visible={touched['bikeManufacturer']} />
 
                         </View>
-                        <View className="items-center mb-72">
+                        <View className="items-center mb-72 px-4">
                             <TertiaryButton handleModal={handleSubmit} isLoading={updateBikeManufactureMutation.isLoading} title='Save' loadingText='Saving...' />
                         </View>
                     </>

@@ -10,7 +10,7 @@ import {
 } from 'react-native-heroicons/solid';
 import MyCustomButton from '../components/MyCustomButton';
 
-const TermsAndConditons = ({ navigation }) => {
+const TermsAndConditions = ({ navigation }) => {
   return (
     <SafeAreaView className="relative flex-1 bg-white">
       <View className="flex-1">
@@ -47,11 +47,11 @@ const TermsAndConditons = ({ navigation }) => {
         </View>
       </View>
 
-      <View className="items-center  mb-8  ">
+      <View className="items-center  mb-8  px-4">
         <MyCustomButton title='Continue' handleModel={() => navigation.navigate('NotificationScreen')} />
       </View>
     </SafeAreaView>
   );
 };
 
-export default TermsAndConditons;
+export default TermsAndConditions;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import TermsAndConditons from '../screens/TermsAndConditons';
+import TermsAndConditons from '../screens/TermsAndConditions';
 import NotificationScreen from '../screens/NotificationScreen';
 import LocationScreen from '../screens/LocationScreen';
 
