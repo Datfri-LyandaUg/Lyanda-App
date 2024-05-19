@@ -11,6 +11,7 @@ import TermsAndConditions from '../screens/TermsAndConditions';
 import SignupLoginOptionScreen from '../screens/SignupLoginOptionScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import ProfileUser from '../screens/ProfileUser';
+import BikeProfileScreen from '../screens/BikeProfileScreen';
 
 
 const AppNav = () => {
@@ -26,6 +27,7 @@ const AppNav = () => {
       {/* <SignupLoginOptionScreen/> */}
       {/* <ProfileScreen /> */}
       {/* <ProfileUser /> */}
+      {/* <BikeProfileScreen /> */}
       {/* <DeleteAccountScreen /> */}
       <PrivateStack />
     </NavigationContainer>

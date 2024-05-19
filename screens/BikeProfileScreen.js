@@ -11,7 +11,7 @@ const BikeProfileScreen = ({ navigation }) => {
       <View className=''>
         <View className='flex-row items-center relative mt-6 justify-center mb-3'>
           <Pressable className='absolute left-4'
-            onPress={navigation.goBack()}>
+            onPress={() => navigation.goBack()}>
             <ChevronLeftIcon size={30} color='#242424' />
           </Pressable>
           <Text className='text-[17px] font-[600] text-[#242424]'>
