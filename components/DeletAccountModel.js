@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal';
 
-const DeletAccountModel = ({visible}) => {
+const DeletAccountModel = ({visible,onCloseModle}) => {
   return (
     <Modal
     isVisible={visible}
@@ -42,14 +42,15 @@ const DeletAccountModel = ({visible}) => {
 <Text className='mx-3 text-[13px] text-[#242424] font-[400] mt-5 mb-'>
 Deleting your account will permanently erase all your data and activity from the app. This action cannot be undone.
 </Text>
-     <Pressable style={styles.button}> 
+     <Pressable style={styles.button} 
+     onPress={onCloseModle}> 
 
         <Text style={styles.buttonText}>
         Delete account
         </Text>
 
      </Pressable>
-     <Pressable className='mt-7'>
+     <Pressable className='mt-7' onPress={onCloseModle}>
      <Text className='text-[#242424] text-[17px] font-[600]'>
      Cancel
      </Text>

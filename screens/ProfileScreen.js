@@ -3,7 +3,7 @@ import React from 'react'
 import { ArchiveBoxIcon, ArrowLeftCircleIcon, ArrowLeftIcon,    ChevronLeftIcon, ChevronRightIcon,    MapIcon,  QuestionMarkCircleIcon,  UserCircleIcon } from 'react-native-heroicons/solid'
 import CustomSettingButton from '../components/CustomSettingButton'
 import {BellIcon,ArrowUpOnSquareStackIcon, MapPinIcon ,ChatBubbleLeftIcon , InformationCircleIcon,BookmarkIcon , ExclamationCircleIcon ,StarIcon, ShareIcon, Square2StackIcon} from 'react-native-heroicons/outline'
-const ProfileScreen = () => {
+const ProfileScreen = ({navigation}) => {
   return (
     <SafeAreaView className='bg-white h-full'>
      <View className='flex-row mx-4 mt-4 items-center space-x-6 '>
@@ -15,7 +15,8 @@ const ProfileScreen = () => {
       </Text>
      </View>
 
-     <View className=' mx-6 mt-5 flex-row items-center justify-between'>
+     <Pressable onPress={()=>navigation.navigate('ProfileUser')}
+      className=' mx-6 mt-5 flex-row items-center justify-between'>
       <View className='flex-row items-center space-x-3' >
       <UserCircleIcon size={55}color='#2C7721' />
       <View>
@@ -36,10 +37,10 @@ const ProfileScreen = () => {
 
       </Text>
 
-      <Pressable>
+    
         <ChevronRightIcon size={30} color='black'/>
-      </Pressable>
-     </View>
+      
+     </Pressable>
 
      <View className='items-center mt-5'>
      <View className='bg-[#FAFAFA] h-80 rounded-[12px] w-96 '>

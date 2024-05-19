@@ -34,6 +34,8 @@ const AuthStack = () => {
         options={{ headerShown: false }}
       />
 
+      
+
     </Stack.Navigator>
 
   );

@@ -5,12 +5,14 @@ import { ArrowUpOnSquareStackIcon, ChevronLeftIcon, PencilIcon } from 'react-nat
 
 
 
-const BikeProfileScreen = () => {
+const BikeProfileScreen = ({navigation}) => {
   return (
   <SafeAreaView className='bg-white h-full'>
     <View className=''>
     <View className='flex-row items-center relative mt-6 justify-center mb-3'>
-    <Pressable className='absolute left-4'>
+    <Pressable className='absolute left-4'
+    
+     onPress={navigation.getBacK()}>
     <ChevronLeftIcon size={30} color='#242424'/>
     </Pressable>
     <Text className='text-[17px] font-[600] text-[#242424]'>
@@ -21,7 +23,10 @@ const BikeProfileScreen = () => {
     <View className='items-center'>
    
      <View className='w-96   bg-[#FAFAFA] rounded-[12px] mt-5'>
-      <View className='m-5 flex-row justify-between items-center'>
+      <Pressable
+      onPress={()=>navigation.navigate('BikeManufactureDetailsScreen')}
+      
+       className='m-5 flex-row justify-between items-center'>
      <View>
      <Text className='text-[17px] font-[400]  text-[#242424]'>
      Bike manufacturer
@@ -37,7 +42,7 @@ const BikeProfileScreen = () => {
      </Pressable>
      
       
-     </View>
+     </Pressable>
      
 
      <View className='m-5 flex-row justify-between items-center'>
