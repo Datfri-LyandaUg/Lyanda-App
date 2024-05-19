@@ -7,6 +7,7 @@ import NotificationBanner from './components/NotificationBanner';
 import { StyleSheet, SafeAreaView } from 'react-native';
 
 
+
 const queryClient = new QueryClient();
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
         </SafeAreaView>
       </QueryClientProvider>
     </Provider>
+    
   );
 };
 
