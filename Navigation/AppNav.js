@@ -25,9 +25,9 @@ const AppNav = () => {
       {/* <TermsAndConditions/> */}
       {/* <SignupLoginOptionScreen/> */}
       {/* <ProfileScreen /> */}
-      <ProfileUser />
+      {/* <ProfileUser /> */}
       {/* <DeleteAccountScreen /> */}
-      {/* <PrivateStack /> */}
+      <PrivateStack />
     </NavigationContainer>
   );
 };

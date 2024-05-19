@@ -13,12 +13,7 @@ const PrivateStack = () => {
   const Stack = createNativeStackNavigator();
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="Home"
-        component={ProfileScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="TermsAndConditons"
         component={TermsAndConditons}
         options={{ headerShown: false }}
@@ -32,23 +27,17 @@ const PrivateStack = () => {
         name="LocationScreen"
         component={LocationScreen}
         options={{ headerShown: false }}
-      />
-
+      /> */}
 
       <Stack.Screen
-        name="DeleteAccountScreen"
-        component={DeleteAccountScreen}
-
+        name="Home"
+        component={ProfileScreen}
         options={{ headerShown: false }}
       />
+
       <Stack.Screen
         name="ProfileUser"
         component={ProfileUser}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="BikeManufactureDetailsScreen"
-        component={BikeManufactureDetailsScreen}
         options={{ headerShown: false }}
       />
 
@@ -57,6 +46,22 @@ const PrivateStack = () => {
         component={BikeProfileScreen}
         options={{ headerShown: false }}
       />
+      
+      {/* 
+       <Stack.Screen
+        name="BikeManufactureDetailsScreen"
+        component={BikeManufactureDetailsScreen}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="DeleteAccountScreen"
+        component={DeleteAccountScreen}
+
+        options={{ headerShown: false }}
+      /> */}
+
+
     </Stack.Navigator>
   )
 }

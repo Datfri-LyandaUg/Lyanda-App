@@ -2,7 +2,7 @@ import { View, Text, Pressable, StyleSheet } from 'react-native';
 import React from 'react';
 import Modal from 'react-native-modal';
 
-const DeletAccountModel = ({ visible, toggleModalVisibility }) => {
+const DeletAccountModel = ({ visible, navigation, toggleModalVisibility }) => {
   return (
     <Modal
       isVisible={visible}
@@ -41,19 +41,22 @@ const DeletAccountModel = ({ visible, toggleModalVisibility }) => {
         <Text className='mx-3 text-[13px] text-[#242424] font-[400] mt-5 mb-'>
           Deleting your account will permanently erase all your data and activity from the app. This action cannot be undone.
         </Text>
-        <Pressable style={styles.button}
-          onPress={toggleModalVisibility}>
 
-          <Text style={styles.buttonText}>
-            Delete account
-          </Text>
+        <View className="flex w-full items-center justify-center px-4">
+          <Pressable style={styles.button}
+            onPress={() => navigation.navigate('DeleteAccountScreen')}
+          >
+            <Text style={styles.buttonText}>
+              Delete account
+            </Text>
 
-        </Pressable>
-        <Pressable className='mt-7' onPress={toggleModalVisibility}>
-          <Text className='text-[#242424] text-[17px] font-[600]'>
-            Cancel
-          </Text>
-        </Pressable>
+          </Pressable>
+          <Pressable className='mt-7' onPress={toggleModalVisibility}>
+            <Text className='text-[#242424] text-[17px] font-[600]'>
+              Cancel
+            </Text>
+          </Pressable>
+        </View>
 
       </View>
     </Modal>
@@ -69,7 +72,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 12,
-    width: '85%',
+    width: '100%',
     marginTop: 15,
   },
   buttonText: {
@@ -78,4 +81,4 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
-export default DeletAccountModel
+export default DeletAccountModel;

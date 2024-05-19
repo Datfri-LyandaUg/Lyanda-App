@@ -1,17 +1,16 @@
-import { View, Text, SafeAreaView, Pressable } from 'react-native'
 import React from 'react'
-import { ArrowDownLeftIcon, ChevronRightIcon, UserCircleIcon } from 'react-native-heroicons/solid'
-import { ArrowUpOnSquareStackIcon, ChevronLeftIcon, PencilIcon } from 'react-native-heroicons/outline'
+import { View, Text, SafeAreaView, Pressable } from 'react-native';
+import { ChevronLeftIcon, PencilIcon } from 'react-native-heroicons/outline'
 
 
 
 const BikeProfileScreen = ({ navigation }) => {
+
   return (
     <SafeAreaView className='bg-white h-full'>
       <View className=''>
         <View className='flex-row items-center relative mt-6 justify-center mb-3'>
           <Pressable className='absolute left-4'
-
             onPress={navigation.goBack()}>
             <ChevronLeftIcon size={30} color='#242424' />
           </Pressable>
@@ -22,7 +21,7 @@ const BikeProfileScreen = ({ navigation }) => {
         <View className="border-[#E0E0E0] border-[0.5px] mt-2"></View>
         <View className='items-center'>
 
-          <View className='w-96   bg-[#FAFAFA] rounded-[12px] mt-5'>
+          <View className='w-96 bg-[#FAFAFA] rounded-[12px] mt-5'>
             <Pressable
               onPress={() => navigation.navigate('BikeManufactureDetailsScreen')}
 
@@ -37,11 +36,7 @@ const BikeProfileScreen = ({ navigation }) => {
               </View>
               <Pressable>
                 <PencilIcon size={26} color='#808080' />
-
-
               </Pressable>
-
-
             </Pressable>
 
 
@@ -56,10 +51,7 @@ const BikeProfileScreen = ({ navigation }) => {
               </View>
               <Pressable>
                 <PencilIcon size={26} color='#808080' />
-
-
               </Pressable>
-
 
             </View>
 
@@ -74,15 +66,8 @@ const BikeProfileScreen = ({ navigation }) => {
               </View>
               <Pressable>
                 <PencilIcon size={26} color='#808080' />
-
-
               </Pressable>
-
-
             </View>
-
-
-
           </View>
         </View>
       </View>
@@ -90,4 +75,4 @@ const BikeProfileScreen = ({ navigation }) => {
   )
 }
 
-export default BikeProfileScreen
+export default BikeProfileScreen;
