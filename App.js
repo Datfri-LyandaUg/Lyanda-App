@@ -20,15 +20,7 @@ const App = () => {
         </SafeAreaView>
       </QueryClientProvider>
     </Provider>
-   
-
-
-
-
-
-
-
-    // <SplashScreen />
+    
   );
 };
 
