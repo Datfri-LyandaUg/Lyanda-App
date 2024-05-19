@@ -2,10 +2,16 @@ import { View, Text, SafeAreaView, Pressable } from 'react-native'
 import React, { useState } from 'react'
 import { ArrowDownLeftIcon, ChevronRightIcon, UserCircleIcon } from 'react-native-heroicons/solid'
 import { ArrowUpOnSquareStackIcon, ChevronLeftIcon } from 'react-native-heroicons/outline'
-import DeletAccountModel from '../components/forms/DeletAccountModel'
+import DeletAccountModel from '../components/DeletAccountModel'
+import { Tuple } from '@reduxjs/toolkit'
 
-const ProfileUser = () => {
-const [visible, setVisible] = useState(true)
+const ProfileUser = ({navigation}) => {
+const [visible, setVisible] = useState(false)
+const onCloseModle =()=>{
+  console.log('onCloseModle')
+  setVisible(!visible)
+
+}
  
   return (
     <SafeAreaView className='bg-white h-full'>
@@ -31,18 +37,19 @@ const [visible, setVisible] = useState(true)
        </Text>
       <View className='mb-4 mt-6'>
 
-       <View className='flex-row justify-between'>
+       <Pressable  onPress={()=> navigation.navigate('BikeProfileScreen')}
+         className='flex-row justify-between'>
        <View className='flex-row space-x-3'>
        <ArrowUpOnSquareStackIcon size={30} color='#808080'/ >
        <Text className='text-[17px] font-[400] text-[#242424]'> Bike   profile </Text>
        </View>
        <ChevronRightIcon size={30} color='#808080'/>
            
-       </View>
+       </Pressable>
        </View>
 
        <View className='items-center'>
-       <Pressable >
+       <Pressable onPress={onCloseModle} >
             <Text className='text-[#C50F1F]  text-[17px] font-[400]'>
         Delete account
      </Text>
@@ -55,7 +62,7 @@ const [visible, setVisible] = useState(true)
    </View>
     </View>
 
-    <DeletAccountModel  visible={visible} />
+    <DeletAccountModel  visible={visible}  onCloseModle={onCloseModle}/>
    </SafeAreaView>
    
   )

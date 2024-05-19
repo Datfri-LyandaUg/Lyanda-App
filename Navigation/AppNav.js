@@ -9,19 +9,26 @@ import BikeManufactureDetailsScreen from '../screens/BikeManufactureDetailsScree
 import DeleteAccountScreen from '../screens/DeleteAccountScreen';
 import TermsAndConditions from '../screens/TermsAndConditions';
 import SignupLoginOptionScreen from '../screens/SignupLoginOptionScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+import ProfileUser from '../screens/ProfileUser';
 
 
 const AppNav = () => {
   const token = useSelector(state => state.auth.token);
   return (
     <NavigationContainer>
-      {token === null ? <AuthStack /> : <PrivateStack />}
+      {/* {token === null ? <AuthStack /> : <PrivateStack />} */}
       {/* <LoginScreen/> */}
       {/* <DeleteAccountScreen/> */}
       {/* <BikeManufactureDetailsScreen/> */}
       {/* <NotificationScreen/> */}
       {/* <TermsAndConditions/> */}
       {/* <SignupLoginOptionScreen/> */}
+      {/* <ProfileScreen /> */}
+      {/* <ProfileUser /> */}
+      {/* <DeleteAccountScreen /> */}
+ 
+      <PrivateStack />
     </NavigationContainer>
   );
 };
