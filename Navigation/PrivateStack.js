@@ -16,9 +16,8 @@ const PrivateStack = () => {
       <Stack.Screen
         name="Home"
         component={ProfileScreen}
-
         options={{ headerShown: false }}
-      />   
+      />
       <Stack.Screen
         name="TermsAndConditons"
         component={TermsAndConditons}
@@ -34,11 +33,11 @@ const PrivateStack = () => {
         component={LocationScreen}
         options={{ headerShown: false }}
       />
-      
+
 
       <Stack.Screen
         name="DeleteAccountScreen"
-        component={ DeleteAccountScreen}
+        component={DeleteAccountScreen}
 
         options={{ headerShown: false }}
       />
@@ -52,7 +51,7 @@ const PrivateStack = () => {
         component={BikeManufactureDetailsScreen}
         options={{ headerShown: false }}
       />
-     
+
       <Stack.Screen
         name="BikeProfileScreen"
         component={BikeProfileScreen}

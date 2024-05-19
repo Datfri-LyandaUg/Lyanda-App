@@ -27,7 +27,6 @@ const AppNav = () => {
       {/* <ProfileScreen /> */}
       {/* <ProfileUser /> */}
       {/* <DeleteAccountScreen /> */}
- 
       <PrivateStack />
     </NavigationContainer>
   );
