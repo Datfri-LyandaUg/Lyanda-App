@@ -8,17 +8,20 @@ import DeleteAccountScreen from '../screens/DeleteAccountScreen';
 import ProfileUser from '../screens/ProfileUser';
 import BikeManufactureDetailsScreen from '../screens/BikeManufactureDetailsScreen';
 import BikeProfileScreen from '../screens/BikeProfileScreen';
+import BikeCapacityDetailsScreen from '../screens/BikeCapacityDetailsScreen';
+import BikePlateDetailsScreen from '../screens/BikePlateDetailsScreen';
 
 const PrivateStack = () => {
   const Stack = createNativeStackNavigator();
   return (
     <Stack.Navigator>
+
       <Stack.Screen
         name="Home"
         component={ProfileScreen}
-
         options={{ headerShown: false }}
-      />   
+      />
+
       <Stack.Screen
         name="TermsAndConditons"
         component={TermsAndConditons}
@@ -34,30 +37,47 @@ const PrivateStack = () => {
         component={LocationScreen}
         options={{ headerShown: false }}
       />
-      
 
-      <Stack.Screen
-        name="DeleteAccountScreen"
-        component={ DeleteAccountScreen}
-
-        options={{ headerShown: false }}
-      />
       <Stack.Screen
         name="ProfileUser"
         component={ProfileUser}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
-        name="BikeManufactureDetailsScreen"
-        component={BikeManufactureDetailsScreen}
-        options={{ headerShown: false }}
-      />
-     
+
       <Stack.Screen
         name="BikeProfileScreen"
         component={BikeProfileScreen}
         options={{ headerShown: false }}
       />
+
+
+      <Stack.Screen
+        name="BikeManufactureDetailsScreen"
+        component={BikeManufactureDetailsScreen}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="DeleteAccountScreen"
+        component={DeleteAccountScreen}
+
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="BikeCapacityDetailsScreen"
+        component={BikeCapacityDetailsScreen}
+
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="BikePlateDetailsScreen"
+        component={BikePlateDetailsScreen}
+
+        options={{ headerShown: false }}
+      />
+
     </Stack.Navigator>
   )
 }

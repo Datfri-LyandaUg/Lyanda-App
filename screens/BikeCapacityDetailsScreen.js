@@ -17,21 +17,21 @@ import TertiaryButton from '../components/TertiaryButton';
 import { updateManufacturer } from '../services/userService';
 
 const validationSchema = Yup.object().shape({
-    bikeManufacturer: Yup.string().required('Enter the Manufacturer of your bike.').label('bikeManufacturer'),
+    bikeCapacity: Yup.string().required('Enter the Capacity of your bike.').label('BikeCapacity'),
 });
 
-const BikeManufactureDetailsScreen = ({ navigation }) => {
+const BikeCapacityDetailsScreen = ({ navigation }) => {
 
     const [currentUser] = useState({});
 
-    const updateBikeManufactureMutation = useMutation((updateParameters) =>
+    const updateBikeCapacityMutation = useMutation((updateParameters) =>
         updateManufacturer(currentUser?._id , updateParameters)
     );
 
-    const handleManufacturesUpdate = async (values) => {
+    const handleBikeCapacityUpdate = async (values) => {
 
         try {
-            const { data } = await updateBikeManufactureMutation.mutateAsync(values);
+            const { data } = await updateBikeCapacityMutation.mutateAsync(values);
         } catch (ex) {
             if (ex.response) {
                 console.error(ex.response.data);
@@ -41,10 +41,10 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
 
 
     useEffect(() => {
-        if (updateBikeManufactureMutation.isSuccess) {
+        if (updateBikeCapacityMutation.isSuccess) {
             // success logic....
         }
-    }, [updateBikeManufactureMutation.isSuccess]);
+    }, [updateBikeCapacityMutation.isSuccess]);
 
     return (
         <SafeAreaView className=" bg-white h-full">
@@ -57,14 +57,14 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
                 </TouchableOpacity>
 
                 <Text className="text-[#242424] text-[17px] font-[600]">
-                    Bike manufacturer
+                    Bike capacity
                 </Text>
             </View>
 
 
             <Formik
-                initialValues={{ bikeManufacturer: '' }}
-                onSubmit={values => handleManufacturesUpdate(values)}
+                initialValues={{ bikeCapacity: '' }}
+                onSubmit={values => handleBikeCapacityUpdate(values)}
                 validationSchema={validationSchema}
             >
                 {({ handleChange, handleSubmit, errors, touched }) => (
@@ -75,28 +75,28 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
 
                         <View className="items-center mt-7">
                             <Text className="font-[400] text-[17px] text-[#242424] mb-7">
-                                What brand is your bike?
+                                What is the capacity of your bike?
                             </Text>
                             <View className="w-[375] h-[48] px-4">
 
                                 <TextInput
-                                    placeholder="Type your brand..."
-                                    onChangeText={handleChange('bikeManufacturer')}
+                                    placeholder="250Watt-hours"
+                                    onChangeText={handleChange('bikeCapacity')}
                                     placeholderTextColor="#616161"
                                     className="w-52"
                                 />
 
                             </View>
                         </View>
-                        <View className="pl-3">
 
+                        <View className="pl-3">
                             <View className="border-[#E0E0E0] border-[0.5px] px-3 w-80 mt-2 my-2" />
 
-                            <ErrorMessage error={errors['bikeManufacturer']} visible={touched['bikeManufacturer']} />
-
+                            <ErrorMessage error={errors['bikeCapacity']} visible={touched['bikeCapacity']} />
                         </View>
+                        
                         <View className="items-center mb-72 px-4">
-                            <TertiaryButton handleModal={handleSubmit} isLoading={updateBikeManufactureMutation.isLoading} title='Save' loadingText='Saving...' />
+                            <TertiaryButton handleModal={handleSubmit} isLoading={updateBikeCapacityMutation.isLoading} title='Save' loadingText='Saving...' />
                         </View>
                     </>
                 )}
@@ -106,4 +106,4 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
     );
 };
 
-export default BikeManufactureDetailsScreen;
+export default BikeCapacityDetailsScreen;
