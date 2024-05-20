@@ -8,6 +8,7 @@ import DeleteAccountScreen from '../screens/DeleteAccountScreen';
 import ProfileUser from '../screens/ProfileUser';
 import BikeManufactureDetailsScreen from '../screens/BikeManufactureDetailsScreen';
 import BikeProfileScreen from '../screens/BikeProfileScreen';
+import BikeCapacityDetailsScreen from '../screens/BikeCapacityDetailsScreen';
 
 const PrivateStack = () => {
   const Stack = createNativeStackNavigator();
@@ -48,8 +49,8 @@ const PrivateStack = () => {
         options={{ headerShown: false }}
       />
 
-      
-       <Stack.Screen
+
+      <Stack.Screen
         name="BikeManufactureDetailsScreen"
         component={BikeManufactureDetailsScreen}
         options={{ headerShown: false }}
@@ -62,6 +63,12 @@ const PrivateStack = () => {
         options={{ headerShown: false }}
       />
 
+      <Stack.Screen
+        name="BikeCapacityDetailsScreen"
+        component={BikeCapacityDetailsScreen}
+
+        options={{ headerShown: false }}
+      />
 
     </Stack.Navigator>
   )

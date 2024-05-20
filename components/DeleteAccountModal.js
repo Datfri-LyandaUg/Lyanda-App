@@ -2,7 +2,7 @@ import { View, Text, Pressable, StyleSheet } from 'react-native';
 import React from 'react';
 import Modal from 'react-native-modal';
 
-const DeletAccountModel = ({ visible, navigation, toggleModalVisibility }) => {
+const DeleteAccountModal = ({ visible, navigation, toggleModalVisibility }) => {
   return (
     <Modal
       isVisible={visible}
@@ -17,7 +17,6 @@ const DeletAccountModel = ({ visible, navigation, toggleModalVisibility }) => {
       style={{
         justifyContent: 'flex-end',
         margin: 0,
-        marginBottom: 20,
       }}
       className="items-center">
       <View
@@ -81,4 +80,4 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
-export default DeletAccountModel;
+export default DeleteAccountModal;

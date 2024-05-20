@@ -2,7 +2,7 @@ import { View, Text, SafeAreaView, Pressable } from 'react-native';
 import React, { useState } from 'react';
 import { ChevronRightIcon, UserCircleIcon } from 'react-native-heroicons/solid';
 import { ArrowUpOnSquareStackIcon, ChevronLeftIcon } from 'react-native-heroicons/outline';
-import DeletAccountModel from '../components/DeletAccountModel';
+import DeleteAccountModal from '../components/DeleteAccountModal';
 
 const ProfileUser = ({ navigation }) => {
 
@@ -60,7 +60,7 @@ const ProfileUser = ({ navigation }) => {
         </View>
       </View>
 
-      <DeletAccountModel navigation={navigation} visible={visible} toggleModalVisibility={toggleModalVisibility} />
+      <DeleteAccountModal navigation={navigation} visible={visible} toggleModalVisibility={toggleModalVisibility} />
     </SafeAreaView>
 
   )

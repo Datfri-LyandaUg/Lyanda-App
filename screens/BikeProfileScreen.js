@@ -12,16 +12,19 @@ const BikeProfileScreen = ({ navigation }) => {
         <View className='flex-row items-center relative mt-6 justify-center mb-3'>
           <Pressable className='absolute left-4'
             onPress={() => navigation.goBack()}>
-            <ChevronLeftIcon size={30} color='#242424' />
+            <ChevronLeftIcon size={20} color='#242424' />
           </Pressable>
           <Text className='text-[17px] font-[600] text-[#242424]'>
             Notifications
           </Text>
         </View>
-        <View className="border-[#E0E0E0] border-[0.5px] mt-2"></View>
-        <View className='items-center'>
 
-          <View className='w-96 bg-[#FAFAFA] rounded-[12px] mt-5'>
+        <View className="border-[#E0E0E0] border-[0.5px] mt-2" />
+
+        <View className='items-center py-4 px-2'>
+
+          <View className='w-full bg-[#FAFAFA] py-2 rounded-[12px]'>
+
             <Pressable
               onPress={() => navigation.navigate('BikeManufactureDetailsScreen')}
 
@@ -35,12 +38,14 @@ const BikeProfileScreen = ({ navigation }) => {
                 </Text>
               </View>
               <Pressable>
-                <PencilIcon size={26} color='#808080' />
+                <PencilIcon size={18} color='#808080' />
               </Pressable>
             </Pressable>
 
 
-            <View className='m-5 flex-row justify-between items-center'>
+            <Pressable
+              onPress={() => navigation.navigate('BikeCapacityDetailsScreen')}
+              className='m-5 flex-row justify-between items-center'>
               <View>
                 <Text className='text-[17px] font-[400]  text-[#242424]'>
                   Battery capacity
@@ -50,12 +55,12 @@ const BikeProfileScreen = ({ navigation }) => {
                 </Text>
               </View>
               <Pressable>
-                <PencilIcon size={26} color='#808080' />
+                <PencilIcon size={18} color='#808080' />
               </Pressable>
 
-            </View>
+            </Pressable>
 
-            <View className='m-5 flex-row justify-between items-center'>
+            <Pressable className='m-5 flex-row justify-between items-center'>
               <View>
                 <Text className='text-[17px] font-[400]  text-[#242424]'>
                   Number plate
@@ -65,9 +70,9 @@ const BikeProfileScreen = ({ navigation }) => {
                 </Text>
               </View>
               <Pressable>
-                <PencilIcon size={26} color='#808080' />
+                <PencilIcon size={18} color='#808080' />
               </Pressable>
-            </View>
+            </Pressable>
           </View>
         </View>
       </View>
