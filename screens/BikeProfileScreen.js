@@ -60,7 +60,9 @@ const BikeProfileScreen = ({ navigation }) => {
 
             </Pressable>
 
-            <Pressable className='m-5 flex-row justify-between items-center'>
+            <Pressable
+              onPress={() => navigation.navigate('BikePlateDetailsScreen')}
+              className='m-5 flex-row justify-between items-center'>
               <View>
                 <Text className='text-[17px] font-[400]  text-[#242424]'>
                   Number plate

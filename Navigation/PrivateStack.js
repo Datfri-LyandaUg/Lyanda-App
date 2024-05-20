@@ -9,6 +9,7 @@ import ProfileUser from '../screens/ProfileUser';
 import BikeManufactureDetailsScreen from '../screens/BikeManufactureDetailsScreen';
 import BikeProfileScreen from '../screens/BikeProfileScreen';
 import BikeCapacityDetailsScreen from '../screens/BikeCapacityDetailsScreen';
+import BikePlateDetailsScreen from '../screens/BikePlateDetailsScreen';
 
 const PrivateStack = () => {
   const Stack = createNativeStackNavigator();
@@ -66,6 +67,13 @@ const PrivateStack = () => {
       <Stack.Screen
         name="BikeCapacityDetailsScreen"
         component={BikeCapacityDetailsScreen}
+
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="BikePlateDetailsScreen"
+        component={BikePlateDetailsScreen}
 
         options={{ headerShown: false }}
       />
