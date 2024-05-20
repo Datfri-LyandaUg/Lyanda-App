@@ -1129,7 +1129,7 @@
   resolved "https://registry.yarnpkg.com/@babel/regjsgen/-/regjsgen-0.8.0.tgz#f0ba69b075e1f05fb2825b7fad991e7adbb18310"
   integrity sha512-x/rqGMdzj+fWZvCOYForTghzbtqPDZ5gPwaoNGHdgDfF2QA/XZbCBp4Moo5scrkAMPhB7z26XM/AaHuIJdgauA==
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.5", "@babel/runtime@^7.20.0", "@babel/runtime@^7.23.8", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.10.5", "@babel/runtime@^7.20.0", "@babel/runtime@^7.23.8", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4":
   version "7.24.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.24.5.tgz#230946857c053a36ccc66e1dd03b17dd0c4ed02c"
   integrity sha512-Nms86NXrsaeU9vbBJKni6gXiEXZ4CVpYVzEjDH9Sb8vmZ3UljyA1GSOJl/6LGPO8EHLuSF9H+IxNXHPX8QHJ4g==
@@ -1184,11 +1184,6 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@emotion/hash@^0.9.0":
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/@emotion/hash/-/hash-0.9.1.tgz#4ffb0055f7ef676ebc3a5a91fb621393294e2f43"
-  integrity sha512-gJB6HLm5rYwSLI6PQa+X1t5CFGrv1J1TWG+sOyMCeKz2ojaj6Fnl/rZEspogG+cvqbt4AE/2eIyD2QfLKTBNlQ==
-
 "@eslint-community/eslint-utils@^4.2.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@eslint-community/eslint-utils/-/eslint-utils-4.4.0.tgz#a23514e8fb9af1269d5f7788aa556798d61c6b59"
@@ -1220,236 +1215,6 @@
   version "8.57.0"
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.57.0.tgz#a5417ae8427873f1dd08b70b3574b453e67b5f7f"
   integrity sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==
-
-"@fluentui-react-native/adapters@0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/adapters/-/adapters-0.13.0.tgz#ac988bf9924949e5b018e56765e514329b72424c"
-  integrity sha512-IMSlRJkGS3wAk3atmiwmqwfvvmy7QYr0SZ3mcFbYHTReO9PNrE1MGHEEk9YqLPaEUjCbwfgsRKIL9eYgJ8+7RQ==
-
-"@fluentui-react-native/composition@0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/composition/-/composition-0.11.0.tgz#b598bed0ff38909e6e0033aba5ea3a1c4c1528e7"
-  integrity sha512-QCZUZiuNvgjs960DHSVpPVHy9x3d9VeqyvzCfnMt8jicvcwEfCVtZGK9ZfkVwk29Qhs4xEzX6hZyP5PR/dIXhA==
-  dependencies:
-    "@fluentui-react-native/immutable-merge" "1.2.2"
-    "@fluentui-react-native/use-slot" "0.6.0"
-    "@fluentui-react-native/use-slots" "0.10.0"
-    "@fluentui-react-native/use-styling" "0.13.0"
-
-"@fluentui-react-native/default-theme@0.26.0":
-  version "0.26.0"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/default-theme/-/default-theme-0.26.0.tgz#b248f10ca75b9ed56a6a95326864a57f3fcdd409"
-  integrity sha512-nfaG2L1w6/38xNjCZBpWbuU95B4ME8/zR/GRXfl/EtEI0n8IUan4k7Ial6AgFfJesBe41ISr1LiyGcCYsOGfag==
-  dependencies:
-    "@fluentui-react-native/memo-cache" "1.3.2"
-    "@fluentui-react-native/theme" "0.11.0"
-    "@fluentui-react-native/theme-tokens" "0.27.0"
-    "@fluentui-react-native/theme-types" "0.39.0"
-    "@fluentui-react-native/theming-utils" "0.26.0"
-    assert-never "^1.2.1"
-
-"@fluentui-react-native/design-tokens-android@^0.53.0":
-  version "0.53.0"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/design-tokens-android/-/design-tokens-android-0.53.0.tgz#9349c08adb5736c64c4bdb143818f9480b6ee947"
-  integrity sha512-Ew1C5kQJFCDYPQpfs9JggxxBU0adwFGxtrGoXG3Fb3vgZ9Yv+BwSLDV3y9Fr/e79XC5tch7d+KG40OLi6I93aA==
-
-"@fluentui-react-native/design-tokens-ios@^0.53.0":
-  version "0.53.0"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/design-tokens-ios/-/design-tokens-ios-0.53.0.tgz#2677247b48359a6e1ece8ec53c95520cf3339272"
-  integrity sha512-0fDDqRwZldlulUB2Vfq5xSQVEi61wqY303Ew7U8HaD3VxHHAWo7SgCJIi5YwKlDJjf6IOpq9UaVfq0qFAsgy3A==
-
-"@fluentui-react-native/design-tokens-win32@^0.53.0":
-  version "0.53.0"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/design-tokens-win32/-/design-tokens-win32-0.53.0.tgz#cbd8cb612f029e33634445b00e3c60ffaa179a2b"
-  integrity sha512-IE+pT+lq7IiRjKBqNrTOO6w7kkatQ8ZWCJNnAurKxIc8Dk+MWZbS2yIq1Ma1/g4m/qysXhVS/ZVBOAJMU3BKnQ==
-
-"@fluentui-react-native/design-tokens-windows@^0.53.0":
-  version "0.53.0"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/design-tokens-windows/-/design-tokens-windows-0.53.0.tgz#1ef93c6139d75d3bbf3269b4ad8007c96091d47d"
-  integrity sha512-hhWFJYFtTvS0p9s4r7XU3vfYbN6wODDh+M/qPOORha7SQCxhShrGHTDPYhjpcsTEMiCzkQPGpx/CvH2KRRLZ1w==
-
-"@fluentui-react-native/framework@0.14.0":
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/framework/-/framework-0.14.0.tgz#89e3951c9c533e81786cbc85ac243e54b99d19b3"
-  integrity sha512-pIQDnedj+rJzEERUx7HU1pca6ZDLxHEEAYbVo2EfW/YfTpCo72ppnYkMK06BxqZmjG6ug4BicUX8o6fcoMnDXw==
-  dependencies:
-    "@fluentui-react-native/composition" "0.11.0"
-    "@fluentui-react-native/default-theme" "0.26.0"
-    "@fluentui-react-native/immutable-merge" "1.2.2"
-    "@fluentui-react-native/memo-cache" "1.3.2"
-    "@fluentui-react-native/merge-props" "0.9.0"
-    "@fluentui-react-native/theme-types" "0.39.0"
-    "@fluentui-react-native/tokens" "0.23.0"
-    "@fluentui-react-native/use-slot" "0.6.0"
-    "@fluentui-react-native/use-slots" "0.10.0"
-    "@fluentui-react-native/use-styling" "0.13.0"
-    "@fluentui-react-native/use-tokens" "0.6.0"
-    tslib "^2.3.1"
-
-"@fluentui-react-native/icon@^0.21.1":
-  version "0.21.1"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/icon/-/icon-0.21.1.tgz#4d5d96f0890bd2063720eacf6bf8de7bead2fea2"
-  integrity sha512-cCFnrfwjGHIBAcu/nTv/lxtIpZSFf1kNEpqbfp9HADJYNnwFcZ+S19/ZR0E1YLEcp7gcs5KBpc+n/NayDHQLkQ==
-  dependencies:
-    "@fluentui-react-native/adapters" "0.13.0"
-    "@fluentui-react-native/framework" "0.14.0"
-    "@fluentui-react-native/text" "0.23.0"
-
-"@fluentui-react-native/immutable-merge@1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/immutable-merge/-/immutable-merge-1.2.2.tgz#7039c25b450905c86385a38c853c6d8bf2a9f362"
-  integrity sha512-gXzz0I7L680kVjgQvq0EU7i0URmltYT+bJgOBQscU3hQ2rRClFUsq8JytJ1O41ZQaIGuAJDGhf+wJKM8sjUNPg==
-  dependencies:
-    tslib "^2.3.1"
-
-"@fluentui-react-native/interactive-hooks@0.27.0":
-  version "0.27.0"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/interactive-hooks/-/interactive-hooks-0.27.0.tgz#f711822d3a92e088d61b72a7be5883028fbf863b"
-  integrity sha512-PKTv/NwDfGNq+nevR4UzgI+/cvy8rfO8dGUacKO3qb+skL/bkvn0l8B74EzqwDY0YSfyISER4bbTa+Iy8kEouw==
-  dependencies:
-    "@fluentui-react-native/adapters" "0.13.0"
-    "@fluentui-react-native/framework" "0.14.0"
-    "@fluentui-react-native/memo-cache" "1.3.2"
-    invariant "^2.2.0"
-    tslib "^2.3.1"
-
-"@fluentui-react-native/memo-cache@1.3.2":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/memo-cache/-/memo-cache-1.3.2.tgz#a2caa2e71afd3bc21862294b2a2ed01f75a49bd0"
-  integrity sha512-DysQM9jvKB5Z3ID3TS8ck46cQxh0L4NQ8kkofzJ9+Y5UR28Rhg9cKp1kOiyPGdhyTn0wLzmYFYgJrAypBz8WXg==
-
-"@fluentui-react-native/merge-props@0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/merge-props/-/merge-props-0.9.0.tgz#98e41c6ba3fdb9bd9c4145f4fb61cc1988b44750"
-  integrity sha512-Dyl82lolLiBVC1UeCZnoL4RllWeHQI/CitQZUHedxFNBTRMBdJXuT+kthWTq+qwNUc60/KeQYpotVZIbUHF5eA==
-  dependencies:
-    "@fluentui-react-native/immutable-merge" "1.2.2"
-    "@fluentui-react-native/memo-cache" "1.3.2"
-    tslib "^2.3.1"
-
-"@fluentui-react-native/text@0.23.0":
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/text/-/text-0.23.0.tgz#ccebe9933b1687fe9aa23e49da298b8cd92d8afd"
-  integrity sha512-We4MHiJquOC9bfEBglRCMNvfXMwxiBxt3nwTYye2qQCySZdsQXypT9YMQ0sZwXoWI66r9UPsUAjOOD3tS6VY1g==
-  dependencies:
-    "@fluentui-react-native/adapters" "0.13.0"
-    "@fluentui-react-native/framework" "0.14.0"
-    "@fluentui-react-native/interactive-hooks" "0.27.0"
-    "@fluentui-react-native/theme-tokens" "0.27.0"
-    "@fluentui-react-native/tokens" "0.23.0"
-    "@uifabricshared/foundation-compose" "1.15.0"
-    tslib "^2.3.1"
-
-"@fluentui-react-native/theme-tokens@0.27.0":
-  version "0.27.0"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/theme-tokens/-/theme-tokens-0.27.0.tgz#2667f1a3d174485b48838404d0b3362ead399cc6"
-  integrity sha512-qFU5TURPTfZQ3xxH72P/J1hDmvQS9xvQr90WSz6+8KpjqdGUOzcLHgMxc4+kA1pkGU8Yb74lSMlQcsYbJxR55w==
-  dependencies:
-    "@fluentui-react-native/design-tokens-android" "^0.53.0"
-    "@fluentui-react-native/design-tokens-ios" "^0.53.0"
-    "@fluentui-react-native/design-tokens-win32" "^0.53.0"
-    "@fluentui-react-native/design-tokens-windows" "^0.53.0"
-    "@fluentui-react-native/theme-types" "0.39.0"
-    assert-never "^1.2.1"
-
-"@fluentui-react-native/theme-types@0.39.0":
-  version "0.39.0"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/theme-types/-/theme-types-0.39.0.tgz#4a08e21bdf4fb6ebef270adfe588dc51765df318"
-  integrity sha512-GgBANJP5ScSUkNEXIdafDk1N8Z0jtw1GQDaHP/GMjgIZYYtfnAcQBm4xjy5hNeKpCDKjxRK2ItHr3q1eGVCJjw==
-
-"@fluentui-react-native/theme@0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/theme/-/theme-0.11.0.tgz#b29ba18a672db0c2ee9019201e465f377fc4c7da"
-  integrity sha512-XqldMuEpYwEojFE+yA62ng355sBS4UgPX13T4K6WtdlUOm6RNHJmCh+VcVD4CGI05wGDO3ArCEE98ohsX/2GHQ==
-  dependencies:
-    "@fluentui-react-native/immutable-merge" "1.2.2"
-    "@fluentui-react-native/theme-types" "0.39.0"
-
-"@fluentui-react-native/theming-utils@0.26.0":
-  version "0.26.0"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/theming-utils/-/theming-utils-0.26.0.tgz#b21aebfb8af3ba588df83092ac7158c25640ffba"
-  integrity sha512-VKMxazNqUMerkTYx8tYoc6G0MaJwL3gFrLpNQxoeSlff67uyuUXsNt8ckjMo57tk30QmiqpqDQrUYVdZ0s5u4w==
-  dependencies:
-    "@fluentui-react-native/theme-types" "0.39.0"
-    "@fluentui-react-native/tokens" "0.23.0"
-
-"@fluentui-react-native/tokens@0.23.0":
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/tokens/-/tokens-0.23.0.tgz#ad8abbcd4566b1cb43d868d9cd495b72f691737f"
-  integrity sha512-uUAIQkpdOnJgEYuRZP1qPhc4IEjYNmSnW5Es8bzE+w4DygnrljsKg+5wbD7YQYEVjBxcIIaVsPuaNp+PWoWGRA==
-  dependencies:
-    "@fluentui-react-native/adapters" "0.13.0"
-    "@fluentui-react-native/theme-types" "0.39.0"
-    tslib "^2.3.1"
-
-"@fluentui-react-native/use-slot@0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/use-slot/-/use-slot-0.6.0.tgz#f02391d8c2175943392153f5a3086f247edd643c"
-  integrity sha512-1ckH7roiUCNUXK/kAKGYczke/2XMrYVlTH5lNPQ+0v4uRyrD2l69v4gYsGB3TAxFxH4qOKxiZHXSKM2FIYt2nQ==
-  dependencies:
-    "@fluentui-react-native/merge-props" "0.9.0"
-    tslib "^2.3.1"
-
-"@fluentui-react-native/use-slots@0.10.0":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/use-slots/-/use-slots-0.10.0.tgz#a45f8e5b4b57269ffb8f75077db3e2e5083954ba"
-  integrity sha512-Lp1UQuhxmu63So42eH07q/6PCodDOV62eT4dUmkQL6lz9PzxFiOnSvU2pSgC9hahIYOkYcSF1PIwh1p6sOzZGg==
-  dependencies:
-    "@fluentui-react-native/use-slot" "0.6.0"
-
-"@fluentui-react-native/use-styling@0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/use-styling/-/use-styling-0.13.0.tgz#1dbf044ecf34a9d632499dc3ab107946ed4f4f8d"
-  integrity sha512-DPRUAMM8eudQ6/4I+Ywa405NEaFn8VUqZXJvxDGnWt61kO+Brl8fH6d4eVHsqyCEeSxufVo3B2kvLLPji5XzQg==
-  dependencies:
-    "@fluentui-react-native/memo-cache" "1.3.2"
-    "@fluentui-react-native/use-tokens" "0.6.0"
-    tslib "^2.3.1"
-
-"@fluentui-react-native/use-tokens@0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/use-tokens/-/use-tokens-0.6.0.tgz#9f83b56cef2a74c90ca82a7068b5816ad486733b"
-  integrity sha512-q+a2Xhxzlh2J+PX/dIouYQMs59N0uF7dAH1QA2+rJdZlaHfeGbgChcmcel26tK2YBa6dhdfBNV9Chg+T7U0f4Q==
-  dependencies:
-    "@fluentui-react-native/immutable-merge" "1.2.2"
-    "@fluentui-react-native/memo-cache" "1.3.2"
-    tslib "^2.3.1"
-
-"@fluentui/react-native-icons@^2.0.237":
-  version "2.0.239"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-native-icons/-/react-native-icons-2.0.239.tgz#578bb07acdb64f93dd811e6e513635bc3c8e2537"
-  integrity sha512-1U3llCEtt4k6WJd7karZDPAvsYXlb7NLWJx72vE5x2i4r2npYGppx6OAzNnrUGUWfoVK/X/LR0aWvgjuMMEnWA==
-  dependencies:
-    "@griffel/react" "^1.0.0"
-    "@types/react-native" "^0.68.0"
-    tslib "^2.1.0"
-
-"@griffel/core@^1.16.0":
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/@griffel/core/-/core-1.16.0.tgz#b022756dd35b88f612cd67e366005acbde8dd555"
-  integrity sha512-7xy9sWxmyFok0chZXJ91z4VH0HdwhAPUln5Ctpg6S/WRKoPhpIg9EieiL5CRFhIp1krPIncJSes4WqaB9OKiow==
-  dependencies:
-    "@emotion/hash" "^0.9.0"
-    "@griffel/style-types" "^1.1.0"
-    csstype "^3.1.3"
-    rtl-css-js "^1.16.1"
-    stylis "^4.2.0"
-    tslib "^2.1.0"
-
-"@griffel/react@^1.0.0":
-  version "1.5.22"
-  resolved "https://registry.yarnpkg.com/@griffel/react/-/react-1.5.22.tgz#90b589f7d6015405d38ebe624d08e793813c2164"
-  integrity sha512-QZWo73e+7oh+aTxCJzCe9SNUszM0+lHG9p1LoEQ5MZdvtT8sur1M4cz+TVTTgUXqUBnHBf1TIYXvVoRxiZhy8Q==
-  dependencies:
-    "@griffel/core" "^1.16.0"
-    tslib "^2.1.0"
-
-"@griffel/style-types@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@griffel/style-types/-/style-types-1.1.0.tgz#b7e8d8f03d32162c81ab539fe59886ea0aa1dea2"
-  integrity sha512-cINLeC14/YUHlrtL96vzCrsFr19WUO0i9DuljBtX5S7B8pMyiNf6Pw0htjroLojvfD2okhdsr9CHwpUxz1u4kw==
-  dependencies:
-    csstype "^3.1.3"
 
 "@hapi/hoek@^9.0.0", "@hapi/hoek@^9.3.0":
   version "9.3.0"
@@ -2281,6 +2046,25 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
+"@svgr-iconkit/common-utils@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@svgr-iconkit/common-utils/-/common-utils-0.4.1.tgz#6407abed14dec85bd10fdf8d73abbf415dc99cac"
+  integrity sha512-frBPXYJVQM/IcDiupH7lShdGZZaiPz2IPuScs7KDgekotSIKcFj3dz8ntmuiBwKEj5GurmZLOXGSkhskcRtuFg==
+
+"@svgr-iconkit/core@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@svgr-iconkit/core/-/core-0.4.1.tgz#e6051c1d440e8dc009f7f7ad640e0d987c179768"
+  integrity sha512-1p+5g8eS/sRrdzHvQnBWjjJWR4MtOae5ezyVxlRzHu9uPwWmc9n2wmHYq3GpcK6c7bMs9i50aJ4Xr6if2FIc2g==
+  dependencies:
+    "@svgr-iconkit/common-utils" "^0.4.1"
+
+"@svgr-iconkit/fluentui-system@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@svgr-iconkit/fluentui-system/-/fluentui-system-0.4.1.tgz#efdef747f6de58540344c49203783564d419ed11"
+  integrity sha512-DFl78UwL+sKZ6C9S0pg7f/mgfj8++BDEp0zMRaOLo0GnRWTdVMAmaad4v/oQxrtejK3G5ZIynIUcxD//f97cWw==
+  dependencies:
+    "@svgr-iconkit/core" "^0.4.1"
+
 "@types/babel__core@^7.1.14":
   version "7.20.5"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.20.5.tgz#3df15f27ba85319caa07ba08d0721889bb39c017"
@@ -2362,13 +2146,6 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.12.tgz#12bb1e2be27293c1406acb6af1c3f3a1481d98c6"
   integrity sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==
 
-"@types/react-native@^0.68.0":
-  version "0.68.20"
-  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.68.20.tgz#333b0805953528242023162d7bbef0bf7413ff17"
-  integrity sha512-2eUTRheFyjL8vUdsOIX29POhkxfqzh1aj6TDhrF0QHZEQRwN74xNzUlcXA1cor/1MgS7Nz6gW/2Hj6jBHjAS9g==
-  dependencies:
-    "@types/react" "^17"
-
 "@types/react-test-renderer@^18.0.0":
   version "18.3.0"
   resolved "https://registry.yarnpkg.com/@types/react-test-renderer/-/react-test-renderer-18.3.0.tgz#839502eae70058a4ae161f63385a8e7929cef4c0"
@@ -2383,20 +2160,6 @@
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
-
-"@types/react@^17":
-  version "17.0.80"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.80.tgz#a5dfc351d6a41257eb592d73d3a85d3b7dbcbb41"
-  integrity sha512-LrgHIu2lEtIo8M7d1FcI3BdwXWoRQwMoXOZ7+dPTW0lYREjmlHl3P0U1VD0i/9tppOuv8/sam7sOjx34TxSFbA==
-  dependencies:
-    "@types/prop-types" "*"
-    "@types/scheduler" "^0.16"
-    csstype "^3.0.2"
-
-"@types/scheduler@^0.16":
-  version "0.16.8"
-  resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.8.tgz#ce5ace04cfeabe7ef87c0091e50752e36707deff"
-  integrity sha512-WZLiwShhwLRmeV6zH+GkbOFT6Z6VklCItrDioxUnv+u4Ll+8vKeFySoFyK/0ctcRpOmwAicELfmys1sDc/Rw+A==
 
 "@types/semver@^7.3.12":
   version "7.5.8"
@@ -2515,62 +2278,6 @@
   dependencies:
     "@typescript-eslint/types" "5.62.0"
     eslint-visitor-keys "^3.3.0"
-
-"@uifabricshared/foundation-composable@0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@uifabricshared/foundation-composable/-/foundation-composable-0.13.0.tgz#5aa6e6eefc5316ffe5f644c035e2268a1268ee34"
-  integrity sha512-POhJzIi6YOGHuxJS/EDGf8q9UPvqXMqnkB0u5jp64M65auli/EjvLKb1fdvou8rQH567mh0sFUcUak1R/Qic+w==
-  dependencies:
-    "@fluentui-react-native/merge-props" "0.9.0"
-    "@uifabricshared/foundation-settings" "0.15.0"
-
-"@uifabricshared/foundation-compose@1.15.0":
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/@uifabricshared/foundation-compose/-/foundation-compose-1.15.0.tgz#d27a90e6ee9498b1799b5f20fad7eab121942680"
-  integrity sha512-R+KGH6yq3MjwuhDOmqu09K4JTRdChOBKumG/PFZEu+YeYRUIA5mmu8ELubj8UjMmQ36YZ5tFaVshyDqaN3SiNA==
-  dependencies:
-    "@fluentui-react-native/default-theme" "0.26.0"
-    "@fluentui-react-native/immutable-merge" "1.2.2"
-    "@fluentui-react-native/memo-cache" "1.3.2"
-    "@fluentui-react-native/theme-types" "0.39.0"
-    "@uifabricshared/foundation-composable" "0.13.0"
-    "@uifabricshared/foundation-settings" "0.15.0"
-    "@uifabricshared/foundation-tokens" "0.15.0"
-    "@uifabricshared/themed-settings" "0.12.0"
-    "@uifabricshared/theming-ramp" "0.20.0"
-
-"@uifabricshared/foundation-settings@0.15.0":
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/@uifabricshared/foundation-settings/-/foundation-settings-0.15.0.tgz#b04261576743b461e379abb48f589479a9b7f1ad"
-  integrity sha512-TkFqwYYo4XfHE5GivP/0cPZhd+bIp5P3yftp458y5Z1qp3D1Soa2RBmDFeLSmo/OdrYgZQMxumOSbnzSJ0DJug==
-  dependencies:
-    "@fluentui-react-native/immutable-merge" "1.2.2"
-    "@fluentui-react-native/merge-props" "0.9.0"
-
-"@uifabricshared/foundation-tokens@0.15.0":
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/@uifabricshared/foundation-tokens/-/foundation-tokens-0.15.0.tgz#f4cf3e0103c144a9982f3c3079c1a112fa271b5b"
-  integrity sha512-4W1L68uJAmf/NHr/Usnl/0TBmtEbk383YWNi+3huTiZDMu1VaNqqh0LNa5vPdPENHQj94896wM/yk2PM9FTcCQ==
-  dependencies:
-    "@fluentui-react-native/merge-props" "0.9.0"
-    "@fluentui-react-native/tokens" "0.23.0"
-    "@uifabricshared/foundation-settings" "0.15.0"
-
-"@uifabricshared/themed-settings@0.12.0":
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/@uifabricshared/themed-settings/-/themed-settings-0.12.0.tgz#35f11a8de1757bfe60ec18156198b4cd9f059002"
-  integrity sha512-aq5rpVvLQ3B9m3xafs0IX7BVRCTDnhfrn9yrkd6PMMlvj7oAtVGF1n11dY8cQ5fc3UXNeOSiHwC/LYK5Bx7hRQ==
-  dependencies:
-    "@uifabricshared/foundation-settings" "0.15.0"
-
-"@uifabricshared/theming-ramp@0.20.0":
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/@uifabricshared/theming-ramp/-/theming-ramp-0.20.0.tgz#7ee17740666dc1f3a5d84912e9493021fe87aaac"
-  integrity sha512-UqOAR1hHSIe3GB16wCnQ/28mLFUUEGe92EInp+nxI0yI8EvzfC+xChgEc+fwgQp1KAs1Y684WyVbt+sqxDOxwA==
-  dependencies:
-    "@fluentui-react-native/immutable-merge" "1.2.2"
-    "@fluentui-react-native/theme-types" "0.39.0"
-    "@uifabricshared/foundation-settings" "0.15.0"
 
 "@ungap/structured-clone@^1.2.0":
   version "1.2.0"
@@ -2803,11 +2510,6 @@ asap@~2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
   integrity sha512-BSHWgDSAiKs50o2Re8ppvp3seVHXSRM44cdSsT9FfNEUUZLOGWVCsiWaRPWM1Znn+mqZ1OfVZ3z3DWEzSp7hRA==
-
-assert-never@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/assert-never/-/assert-never-1.2.1.tgz#11f0e363bf146205fb08193b5c7b90f4d1cf44fe"
-  integrity sha512-TaTivMB6pYI1kXwrFlEhLeGfOqoDNdTxjCdwRfFFkEA30Eu+k48W34nlok2EYWJfFFzqaEmichdNM7th6M5HNw==
 
 ast-types@0.15.2:
   version "0.15.2"
@@ -3464,7 +3166,7 @@ cssesc@^3.0.0:
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-3.0.0.tgz#37741919903b868565e1c09ea747445cd18983ee"
   integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
 
-csstype@^3.0.2, csstype@^3.1.3:
+csstype@^3.0.2:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.3.tgz#d80ff294d114fb0e6ac500fbf85b60137d7eff81"
   integrity sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==
@@ -4671,7 +4373,7 @@ internal-slot@^1.0.7:
     hasown "^2.0.0"
     side-channel "^1.0.4"
 
-invariant@^2.2.0, invariant@^2.2.4:
+invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
@@ -7065,13 +6767,6 @@ rimraf@~2.6.2:
   dependencies:
     glob "^7.1.3"
 
-rtl-css-js@^1.16.1:
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/rtl-css-js/-/rtl-css-js-1.16.1.tgz#4b48b4354b0ff917a30488d95100fbf7219a3e80"
-  integrity sha512-lRQgou1mu19e+Ya0LsTvKrVJ5TYUbqCVPAiImX3UfLTenarvPUl1QFdvu5Z3PYmHT9RCcwIfbjRQBntExyj3Zg==
-  dependencies:
-    "@babel/runtime" "^7.1.2"
-
 run-parallel@^1.1.9:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/run-parallel/-/run-parallel-1.2.0.tgz#66d1368da7bdf921eb9d95bd1a9229e7f21a43ee"
@@ -7518,11 +7213,6 @@ strnum@^1.0.5:
   resolved "https://registry.yarnpkg.com/strnum/-/strnum-1.0.5.tgz#5c4e829fe15ad4ff0d20c3db5ac97b73c9b072db"
   integrity sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==
 
-stylis@^4.2.0:
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/stylis/-/stylis-4.3.2.tgz#8f76b70777dd53eb669c6f58c997bf0a9972e444"
-  integrity sha512-bhtUjWd/z6ltJiQwg0dUfxEJ+W+jdqQd8TbWLWyeIJHlnsqmGLRFFd8e5mA0AZi/zx90smXRlN66YMTcaSFifg==
-
 sucrase@^3.32.0:
   version "3.35.0"
   resolved "https://registry.yarnpkg.com/sucrase/-/sucrase-3.35.0.tgz#57f17a3d7e19b36d8995f06679d121be914ae263"
@@ -7714,7 +7404,7 @@ tslib@^1.10.0, tslib@^1.8.1:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tslib@^2.0.1, tslib@^2.1.0, tslib@^2.3.1:
+tslib@^2.0.1:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.6.2.tgz#703ac29425e7b37cd6fd456e92404d46d1f3e4ae"
   integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==
