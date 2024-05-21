@@ -12,6 +12,7 @@ import SignupLoginOptionScreen from '../screens/SignupLoginOptionScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import ProfileUser from '../screens/ProfileUser';
 import BikeProfileScreen from '../screens/BikeProfileScreen';
+import AppearanceScreen from '../screens/AppearanceScreen';
 
 
 const AppNav = () => {
@@ -29,7 +30,8 @@ const AppNav = () => {
       {/* <ProfileUser /> */}
       {/* <BikeProfileScreen /> */}
       {/* <DeleteAccountScreen /> */}
-      <PrivateStack />
+      <AppearanceScreen />
+      {/* <PrivateStack /> */}
     </NavigationContainer>
   );
 };
