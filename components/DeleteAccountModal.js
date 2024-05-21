@@ -23,7 +23,7 @@ const DeleteAccountModal = ({ visible, navigation, toggleModalVisibility }) => {
         style={{
           backgroundColor: 'white',
           height: '35%', // Adjusted for assumed screen height of 667px
-          width: '92.8%',
+          width: '100%',
           shadowColor: '#000',
           shadowOffset: { width: 0, height: 10 },
           shadowOpacity: 0.8,

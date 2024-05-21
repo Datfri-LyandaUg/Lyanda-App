@@ -12,6 +12,9 @@ import SignupLoginOptionScreen from '../screens/SignupLoginOptionScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import ProfileUser from '../screens/ProfileUser';
 import BikeProfileScreen from '../screens/BikeProfileScreen';
+import AppearanceScreen from '../screens/AppearanceScreen';
+import NotificationSettingsScreen from '../screens/NotificationSettingsScreen';
+import LocationSettingsScreen from '../screens/LocationSettingsScreen';
 
 
 const AppNav = () => {
@@ -29,6 +32,9 @@ const AppNav = () => {
       {/* <ProfileUser /> */}
       {/* <BikeProfileScreen /> */}
       {/* <DeleteAccountScreen /> */}
+      {/* <AppearanceScreen /> */}
+      {/* <NotificationSettingsScreen /> */}
+      {/* <LocationSettingsScreen/> */}
       <PrivateStack />
     </NavigationContainer>
   );
