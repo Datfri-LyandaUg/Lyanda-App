@@ -31,7 +31,7 @@ const AppearanceScreen = ({ navigation }) => {
 
                 </View>
 
-                <View className="w-full flex flex-row space-x-4 mt-5">
+                <View className="w-full flex flex-row space-x-3 mt-5">
                     <View className="flex items-center">
                         <MaterialIcons name="info-outline" size={25} color='#808080' />
                     </View>

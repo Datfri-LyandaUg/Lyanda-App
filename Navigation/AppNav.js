@@ -13,6 +13,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import ProfileUser from '../screens/ProfileUser';
 import BikeProfileScreen from '../screens/BikeProfileScreen';
 import AppearanceScreen from '../screens/AppearanceScreen';
+import NotificationSettingsScreen from '../screens/NotificationSettingsScreen';
 
 
 const AppNav = () => {
@@ -30,7 +31,8 @@ const AppNav = () => {
       {/* <ProfileUser /> */}
       {/* <BikeProfileScreen /> */}
       {/* <DeleteAccountScreen /> */}
-      <AppearanceScreen />
+      {/* <AppearanceScreen /> */}
+      <NotificationSettingsScreen />
       {/* <PrivateStack /> */}
     </NavigationContainer>
   );
