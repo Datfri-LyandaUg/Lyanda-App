@@ -8,7 +8,7 @@ import React from 'react';
 import {
   ChevronLeftIcon,
 } from 'react-native-heroicons/solid';
-import MyCustomButton from '../components/MyCustomButton';
+import PrimaryButton from '../components/PrimaryButton';
 
 const TermsAndConditions = ({ navigation }) => {
   return (
@@ -48,7 +48,7 @@ const TermsAndConditions = ({ navigation }) => {
       </View>
 
       <View className="items-center  mb-8  px-4">
-        <MyCustomButton title='Continue' handleModel={() => navigation.navigate('NotificationScreen')} />
+        <PrimaryButton text='Continue' handlePress={() => navigation.navigate('NotificationScreen')} />
       </View>
     </SafeAreaView>
   );

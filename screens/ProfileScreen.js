@@ -29,19 +29,20 @@ const ProfileScreen = ({ navigation }) => {
           </View>
 
         </View>
-      
+
         <ChevronRightIcon size={15} color='black' />
       </Pressable>
 
       <View className='items-center mt-5 w-full px-3'>
         <View className='bg-[#FAFAFA] rounded-[12px] py-3 w-full'>
-          <CustomSettingButton title="Appearance" icon1={<ArrowUpOnSquareStackIcon size={30} color='#808080' />} icon2={<ChevronRightIcon size={18} color='#808080' />} />
+          <CustomSettingButton onPress={() => navigation.navigate('AppearanceScreen')} title="Appearance" icon1={<ArrowUpOnSquareStackIcon size={30} color='#808080' />} icon2={<ChevronRightIcon size={18} color='#808080' />} />
 
-          <CustomSettingButton title="Notifications" icon1={<BellIcon size={30} color='#808080' />} icon2={<ChevronRightIcon size={18} color='#808080' />} />
+          <CustomSettingButton onPress={() => navigation.navigate('NotificationSettingsScreen')} title="Notifications" icon1={<BellIcon size={30} color='#808080' />} icon2={<ChevronRightIcon size={18} color='#808080' />} />
 
-          <CustomSettingButton title="Location" icon1={<MapPinIcon size={30} color='#808080' />} icon2={<ChevronRightIcon size={18} color='#808080' />} />
+          <CustomSettingButton onPress={() => navigation.navigate('LocationSettingsScreen')} title="Location" icon1={<MapPinIcon size={30} color='#808080' />} icon2={<ChevronRightIcon size={18} color='#808080' />} />
 
           <CustomSettingButton title="Rate app on store" icon1={< StarIcon size={30} color='#808080' />} icon2={<ChevronRightIcon size={18} color='#808080' />} />
+
           <CustomSettingButton title="Share app" icon1={< ShareIcon size={30} color='#808080' />} icon2={<ChevronRightIcon size={18} color='#808080' />} />
         </View>
       </View>

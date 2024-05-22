@@ -13,8 +13,9 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useMutation } from 'react-query';
 import { ErrorMessage } from '../components/forms';
-import TertiaryButton from '../components/TertiaryButton';
 import { updateManufacturer } from '../services/userService';
+import PrimaryButton from '../components/PrimaryButton';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const validationSchema = Yup.object().shape({
     bikeCapacity: Yup.string().required('Enter the Capacity of your bike.').label('BikeCapacity'),
@@ -25,7 +26,7 @@ const BikeCapacityDetailsScreen = ({ navigation }) => {
     const [currentUser] = useState({});
 
     const updateBikeCapacityMutation = useMutation((updateParameters) =>
-        updateManufacturer(currentUser?._id , updateParameters)
+        updateManufacturer(currentUser?._id, updateParameters)
     );
 
     const handleBikeCapacityUpdate = async (values) => {
@@ -47,7 +48,7 @@ const BikeCapacityDetailsScreen = ({ navigation }) => {
     }, [updateBikeCapacityMutation.isSuccess]);
 
     return (
-        <SafeAreaView className=" bg-white h-full">
+        <SafeAreaView className="bg-white h-full">
 
             <View className="flex-row items-center mt-7 relative mb-2  justify-center">
                 <TouchableOpacity
@@ -73,30 +74,39 @@ const BikeCapacityDetailsScreen = ({ navigation }) => {
 
                         <View className="border-[#E0E0E0] border-[0.5px]"></View>
 
-                        <View className="items-center mt-7">
+                        <View className="items-center mt-7 mb-4">
                             <Text className="font-[400] text-[17px] text-[#242424] mb-7">
                                 What is the capacity of your bike?
                             </Text>
-                            <View className="w-[375] h-[48] px-4">
 
-                                <TextInput
-                                    placeholder="250Watt-hours"
-                                    onChangeText={handleChange('bikeCapacity')}
-                                    placeholderTextColor="#616161"
-                                    className="w-52"
-                                />
+                            <View className="flex flex-row space-x-2 w-full px-5">
+
+                                <View className="flex items-center justify-center">
+                                    <MaterialIcons name="battery-4-bar" size={30} color="#808080" />
+                                </View>
+
+                                <View className="h-[48] flex-1">
+                                    <TextInput
+                                        placeholder="250Watt-hours"
+                                        onChangeText={handleChange('bikeCapacity')}
+                                        placeholderTextColor="#616161"
+                                        className="w-52"
+                                    />
+
+                                    <View className="border-[#E0E0E0] border-[0.5px] mt-2 my-2" />
+
+                                </View>
 
                             </View>
+
                         </View>
 
                         <View className="pl-3">
-                            <View className="border-[#E0E0E0] border-[0.5px] px-3 w-80 mt-2 my-2" />
-
                             <ErrorMessage error={errors['bikeCapacity']} visible={touched['bikeCapacity']} />
                         </View>
-                        
+
                         <View className="items-center mb-72 px-4">
-                            <TertiaryButton handleModal={handleSubmit} isLoading={updateBikeCapacityMutation.isLoading} title='Save' loadingText='Saving...' />
+                            <PrimaryButton isDisabled={touched['bikeCapacity'] ? false : true } handlePress={handleSubmit} isLoading={updateBikeCapacityMutation.isLoading} text='Save' loadingText='Saving...' />
                         </View>
                     </>
                 )}

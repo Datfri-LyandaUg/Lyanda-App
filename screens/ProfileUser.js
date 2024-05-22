@@ -2,7 +2,7 @@ import { View, Text, SafeAreaView, Pressable } from 'react-native';
 import React, { useState } from 'react';
 import { ChevronRightIcon, UserCircleIcon } from 'react-native-heroicons/solid';
 import { ChevronLeftIcon } from 'react-native-heroicons/outline';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import DeleteAccountModal from '../components/DeleteAccountModal';
 
 const ProfileUser = ({ navigation }) => {
@@ -41,7 +41,7 @@ const ProfileUser = ({ navigation }) => {
               <Pressable onPress={() => navigation.navigate('BikeProfileScreen')}
                 className='flex-row justify-between mb-4 mt-6'>
                 <View className='flex-row space-x-3'>
-                  <Icon name="bicycle" size={30} color="#808080" />
+                  <MaterialIcons name="electric-bike" size={30} color="#808080" />
                   <Text className='text-[17px] font-[400] text-[#242424]'> Bike profile </Text>
                 </View>
                 <ChevronRightIcon size={15} color='#808080' />
