@@ -9,7 +9,6 @@ import {
 import {
   ChevronLeftIcon,
 } from 'react-native-heroicons/solid';
-import MyCustomButton from '../components/MyCustomButton';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { reSendOtp, verifyOtp } from '../services/userService';
@@ -20,6 +19,7 @@ import { useRoute } from '@react-navigation/native';
 import OtpNotificationModal from '../components/OtpNotificationModal';
 import ErrorNotificationModal from '../components/ErrorNotificationModal';
 import { ErrorMessage } from '../components/forms';
+import PrimaryButton from '../components/PrimaryButton';
 
 const validationSchema = Yup.object().shape({
   otp: Yup.string().min(6).max(6).required('Enter a valid OTP to continue.').label('Otp'),
@@ -29,7 +29,7 @@ const validationSchema = Yup.object().shape({
 const OtpScreen = ({ navigation }) => {
 
   const route = useRoute();
-  const userData = route.params;
+  // const userData = route.params;
   const [visible, setVisible] = useState(false);
   const [errorDetails, setErrorDetails] = useState("");
   const [showErrorNotification, setShowErrorNotification] = useState(false);
@@ -138,9 +138,9 @@ const OtpScreen = ({ navigation }) => {
 
             </View>
 
-            <View className="items-center">
+            <View className="items-center px-4">
 
-              <MyCustomButton handleModel={handleSubmit} isLoading={otpVerificationMutation.isLoading} title='Continue' loadingText='Verifying Otp...' />
+              <PrimaryButton handlePress={handleSubmit} isLoading={otpVerificationMutation.isLoading} text='Continue' loadingText='Verifying Otp...' />
 
             </View>
 

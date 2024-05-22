@@ -2,7 +2,7 @@ import { View, Text, Image } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal';
-import MyCustomButton from './MyCustomButton';
+import PrimaryButton from './PrimaryButton';
 
 const GetStartedModel = ({ visible }) => {
   const navigation = useNavigation();
@@ -73,7 +73,7 @@ const GetStartedModel = ({ visible }) => {
         </View>
 
         <View className="w-full items-center px-4">
-          <MyCustomButton handleModel={handleNextNavigation} title='Continue' />
+          <PrimaryButton handlePress={handleNextNavigation} text='Continue' />
         </View>
 
       </View>

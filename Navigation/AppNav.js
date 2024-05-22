@@ -15,6 +15,10 @@ import BikeProfileScreen from '../screens/BikeProfileScreen';
 import AppearanceScreen from '../screens/AppearanceScreen';
 import NotificationSettingsScreen from '../screens/NotificationSettingsScreen';
 import LocationSettingsScreen from '../screens/LocationSettingsScreen';
+import BikeCapacityDetailsScreen from '../screens/BikeCapacityDetailsScreen';
+import BikePlateDetailsScreen from '../screens/BikePlateDetailsScreen';
+import LocationScreen from '../screens/LocationScreen';
+import OtpScreen from '../screens/OtpScreen';
 
 
 const AppNav = () => {
@@ -27,11 +31,14 @@ const AppNav = () => {
       {/* <BikeManufactureDetailsScreen/> */}
       {/* <NotificationScreen/> */}
       {/* <TermsAndConditions/> */}
+       {/* <LocationScreen/> */}
+       {/* <OtpScreen/> */}
       {/* <SignupLoginOptionScreen/> */}
+      {/* <BikeCapacityDetailsScreen/> */}
+      {/* <BikePlateDetailsScreen/> */}
       {/* <ProfileScreen /> */}
       {/* <ProfileUser /> */}
       {/* <BikeProfileScreen /> */}
-      {/* <DeleteAccountScreen /> */}
       {/* <AppearanceScreen /> */}
       {/* <NotificationSettingsScreen /> */}
       {/* <LocationSettingsScreen/> */}

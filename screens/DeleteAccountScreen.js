@@ -6,7 +6,7 @@ import {
     SafeAreaView,
 } from 'react-native';
 import { InformationCircleIcon } from 'react-native-heroicons/solid';
-import MyCustomButton from '../components/MyCustomButton';
+import PrimaryButton from '../components/PrimaryButton';
 
 const DeleteAccountScreen = ({ navigation }) => {
 
@@ -48,7 +48,7 @@ const DeleteAccountScreen = ({ navigation }) => {
                         </View>
 
                         <View className=''>
-                            <MyCustomButton handleModel={() => {}} title={"Create Account"} />
+                            <PrimaryButton handlePress={() => {}} text={"Create Account"} />
                         </View>
                     </View>
 

@@ -13,8 +13,8 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useMutation } from 'react-query';
 import { ErrorMessage } from '../components/forms';
-import TertiaryButton from '../components/TertiaryButton';
 import { updateManufacturer } from '../services/userService';
+import PrimaryButton from '../components/PrimaryButton';
 
 const validationSchema = Yup.object().shape({
     bikeManufacturer: Yup.string().required('Enter the Manufacturer of your bike.').label('bikeManufacturer'),
@@ -25,7 +25,7 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
     const [currentUser] = useState({});
 
     const updateBikeManufactureMutation = useMutation((updateParameters) =>
-        updateManufacturer(currentUser?._id , updateParameters)
+        updateManufacturer(currentUser?._id, updateParameters)
     );
 
     const handleManufacturesUpdate = async (values) => {
@@ -96,7 +96,7 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
 
                         </View>
                         <View className="items-center mb-72 px-4">
-                            <TertiaryButton handleModal={handleSubmit} isLoading={updateBikeManufactureMutation.isLoading} title='Save' loadingText='Saving...' />
+                            <PrimaryButton handlePress={handleSubmit} isDisabled={touched['bikeManufacturer'] ? false : true} isLoading={updateBikeManufactureMutation.isLoading} text='Save' loadingText='Saving...' />
                         </View>
                     </>
                 )}
