@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, Text, View, TouchableOpacity } from 'react-native'
 import { ChevronLeftIcon } from 'react-native-heroicons/solid'
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { Sun, Moon , Cog, Info } from 'lucide-react-native';
 import CustomAppearanceButton from '../components/CustomAppearanceButton';
 
 
@@ -23,17 +23,17 @@ const AppearanceScreen = ({ navigation }) => {
             <View className="flex items-center justify-center px-4">
                 <View className='bg-[#FAFAFA] rounded-[12px] mt-5 py-3 w-full'>
 
-                    <CustomAppearanceButton active={true} title="Light mode" Icon1={<MaterialIcons name="check" size={18} color='#2C7721' />} Icon2={<MaterialIcons name="light-mode" size={25} color='#808080' />} />
+                    <CustomAppearanceButton active={true} title="Light mode"  Icon={<Sun  size={25} color='#808080' />} />
 
-                    <CustomAppearanceButton active={false} title="Dark mode" Icon1={<MaterialIcons name="check" size={18} color='#2C7721' />} Icon2={<MaterialIcons name="dark-mode" size={25} color='#808080' />} />
+                    <CustomAppearanceButton active={false} title="Dark mode" Icon={<Moon size={25} color='#808080' />} />
 
-                    <CustomAppearanceButton active={false} title="System settings" Icon1={<MaterialIcons name="check" size={18} color='#2C7721' />} Icon2={<MaterialIcons name="settings" size={25} color='#808080' />} />
+                    <CustomAppearanceButton active={false} title="System settings" Icon={<Cog size={25} color='#808080' />} />
 
                 </View>
 
                 <View className="w-full flex flex-row space-x-3 mt-5">
                     <View className="flex items-center">
-                        <MaterialIcons name="info-outline" size={25} color='#808080' />
+                        <Info size={18} color='#808080' />
                     </View>
 
                     <View className="flex items-center justify-center">

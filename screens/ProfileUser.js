@@ -1,8 +1,8 @@
 import { View, Text, SafeAreaView, Pressable } from 'react-native';
 import React, { useState } from 'react';
-import { ChevronRightIcon, UserCircleIcon } from 'react-native-heroicons/solid';
+import { ChevronRightIcon } from 'react-native-heroicons/solid';
 import { ChevronLeftIcon } from 'react-native-heroicons/outline';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { Bike, UserRound } from 'lucide-react-native';
 import DeleteAccountModal from '../components/DeleteAccountModal';
 
 const ProfileUser = ({ navigation }) => {
@@ -28,7 +28,11 @@ const ProfileUser = ({ navigation }) => {
         <View className="border-[#E0E0E0] border-[0.5px] mt-2"></View>
 
         <View className='m-5'>
-          <UserCircleIcon size={55} color='#2C7721' />
+          <View className="">
+            <View className="flex items-center justify-center w-16 h-16 rounded-full bg-[#2C7721]">
+              < UserRound size={45} color='white' />
+            </View>
+          </View>
           <View className=' bg-[#FAFAFA] rounded-[12px] mt-5 pb-5'>
             <View className='m-5'>
               <Text className='text-[17px] font-[400]  text-[#242424]'>
@@ -41,7 +45,7 @@ const ProfileUser = ({ navigation }) => {
               <Pressable onPress={() => navigation.navigate('BikeProfileScreen')}
                 className='flex-row justify-between mb-4 mt-6'>
                 <View className='flex-row space-x-3'>
-                  <MaterialIcons name="electric-bike" size={30} color="#808080" />
+                  <Bike size={30} color="#808080" />
                   <Text className='text-[17px] font-[400] text-[#242424]'> Bike profile </Text>
                 </View>
                 <ChevronRightIcon size={15} color='#808080' />
@@ -61,6 +65,7 @@ const ProfileUser = ({ navigation }) => {
       </View>
 
       <DeleteAccountModal navigation={navigation} visible={visible} toggleModalVisibility={toggleModalVisibility} />
+
     </SafeAreaView>
 
   )
