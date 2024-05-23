@@ -15,7 +15,8 @@ import { useMutation } from 'react-query';
 import { ErrorMessage } from '../components/forms';
 import { updateManufacturer } from '../services/userService';
 import PrimaryButton from '../components/PrimaryButton';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { BatteryFull } from 'lucide-react-native';
+
 
 const validationSchema = Yup.object().shape({
     bikeCapacity: Yup.string().required('Enter the Capacity of your bike.').label('BikeCapacity'),
@@ -82,7 +83,7 @@ const BikeCapacityDetailsScreen = ({ navigation }) => {
                             <View className="flex flex-row space-x-2 w-full px-5">
 
                                 <View className="flex items-center justify-center">
-                                    <MaterialIcons name="battery-4-bar" size={30} color="#808080" />
+                                    <BatteryFull size={30} color="#808080" />
                                 </View>
 
                                 <View className="h-[48] flex-1">

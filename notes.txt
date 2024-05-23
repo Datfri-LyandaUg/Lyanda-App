@@ -1,1 +1,2 @@
-https://fluenticons.co/?ref=microns.io
+https://lucide.dev/icons
+https://www.npmjs.com/package/lucide-react-native

@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, SafeAreaView, Pressable } from 'react-native';
-import { ChevronLeftIcon, PencilIcon } from 'react-native-heroicons/outline'
+import { ChevronLeftIcon } from 'react-native-heroicons/outline'
+import { Pen } from 'lucide-react-native';
 
 
 
@@ -15,7 +16,7 @@ const BikeProfileScreen = ({ navigation }) => {
             <ChevronLeftIcon size={20} color='#242424' />
           </Pressable>
           <Text className='text-[17px] font-[600] text-[#242424]'>
-            Notifications
+             Bike profile
           </Text>
         </View>
 
@@ -38,7 +39,7 @@ const BikeProfileScreen = ({ navigation }) => {
                 </Text>
               </View>
               <Pressable>
-                <PencilIcon size={18} color='#808080' />
+                <Pen size={18} color='#808080' />
               </Pressable>
             </Pressable>
 
@@ -55,7 +56,7 @@ const BikeProfileScreen = ({ navigation }) => {
                 </Text>
               </View>
               <Pressable>
-                <PencilIcon size={18} color='#808080' />
+                <Pen size={18} color='#808080' />
               </Pressable>
 
             </Pressable>
@@ -72,7 +73,7 @@ const BikeProfileScreen = ({ navigation }) => {
                 </Text>
               </View>
               <Pressable>
-                <PencilIcon size={18} color='#808080' />
+                <Pen size={18} color='#808080' />
               </Pressable>
             </Pressable>
           </View>

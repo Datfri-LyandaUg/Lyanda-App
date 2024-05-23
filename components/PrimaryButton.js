@@ -1,8 +1,7 @@
 import React from 'react';
 import { Pressable, View, Text, StyleSheet, ActivityIndicator } from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const PrimaryButton = ({ isLoading, handlePress, text, loadingText, Icon, IconName, isDisabled }) => {
+const PrimaryButton = ({ isLoading, handlePress, text, loadingText, Icon , isDisabled }) => {
     return (
 
         <Pressable
@@ -28,7 +27,7 @@ const PrimaryButton = ({ isLoading, handlePress, text, loadingText, Icon, IconNa
                 <View className="flex flex-row items-center space-x-1 justify-center">
                     {
                         Icon && (<View className="flex items-center justify-center">
-                            <Text className="mr-2"><MaterialIcons name={IconName} size={30} color={`${isDisabled ? "#BDBDBD" : "white"}`} /></Text>
+                            <Text className="mr-2"><Icon size={30} color={`${isDisabled ? "#BDBDBD" : "white"}`} /></Text>
                         </View>)
                     }
 
