@@ -15,6 +15,7 @@ import BikeProfileScreen from '../screens/BikeProfileScreen';
 import HelpScreen from '../screens/HelpScreen';
 import AboutScreen from '../screens/AboutScreen';
 import PolicyScreen from '../screens/PolicyScreen';
+import FaqScreen from '../screens/FaqScreen';
 
 
 const AppNav = () => {
@@ -34,7 +35,9 @@ const AppNav = () => {
       {/* <DeleteAccountScreen /> */}
         {/* <HelpScreen /> */}
         {/* <AboutScreen /> */}
-        <PolicyScreen />
+        {/* <PolicyScreen /> */}
+
+        <FaqScreen />
 
       {/* <PrivateStack /> */}
     </NavigationContainer>
