@@ -14,6 +14,7 @@ import ProfileUser from '../screens/ProfileUser';
 import BikeProfileScreen from '../screens/BikeProfileScreen';
 import HelpScreen from '../screens/HelpScreen';
 import AboutScreen from '../screens/AboutScreen';
+import PolicyScreen from '../screens/PolicyScreen';
 
 
 const AppNav = () => {
@@ -32,7 +33,8 @@ const AppNav = () => {
       {/* <BikeProfileScreen /> */}
       {/* <DeleteAccountScreen /> */}
         {/* <HelpScreen /> */}
-        <AboutScreen />
+        {/* <AboutScreen /> */}
+        <PolicyScreen />
 
       {/* <PrivateStack /> */}
     </NavigationContainer>
