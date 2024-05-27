@@ -2046,25 +2046,6 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
-"@svgr-iconkit/common-utils@^0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@svgr-iconkit/common-utils/-/common-utils-0.4.1.tgz#6407abed14dec85bd10fdf8d73abbf415dc99cac"
-  integrity sha512-frBPXYJVQM/IcDiupH7lShdGZZaiPz2IPuScs7KDgekotSIKcFj3dz8ntmuiBwKEj5GurmZLOXGSkhskcRtuFg==
-
-"@svgr-iconkit/core@^0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@svgr-iconkit/core/-/core-0.4.1.tgz#e6051c1d440e8dc009f7f7ad640e0d987c179768"
-  integrity sha512-1p+5g8eS/sRrdzHvQnBWjjJWR4MtOae5ezyVxlRzHu9uPwWmc9n2wmHYq3GpcK6c7bMs9i50aJ4Xr6if2FIc2g==
-  dependencies:
-    "@svgr-iconkit/common-utils" "^0.4.1"
-
-"@svgr-iconkit/fluentui-system@^0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@svgr-iconkit/fluentui-system/-/fluentui-system-0.4.1.tgz#efdef747f6de58540344c49203783564d419ed11"
-  integrity sha512-DFl78UwL+sKZ6C9S0pg7f/mgfj8++BDEp0zMRaOLo0GnRWTdVMAmaad4v/oQxrtejK3G5ZIynIUcxD//f97cWw==
-  dependencies:
-    "@svgr-iconkit/core" "^0.4.1"
-
 "@types/babel__core@^7.1.14":
   version "7.20.5"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.20.5.tgz#3df15f27ba85319caa07ba08d0721889bb39c017"

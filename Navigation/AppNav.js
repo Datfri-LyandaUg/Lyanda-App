@@ -35,9 +35,9 @@ const AppNav = () => {
       {/* <DeleteAccountScreen /> */}
         {/* <HelpScreen /> */}
         {/* <AboutScreen /> */}
-        {/* <PolicyScreen /> */}
+        <PolicyScreen />
 
-        <FaqScreen />
+        {/* <FaqScreen /> */}
 
       {/* <PrivateStack /> */}
     </NavigationContainer>
