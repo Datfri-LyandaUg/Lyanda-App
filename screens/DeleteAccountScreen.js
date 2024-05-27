@@ -5,8 +5,9 @@ import {
     StyleSheet,
     SafeAreaView,
 } from 'react-native';
-import { InformationCircleIcon } from 'react-native-heroicons/solid';
-import MyCustomButton from '../components/MyCustomButton';
+import PrimaryButton from '../components/PrimaryButton';
+import { BadgeInfo } from 'lucide-react-native';
+
 
 const DeleteAccountScreen = ({ navigation }) => {
 
@@ -28,7 +29,7 @@ const DeleteAccountScreen = ({ navigation }) => {
                         <View className="">
                             <View className="flex items-center justify-center my-6">
                                 <View className="flex items-center justify-center w-9 h-9 rounded-full">
-                                    <InformationCircleIcon color="#C50F1F" size={40} />
+                                    <BadgeInfo color="#C50F1F" size={40} />
                                 </View>
                             </View>
 
@@ -48,7 +49,7 @@ const DeleteAccountScreen = ({ navigation }) => {
                         </View>
 
                         <View className=''>
-                            <MyCustomButton handleModel={() => {}} title={"Create Account"} />
+                            <PrimaryButton handlePress={() => {}} text={"Create Account"} />
                         </View>
                     </View>
 

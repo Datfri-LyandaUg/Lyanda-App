@@ -7,9 +7,8 @@ import {
   ChevronLeftIcon,
   SpeakerWaveIcon,
 } from 'react-native-heroicons/solid';
-// import Icon from 'react-native-vector-icons/MaterialIcons';
-import MyCustomButton from '../components/MyCustomButton';
 import SecondaryButton from '../components/SecondaryButton';
+import PrimaryButton from '../components/PrimaryButton';
 
 const NotificationScreen = ({ navigation }) => {
   async function enableNotificationAccess() {
@@ -129,9 +128,9 @@ const NotificationScreen = ({ navigation }) => {
         </View>
       </View>
 
-      <View className="items-center  mb-8 px-7">
+      <View className="items-center mb-8 px-7">
 
-        <MyCustomButton handleModel={enableNotificationAccess} title='Turn on notifications' />
+        <PrimaryButton handlePress={enableNotificationAccess} text='Turn on notifications' />
 
 
         <SecondaryButton title='Not Now' handleOnPress={() => navigation.navigate('LocationScreen')} />

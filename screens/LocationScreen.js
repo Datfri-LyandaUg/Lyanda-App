@@ -3,8 +3,8 @@ import { View, Text, SafeAreaView, TouchableOpacity, Alert } from 'react-native'
 import { ChevronLeftIcon } from 'react-native-heroicons/solid';
 import Geolocation from 'react-native-geolocation-service';
 import { request, PERMISSIONS, RESULTS } from 'react-native-permissions';
-import MyCustomButton from '../components/MyCustomButton';
 import SecondaryButton from '../components/SecondaryButton';
+import PrimaryButton from '../components/PrimaryButton';
 
 const LocationScreen = ({ navigation }) => {
   const requestLocationPermission = async () => {
@@ -64,10 +64,10 @@ const LocationScreen = ({ navigation }) => {
         </Text>
       </View>
 
-      <View className="items-center  mb-8  ">
-        <MyCustomButton handleModel={requestLocationPermission} title='Allow location access' />
-    
-        <SecondaryButton title='Not Now' handleOnPress={()=>navigation.navigate('NotificationScreen')}/>
+      <View className="items-center  mb-8  px-4">
+        <PrimaryButton handlePress={requestLocationPermission} text='Allow location access' />
+
+        <SecondaryButton title='Not Now' handleOnPress={() => navigation.navigate('NotificationScreen')} />
       </View>
     </SafeAreaView>
   );

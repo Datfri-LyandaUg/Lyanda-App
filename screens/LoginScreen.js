@@ -9,12 +9,12 @@ import React, { useEffect, useState } from 'react';
 import {
   ChevronLeftIcon,
 } from 'react-native-heroicons/solid';
-import MyCustomButton from '../components/MyCustomButton';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useMutation } from 'react-query';
 import { registerUser } from '../services/userService';
 import { ErrorMessage } from '../components/forms';
+import PrimaryButton from '../components/PrimaryButton';
 
 const validationSchema = Yup.object().shape({
   phoneNumber: Yup.string().required('Enter a valid phone number to continue.').label('PhoneNumber'),
@@ -101,19 +101,17 @@ const LoginScreen = ({ navigation }) => {
             <View className="pl-3">
 
               <View className="border-[#E0E0E0] border-[0.5px] px-3 w-80 mt-2 my-2" />
-      
+
               <ErrorMessage error={errors['phoneNumber']} visible={touched['phoneNumber']} />
 
             </View>
 
             <View className="items-center mb-72 px-4">
-              <MyCustomButton handleModel={handleSubmit} isLoading={signUpMutation.isLoading} title='Continue' loadingText='Continuing...' />
+              <PrimaryButton handlePress={handleSubmit} isLoading={signUpMutation.isLoading} text='Continue' loadingText='Continuing...' />
             </View>
           </>
         )}
       </Formik>
-
-
 
     </SafeAreaView>
   );

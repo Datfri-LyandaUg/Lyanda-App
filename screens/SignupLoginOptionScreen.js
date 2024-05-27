@@ -7,7 +7,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import GetStartedModel from '../components/GetStartedModel';
-import MyCustomButton from '../components/MyCustomButton';
+import PrimaryButton from '../components/PrimaryButton';
 
 const SignupLoginOptionScreen = () => {
 
@@ -51,7 +51,7 @@ const SignupLoginOptionScreen = () => {
       </View>
 
       <View className='items-center px-4 mb-7'>
-        <MyCustomButton handleModel={toggleModalVisibility} title={title} />
+        <PrimaryButton handlePress={toggleModalVisibility} text={title} />
       </View>
 
       <GetStartedModel visible={visible} />

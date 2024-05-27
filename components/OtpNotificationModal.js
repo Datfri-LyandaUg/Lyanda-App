@@ -53,7 +53,7 @@ const OtpNotificationModal = ({ visible, handleClose }) => {
             <Text className="text-[#242424] text-[15px] font-[400]">
               A new OTP code has been sent to
             </Text>
-            <Text className="text-[#242424] text-[15px] font-[400]]">
+            <Text className="text-[#242424] text-[15px] font-[400]">
               your number
             </Text>
           </View>
