@@ -1,13 +1,13 @@
 import { View, Text, Pressable, SafeAreaView, TouchableOpacity } from 'react-native'
 import React from 'react'
-import {  ChevronLeftIcon, ChevronRightIcon} from 'react-native-heroicons/outline'
+import { ChevronLeftIcon, ChevronRightIcon } from 'react-native-heroicons/outline'
 
-const AboutScreen = () => {
+const AboutScreen = ({ navigation }) => {
   return (
     <SafeAreaView className=" bg-white h-full">
       <View className="flex-row items-center mt-7 relative mb-2  justify-center">
         <TouchableOpacity
-          className="absolute  left-2.5"
+          className="absolute  left-2.5 w-10"
           onPress={() => navigation.goBack()}>
           <ChevronLeftIcon color="#616161" size={20} />
         </TouchableOpacity>
@@ -18,7 +18,6 @@ const AboutScreen = () => {
       </View>
 
       <View className="border-[#E0E0E0] border-[0.5px]"></View>
-
 
       <View className='items-center py-4 px-2'>
 
@@ -82,8 +81,6 @@ const AboutScreen = () => {
                 <Text className='text-[17px] font-[400]  text-[#242424]'>
                   Instagram
                 </Text>
-
-
 
               </View>
             </View>

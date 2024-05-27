@@ -13,6 +13,10 @@ import BikePlateDetailsScreen from '../screens/BikePlateDetailsScreen';
 import AppearanceScreen from '../screens/AppearanceScreen';
 import NotificationSettingsScreen from '../screens/NotificationSettingsScreen';
 import LocationSettingsScreen from '../screens/LocationSettingsScreen';
+import PolicyScreen from '../screens/PolicyScreen';
+import HelpScreen from '../screens/HelpScreen';
+import AboutScreen from '../screens/AboutScreen';
+import FaqScreen from '../screens/FaqScreen';
 
 const PrivateStack = () => {
   const Stack = createNativeStackNavigator();
@@ -99,6 +103,33 @@ const PrivateStack = () => {
         name="LocationSettingsScreen"
         component={LocationSettingsScreen}
 
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="PolicyScreen"
+        component={PolicyScreen}
+
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="HelpScreen"
+        component={HelpScreen}
+
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="AboutScreen"
+        component={AboutScreen}
+
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="FaqScreen"
+        component={FaqScreen}
         options={{ headerShown: false }}
       />
 

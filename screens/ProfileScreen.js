@@ -53,13 +53,13 @@ const ProfileScreen = ({ navigation }) => {
       <View className='items-center mt-3 w-full px-3'>
         <View className='bg-[#FAFAFA] rounded-[12px] py-3 w-full'>
 
+          <CustomSettingButton onPress={() => navigation.navigate('PolicyScreen')} title="Terms of service" icon1={<FileText size={25} color='#808080' />} icon2={<ChevronRightIcon size={18} color='#808080' />} />
 
-          <CustomSettingButton title="Terms of service" icon1={<FileText size={25} color='#808080' />} icon2={<ChevronRightIcon size={18} color='#808080' />} />
-
-          <CustomSettingButton title="Help" icon1={<BadgeHelp size={25} color='#808080' />} icon2={<ChevronRightIcon size={18} color='#808080' />} />
+          <CustomSettingButton onPress={() => navigation.navigate('HelpScreen')} title="Help" icon1={<BadgeHelp size={25} color='#808080' />} icon2={<ChevronRightIcon size={18} color='#808080' />} />
 
           <CustomSettingButton title="Feedback" icon1={<MessagesSquare size={25} color='#808080' />} icon2={<ChevronRightIcon size={18} color='#808080' />} />
-          <CustomSettingButton title="About" icon1={<Info size={25} color='#808080' />} icon2={<ChevronRightIcon size={18} color='#808080' />} />
+
+          <CustomSettingButton onPress={() => navigation.navigate('AboutScreen')} title="About" icon1={<Info size={25} color='#808080' />} icon2={<ChevronRightIcon size={18} color='#808080' />} />
         </View>
       </View>
     </SafeAreaView>
