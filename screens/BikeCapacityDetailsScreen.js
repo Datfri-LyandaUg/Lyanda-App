@@ -63,13 +63,12 @@ const BikeCapacityDetailsScreen = ({ navigation }) => {
                 </Text>
             </View>
 
-
             <Formik
                 initialValues={{ bikeCapacity: '' }}
                 onSubmit={values => handleBikeCapacityUpdate(values)}
                 validationSchema={validationSchema}
             >
-                {({ handleChange, handleSubmit, errors, touched }) => (
+                {({ handleChange, handleSubmit, errors, touched, values }) => (
 
                     <>
 
@@ -107,7 +106,7 @@ const BikeCapacityDetailsScreen = ({ navigation }) => {
                         </View>
 
                         <View className="items-center mb-72 px-4">
-                            <PrimaryButton isDisabled={touched['bikeCapacity'] ? false : true } handlePress={handleSubmit} isLoading={updateBikeCapacityMutation.isLoading} text='Save' loadingText='Saving...' />
+                            <PrimaryButton isDisabled={values.bikeCapacity === "" ? true : false} handlePress={handleSubmit} isLoading={updateBikeCapacityMutation.isLoading} text='Save' loadingText='Saving...' />
                         </View>
                     </>
                 )}

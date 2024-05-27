@@ -67,7 +67,7 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
                 onSubmit={values => handleManufacturesUpdate(values)}
                 validationSchema={validationSchema}
             >
-                {({ handleChange, handleSubmit, errors, touched }) => (
+                {({ handleChange, handleSubmit, errors, touched, values }) => (
 
                     <>
 
@@ -96,7 +96,7 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
 
                         </View>
                         <View className="items-center mb-72 px-4">
-                            <PrimaryButton handlePress={handleSubmit} isDisabled={touched['bikeManufacturer'] ? false : true} isLoading={updateBikeManufactureMutation.isLoading} text='Save' loadingText='Saving...' />
+                            <PrimaryButton handlePress={handleSubmit} isDisabled={ values.bikeManufacturer === '' ? true : false } isLoading={updateBikeManufactureMutation.isLoading} text='Save' loadingText='Saving...' />
                         </View>
                     </>
                 )}

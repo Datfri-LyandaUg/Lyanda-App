@@ -16,7 +16,7 @@ const BikeProfileScreen = ({ navigation }) => {
             <ChevronLeftIcon size={20} color='#242424' />
           </Pressable>
           <Text className='text-[17px] font-[600] text-[#242424]'>
-             Bike profile
+            Bike profile
           </Text>
         </View>
 
@@ -38,7 +38,7 @@ const BikeProfileScreen = ({ navigation }) => {
                   Value
                 </Text>
               </View>
-              <Pressable>
+              <Pressable onPress={() => navigation.navigate('BikeManufactureDetailsScreen')}>
                 <Pen size={18} color='#808080' />
               </Pressable>
             </Pressable>
@@ -55,7 +55,7 @@ const BikeProfileScreen = ({ navigation }) => {
                   Value
                 </Text>
               </View>
-              <Pressable>
+              <Pressable onPress={() => navigation.navigate('BikeCapacityDetailsScreen')}>
                 <Pen size={18} color='#808080' />
               </Pressable>
 
@@ -72,7 +72,7 @@ const BikeProfileScreen = ({ navigation }) => {
                   Value
                 </Text>
               </View>
-              <Pressable>
+              <Pressable onPress={() => navigation.navigate('BikePlateDetailsScreen')}>
                 <Pen size={18} color='#808080' />
               </Pressable>
             </Pressable>

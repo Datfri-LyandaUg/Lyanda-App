@@ -44,21 +44,15 @@ const AppNav = () => {
       {/* <ProfileScreen /> */}
       {/* <ProfileUser /> */}
       {/* <BikeProfileScreen /> */}
-
       {/* <DeleteAccountScreen /> */}
       {/* <HelpScreen /> */}
       {/* <AboutScreen /> */}
       {/* <PolicyScreen /> */}
-
       {/* <FaqScreen /> */}
-
-      {/* <PrivateStack /> */}
-
       {/* <AppearanceScreen /> */}
       {/* <NotificationSettingsScreen /> */}
       {/* <LocationSettingsScreen/> */}
-      <PrivateStack />
-
+      {/* <PrivateStack /> */}
     </NavigationContainer>
   );
 };
