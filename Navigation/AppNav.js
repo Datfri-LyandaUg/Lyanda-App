@@ -52,7 +52,7 @@ const AppNav = () => {
       {/* <AppearanceScreen /> */}
       {/* <NotificationSettingsScreen /> */}
       {/* <LocationSettingsScreen/> */}
-      {/* <PrivateStack /> */}
+      <PrivateStack />
     </NavigationContainer>
   );
 };
