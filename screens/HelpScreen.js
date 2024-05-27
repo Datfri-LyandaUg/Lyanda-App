@@ -1,11 +1,10 @@
-import { View, Text, SafeAreaView, TouchableOpacity, Pressable } from 'react-native'
 import React from 'react'
-import {
-  ChevronLeftIcon,
-  PhoneArrowUpRightIcon,
-} from 'react-native-heroicons/solid';
-import { ChevronRightIcon, FlagIcon, QuestionMarkCircleIcon } from 'react-native-heroicons/outline';
-const HelpScreen = () => {
+import { View, Text, SafeAreaView, TouchableOpacity, Pressable } from 'react-native'
+import { ChevronLeftIcon } from 'react-native-heroicons/solid';
+import { ChevronRightIcon } from 'react-native-heroicons/outline';
+import { Phone, MessageCircleQuestion, Bug } from 'lucide-react-native';
+
+const HelpScreen = ({ navigation }) => {
   return (
     <SafeAreaView className=" bg-white h-full">
       <View className="flex-row items-center mt-7 relative mb-2  justify-center">
@@ -22,19 +21,18 @@ const HelpScreen = () => {
 
       <View className="border-[#E0E0E0] border-[0.5px]"></View>
 
-
       <View className='items-center py-4 px-2'>
 
-        <View className='w-full bg-[#FAFAFA] py-2 rounded-[12px]'>
+        <View className='w-full bg-[#FAFAFA] py-3 px-4 rounded-[12px]'>
 
           <Pressable
-            onPress={() => navigation.navigate('')}
+            onPress={() => { }}
 
-            className='m-5 flex-row justify-between items-center'>
+            className='flex-row justify-between items-center'>
 
-            <View className='flex-row space-x-2 items-center'>
+            <View className='my-2 flex-row space-x-3 flex-1 items-center'>
               <Pressable>
-                <PhoneArrowUpRightIcon size={20} color='#808080' />
+                <Phone size={25} color='#808080' />
               </Pressable>
               <View>
                 <Text className='text-[17px] font-[400]  text-[#242424]'>
@@ -45,18 +43,18 @@ const HelpScreen = () => {
                 </Text>
               </View>
             </View>
-            <Pressable>
+            <Pressable className="w-9 flex items-end justify-end">
               <ChevronRightIcon size={15} color='#808080' />
             </Pressable>
           </Pressable>
 
 
           <Pressable
-            onPress={() => navigation.navigate('')}
-            className='m-5 flex-row justify-between items-center'>
-            <View className='flex-row space-x-2 items-center'>
+            onPress={() => navigation.navigate('FaqScreen')}
+            className='my-2 flex-row justify-between items-center'>
+            <View className='flex-row space-x-3  items-center flex-1'>
               <Pressable>
-                <QuestionMarkCircleIcon size={20} color='#808080' />
+                <MessageCircleQuestion size={25} color='#808080' />
               </Pressable>
               <View>
                 <Text className='text-[17px] font-[400]  text-[#242424]'>
@@ -64,35 +62,34 @@ const HelpScreen = () => {
                 </Text>
                 <Text className='text-[#616161] text-[13px] font-[400]'>
                   Find answers to frequently asked questions
-
                 </Text>
-                <Text className='text-[#616161] text-[13px] font-[400]'>
 
+                <Text className='text-[#616161] text-[13px] font-[400]'>
                   here.
                 </Text>
 
               </View>
             </View>
-            <Pressable>
+            <Pressable className="w-9 flex items-end justify-end">
               <ChevronRightIcon size={15} color='#808080' />
             </Pressable>
-
           </Pressable>
 
           <Pressable
-            onPress={() => navigation.navigate('')}
-            className='m-5 flex-row justify-between items-center'>
-            <View className='flex-row space-x-2 items-center'>
+            onPress={() => { }}
+            className='my-2 flex-row justify-between items-center'>
+
+            <View className='flex-row space-x-3 items-center flex-1'>
               <Pressable>
-                <FlagIcon size={20} color='#808080' />
+                <Bug size={25} color='#808080' />
               </Pressable>
-              <View>
+
+              <View className="w-60">
                 <Text className='text-[17px] font-[400]  text-[#242424]'>
                   Report a problem
                 </Text>
                 <Text className='text-[#616161] text-[13px] font-[400]'>
                   If a feature or product is not working correctly
-
                   app better.
                 </Text>
                 <Text className='text-[#616161] text-[13px] font-[400]'>
@@ -105,7 +102,8 @@ const HelpScreen = () => {
                 </Text>
               </View>
             </View>
-            <Pressable>
+
+            <Pressable className="w-9 flex items-end justify-end">
               <ChevronRightIcon size={15} color='#808080' />
             </Pressable>
           </Pressable>
@@ -115,4 +113,4 @@ const HelpScreen = () => {
   )
 }
 
-export default HelpScreen
+export default HelpScreen;

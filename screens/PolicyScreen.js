@@ -3,7 +3,7 @@ import { View, Text, SafeAreaView, TouchableOpacity, Pressable, ScrollView } fro
 import { ChevronLeftIcon } from 'react-native-heroicons/solid'
 
 
-const PolicyScreen = () => {
+const PolicyScreen = ({ navigation }) => {
   return (
     <SafeAreaView className=" bg-white h-full">
       <View className="flex-row items-center mt-7 relative mb-2  justify-center">
@@ -19,9 +19,6 @@ const PolicyScreen = () => {
       </View>
 
       <View className="border-[#E0E0E0] border-[0.5px]"></View>
-
-
-
 
       <ScrollView>
 
@@ -73,7 +70,6 @@ const PolicyScreen = () => {
               <View className='space-y-8 py-4 px-5'>
                 <Text className='text-[17px] font-[600]    text-[#242424]'>Account Creation and Usage</Text>
 
-
                 <View>
 
                   <Text className='text-[17px] font-[400]  text-[#242424]'>
@@ -81,10 +77,7 @@ const PolicyScreen = () => {
                   </Text>
                   <Text className='text-[17px] font-[400]  text-[#242424]'>
                     To use our Services, you are required to have an account. You agree to provide accurate, current, and complete information during the account creation process.
-
-
                   </Text>
-
 
                 </View>
                 <View>
