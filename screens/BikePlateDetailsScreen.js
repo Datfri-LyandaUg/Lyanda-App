@@ -17,7 +17,7 @@ import { updateManufacturer } from '../services/userService';
 import PrimaryButton from '../components/PrimaryButton';
 
 const validationSchema = Yup.object().shape({
-    numberPlateValue: Yup.string().required('Enter the Plate Number of your bike.').label('numberPlateValue'),
+    numberPlateValue: Yup.number().required('Enter the Plate Number of your bike.').label('numberPlateValue'),
 });
 
 const BikePlateDetailsScreen = ({ navigation }) => {
@@ -51,7 +51,7 @@ const BikePlateDetailsScreen = ({ navigation }) => {
 
             <View className="flex-row items-center mt-7 relative mb-2  justify-center">
                 <TouchableOpacity
-                    className="absolute  left-2.5"
+                    className="absolute  left-2.5 w-10"
                     onPress={() => navigation.goBack()}>
                     <ChevronLeftIcon color="#616161" size={20} />
                 </TouchableOpacity>
@@ -66,7 +66,7 @@ const BikePlateDetailsScreen = ({ navigation }) => {
                 onSubmit={values => handleBikeCapacityUpdate(values)}
                 validationSchema={validationSchema}
             >
-                {({ handleChange, handleSubmit, errors, touched }) => (
+                {({ handleChange, handleSubmit, errors, touched, values }) => (
 
                     <>
                         <View className="border-[#E0E0E0] border-[0.5px]"></View>
@@ -81,6 +81,7 @@ const BikePlateDetailsScreen = ({ navigation }) => {
                                     placeholder="value"
                                     onChangeText={handleChange('numberPlateValue')}
                                     placeholderTextColor="#616161"
+                                    keyboardType="numeric"
                                     className="w-52"
                                 />
 
@@ -94,7 +95,7 @@ const BikePlateDetailsScreen = ({ navigation }) => {
                         </View>
 
                         <View className="items-center mb-72 px-4">
-                            <PrimaryButton handlePress={handleSubmit} isDisabled={touched['numberPlateValue'] ? false : true } isLoading={updateBikeNumberMutation.isLoading} text='Save' loadingText='Saving...' />
+                            <PrimaryButton handlePress={handleSubmit} isDisabled={values.numberPlateValue === '' ? true : false } isLoading={updateBikeNumberMutation.isLoading} text='Save' loadingText='Saving...' />
                         </View>
                     </>
                 )}

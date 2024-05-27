@@ -17,7 +17,7 @@ const ProfileUser = ({ navigation }) => {
     <SafeAreaView className='bg-white h-full'>
       <View className=''>
         <View className='flex-row items-center relative mt-6 justify-center mb-3'>
-          <Pressable onPress={() => navigation.goBack()} className='absolute left-4'>
+          <Pressable onPress={() => navigation.goBack()} className='absolute left-4  w-10'>
             <ChevronLeftIcon size={20} color='#242424' />
           </Pressable>
           <Text className='text-[17px] font-[600] text-[#242424]'>
@@ -44,9 +44,13 @@ const ProfileUser = ({ navigation }) => {
 
               <Pressable onPress={() => navigation.navigate('BikeProfileScreen')}
                 className='flex-row justify-between mb-4 mt-6'>
-                <View className='flex-row space-x-3'>
-                  <Bike size={30} color="#808080" />
-                  <Text className='text-[17px] font-[400] text-[#242424]'> Bike profile </Text>
+                <View className='flex-row space-x-2'>
+                  <View className="flex items-center justify-center">
+                    <Bike size={25} color="#808080" />
+                  </View>
+                  <View className="flex items-center justify-end">
+                    <Text className='text-[17px] font-[400] text-[#242424]'> Bike profile </Text>
+                  </View>
                 </View>
                 <ChevronRightIcon size={15} color='#808080' />
               </Pressable>
