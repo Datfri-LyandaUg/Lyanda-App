@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import PrimaryButton from '../components/PrimaryButton';
 import { BadgeInfo } from 'lucide-react-native';
+import AwarenessModal from '../components/AwarenessModal';
 
 
 const DeleteAccountScreen = ({ navigation }) => {
@@ -26,28 +27,8 @@ const DeleteAccountScreen = ({ navigation }) => {
                 <View className="flex items-center justify-center  p-8">
 
                     <View className="">
-                        <View className="">
-                            <View className="flex items-center justify-center my-6">
-                                <View className="flex items-center justify-center w-9 h-9 rounded-full">
-                                    <BadgeInfo color="#C50F1F" size={40} />
-                                </View>
-                            </View>
-
-                            <View className='flex items-center justify-center'>
-                                <Text className="text-[#242424] font-[600] mb-4 text-[17px]">
-                                    Account Deleted
-                                </Text>
-
-                            </View>
-
-                            <View className="flex items-center justify-center my-4">
-                                <Text className="text-[#616161] text-center text-[15px] font-[400]">
-                                    Your Lyanda information has been removed. We hope you had a great experience and we hope to see you soon.
-                                </Text>
-                            </View>
-
-                        </View>
-
+                        <AwarenessModal title={"Account Deleted"} Icon={<BadgeInfo color="#C50F1F" size={40} />} description={"Your Lyanda information has been removed. We hope you had a great experience and we hope to see you soon."} />
+        
                         <View className=''>
                             <PrimaryButton handlePress={() => {}} text={"Create Account"} />
                         </View>
