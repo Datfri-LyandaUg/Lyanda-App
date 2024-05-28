@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, Text, View, TouchableOpacity, Switch } from 'react-native'
 import { ChevronLeftIcon } from 'react-native-heroicons/solid'
 
 
 const LocationSettingsScreen = ({ navigation }) => {
+    
+    const [isLocationEnabled, setIsLocationEnabled] = useState(true);
+
+    const toggleLocationSwitch = () => setIsLocationEnabled(previousState => !previousState);
+
     return (
         <SafeAreaView className='bg-white h-full'>
             <View className="flex-row items-center mt-7 relative mb-2  justify-center">
@@ -30,12 +35,12 @@ const LocationSettingsScreen = ({ navigation }) => {
                         </View>
                         <View className="w-10 flex items-center justify-center">
                             <Switch
-                                // onValueChange={toggleSwitch}
-                                value={true}
+                                onValueChange={toggleLocationSwitch}
+                                value={isLocationEnabled}
                             />
                         </View>
                     </View>
-                    
+
                 </View>
             </View>
 

@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, Text, View, TouchableOpacity, Switch } from 'react-native'
 import { ChevronLeftIcon } from 'react-native-heroicons/solid'
 
 
 const NotificationSettingsScreen = ({ navigation }) => {
+    
+    const [isMessagesEnabled, setIsMessagesEnabled] = useState(true);
+    const [isNewsEnabled, setIsNewsEnabled] = useState(true);
+    const [isOrdersEnabled, setIsOrdersEnabled] = useState(true);
+
+    const toggleMessagesSwitch = () => setIsMessagesEnabled(previousState => !previousState);
+    const toggleNewsSwitch = () => setIsNewsEnabled(previousState => !previousState);
+    const toggleOrdersSwitch = () => setIsOrdersEnabled(previousState => !previousState);
+
     return (
         <SafeAreaView className='bg-white h-full'>
             <View className="flex-row items-center mt-7 relative mb-2  justify-center">
@@ -30,8 +39,8 @@ const NotificationSettingsScreen = ({ navigation }) => {
                         </View>
                         <View className="w-10 flex items-center justify-center">
                             <Switch
-                                // onValueChange={toggleSwitch}
-                                value={true}
+                                onValueChange={toggleMessagesSwitch}
+                                value={isMessagesEnabled}
                             />
                         </View>
                     </View>
@@ -46,8 +55,8 @@ const NotificationSettingsScreen = ({ navigation }) => {
                         </View>
                         <View className="w-10 flex items-center justify-center">
                             <Switch
-                                // onValueChange={toggleSwitch}
-                                value={true}
+                                onValueChange={toggleNewsSwitch}
+                                value={isNewsEnabled}
                             />
                         </View>
                     </View>
@@ -56,13 +65,13 @@ const NotificationSettingsScreen = ({ navigation }) => {
                         <View className="flex-1">
                             <Text className="text-xl font-semibold">Orders</Text>
                             <Text>
-                               We will notify you of updates to your order.
+                                We will notify you of updates to your order.
                             </Text>
                         </View>
                         <View className="w-10 flex items-center justify-center">
                             <Switch
-                                // onValueChange={toggleSwitch}
-                                value={true}
+                                onValueChange={toggleOrdersSwitch}
+                                value={isOrdersEnabled}
                             />
                         </View>
                     </View>

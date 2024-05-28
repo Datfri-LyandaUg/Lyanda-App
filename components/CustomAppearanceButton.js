@@ -1,17 +1,19 @@
-import React from 'react'
-import { View, Text } from 'react-native';
+import React, { useContext } from 'react'
+import { View, Text , Pressable } from 'react-native';
 import { Check } from 'lucide-react-native';
+import { ThemeContext } from '../utils/ThemeContext';
 
-const CustomAppearanceButton = ({ active, Icon, title }) => {
+const CustomAppearanceButton = ({ active, Icon, title, onPress }) => {
+    const { theme } = useContext(ThemeContext);
     return (
 
-        <View className='flex-row  items-center justify-between mx-4 space-y-6 '>
+        <Pressable onPress ={ onPress } className='flex-row  items-center justify-between mx-4 space-y-6 '>
             <View className='flex-row space-x-4 items-center'>
                 <View className=" flex items-center justify-center w-5 h-5">
                     {active && <Check size={18} color='#2C7721' />}
                 </View>
                 <View>
-                    <Text className='text-[#242424] font-[400]  text-[17px]'>
+                    <Text className={`font-[400]  text-[17px]  ${theme === 'light' ? 'text-[#242424]': 'text-white'} `}>
                         {title}
                     </Text>
                 </View>
@@ -20,7 +22,7 @@ const CustomAppearanceButton = ({ active, Icon, title }) => {
             <View className="flex items-center justify-center">
                 {Icon}
             </View>
-        </View>
+        </Pressable>
 
     )
 }
