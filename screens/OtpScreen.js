@@ -59,7 +59,6 @@ const OtpScreen = ({ navigation }) => {
       const { data: token } = await otpVerificationMutation.mutateAsync(values.otp);
       await AsyncStorage.setItem('currentUserToken', token);
       const decodedToken = jwt_decode(token);
-      console.log("Decoded_Token:", decodedToken);
       dispatch(setToken(token));
       dispatch(setUserData(decodedToken));
     } catch (ex) {

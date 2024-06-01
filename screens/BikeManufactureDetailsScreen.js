@@ -34,13 +34,11 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
     const [showSuccessNotification, setShowSuccessNotification] = useState(false);
 
 
-    const toggleErrorNotificationVisibility = (e) => {
-        e.preventDefault();
+    const toggleErrorNotificationVisibility = () => {
         setShowErrorNotification(false);
     }
 
-    const toggleSuccessNotificationVisibility = (e) => {
-        e.preventDefault();
+    const toggleSuccessNotificationVisibility = () => {
         setShowSuccessNotification(false);
     }
 
@@ -56,7 +54,8 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
         } catch (ex) {
             if (ex.response) {
                 setErrorDetails(ex.response.data);
-                setShowSuccessNotification(true);
+                setShowErrorNotification(true);
+
             }
         }
     };
@@ -65,7 +64,7 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
     useEffect(() => {
         if (updateBikeManufactureMutation.isSuccess) {
             setSuccessDetails('BikeManufacturer updated.');
-            setShowErrorNotification(true);
+            setShowSuccessNotification(true);
         }
     }, [updateBikeManufactureMutation.isSuccess]);
 
@@ -125,7 +124,7 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
             </Formik>
 
             <ErrorNotificationModal showError={showErrorNotification} errorMessage={errorDetails} handleClose={toggleErrorNotificationVisibility} />
-            <SuccessNotificationModal open={showSuccessNotification} successMessage={successDetails} handleClose={toggleSuccessNotificationVisibility}/>
+            <SuccessNotificationModal open={showSuccessNotification} successMessage={successDetails} handleClose={toggleSuccessNotificationVisibility} />
 
         </SafeAreaView>
     );

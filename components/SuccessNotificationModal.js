@@ -1,5 +1,5 @@
-import { View, Text, TouchableOpacity } from 'react-native';
 import React, { useEffect } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 import Modal from 'react-native-modal';
 import { CheckIcon, XMarkIcon } from 'react-native-heroicons/solid';
 

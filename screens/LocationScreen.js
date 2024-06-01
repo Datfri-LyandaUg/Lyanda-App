@@ -67,7 +67,7 @@ const LocationScreen = ({ navigation }) => {
       <View className="items-center  mb-8  px-4">
         <PrimaryButton handlePress={requestLocationPermission} text='Allow location access' />
 
-        <SecondaryButton title='Not Now' handleOnPress={() => navigation.navigate('NotificationScreen')} />
+        <SecondaryButton title='Not Now' handleOnPress={() => navigation.navigate('ProfileScreen')} />
       </View>
     </SafeAreaView>
   );

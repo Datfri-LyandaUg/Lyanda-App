@@ -3,8 +3,11 @@ import React from 'react'
 import { ChevronLeftIcon, ChevronRightIcon } from 'react-native-heroicons/solid'
 import CustomSettingButton from '../components/CustomSettingButton'
 import { UserRound, SunMoon, BellDot, MapPin, Star, Share2, FileText, BadgeHelp, MessagesSquare, Info } from 'lucide-react-native';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../redux/slices/authSlice';
 
 const ProfileScreen = ({ navigation }) => {
+  const currentUser = useSelector(selectUser);
   return (
     <SafeAreaView className='bg-white h-full'>
       <View className='flex-row mx-4 mt-4 items-center space-x-6 '>
@@ -24,7 +27,7 @@ const ProfileScreen = ({ navigation }) => {
           </View>
           <View>
             <Text>
-              Phone number
+              { currentUser?.phoneNumber }
             </Text>
             <Text>
               View profile
@@ -66,4 +69,4 @@ const ProfileScreen = ({ navigation }) => {
   )
 }
 
-export default ProfileScreen
+export default ProfileScreen;

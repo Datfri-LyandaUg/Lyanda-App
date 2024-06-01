@@ -27,6 +27,7 @@ import OtpScreen from '../screens/OtpScreen';
 
 
 const AppNav = () => {
+  
   const token = useSelector(state => state.auth.token);
   return (
     <NavigationContainer>
