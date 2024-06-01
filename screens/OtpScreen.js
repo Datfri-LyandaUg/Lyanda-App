@@ -15,7 +15,7 @@ import jwt_decode from 'jwt-decode';
 import { reSendOtp, verifyOtp } from '../services/userService';
 import { useMutation } from 'react-query';
 import { useDispatch } from 'react-redux';
-import { setToken } from '../redux/slices/authSlice';
+import { setToken, setUserData } from '../redux/slices/authSlice';
 import { useRoute } from '@react-navigation/native';
 import OtpNotificationModal from '../components/OtpNotificationModal';
 import ErrorNotificationModal from '../components/ErrorNotificationModal';
@@ -56,8 +56,12 @@ const OtpScreen = ({ navigation }) => {
   const handleVerifyOtp = async (values) => {
 
     try {
-      const { data } = await otpVerificationMutation.mutateAsync(values.otp);
-      dispatch(setToken(data));
+      const { data: token } = await otpVerificationMutation.mutateAsync(values.otp);
+      await AsyncStorage.setItem('currentUserToken', token);
+      const decodedToken = jwt_decode(token);
+      console.log("Decoded_Token:", decodedToken);
+      dispatch(setToken(token));
+      dispatch(setUserData(decodedToken));
     } catch (ex) {
       if (ex.response) {
         setErrorDetails(ex.response.data);
@@ -79,7 +83,8 @@ const OtpScreen = ({ navigation }) => {
 
     } catch (ex) {
       if (ex.response) {
-        console.log(ex.response.data);
+        setErrorDetails(ex.response.data);
+        setShowErrorNotification(true);
       }
 
     };
@@ -103,7 +108,6 @@ const OtpScreen = ({ navigation }) => {
       <View className="border-[#E0E0E0] border-[0.5px] mt-2 flex-1"></View>
 
 
-      {/* formik*/}
       <Formik
         initialValues={{ otp: '' }}
         onSubmit={values => handleVerifyOtp(values)}

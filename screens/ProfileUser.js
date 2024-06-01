@@ -4,9 +4,12 @@ import { ChevronRightIcon } from 'react-native-heroicons/solid';
 import { ChevronLeftIcon } from 'react-native-heroicons/outline';
 import { Bike, UserRound } from 'lucide-react-native';
 import DeleteAccountModal from '../components/DeleteAccountModal';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../redux/slices/authSlice';
 
 const ProfileUser = ({ navigation }) => {
-
+ 
+  const  currentUser = useSelector(selectUser);
   const [visible, setVisible] = useState(false);
 
   const toggleModalVisibility = () => {
@@ -39,7 +42,7 @@ const ProfileUser = ({ navigation }) => {
                 Phone number
               </Text>
               <Text className='text-[#616161]'>
-                UserNumber
+                 { currentUser?.phoneNumber}
               </Text>
 
               <Pressable onPress={() => navigation.navigate('BikeProfileScreen')}
