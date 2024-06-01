@@ -14,7 +14,7 @@ export function verifyOtp(otp) {
   return http.get(`${BASE_URL}/api/signup/verify/${otp}`);
 }
 
-export function updateManufacturer(_id, data) {
+export function updateBikeProfile(_id, data) {
   return http.patch(`${BASE_URL}/api/signup/${_id}`, data);
 }
 

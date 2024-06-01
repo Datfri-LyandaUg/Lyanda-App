@@ -13,7 +13,7 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useMutation } from 'react-query';
 import { ErrorMessage } from '../components/forms';
-import { updateManufacturer } from '../services/userService';
+import { updateBikeProfile } from '../services/userService';
 import PrimaryButton from '../components/PrimaryButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser, setUserData } from '../redux/slices/authSlice';
@@ -43,7 +43,7 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
     }
 
     const updateBikeManufactureMutation = useMutation((updateParameters) =>
-        updateManufacturer(currentUser?._id, updateParameters)
+        updateBikeProfile(currentUser?._id, updateParameters)
     );
 
     const handleManufacturesUpdate = async (values) => {
@@ -55,7 +55,6 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
             if (ex.response) {
                 setErrorDetails(ex.response.data);
                 setShowErrorNotification(true);
-
             }
         }
     };

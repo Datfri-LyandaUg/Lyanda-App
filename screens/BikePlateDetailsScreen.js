@@ -13,28 +13,39 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useMutation } from 'react-query';
 import { ErrorMessage } from '../components/forms';
-import { updateManufacturer } from '../services/userService';
+import { updateBikeProfile } from '../services/userService';
 import PrimaryButton from '../components/PrimaryButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from '../redux/slices/authSlice';
+import ErrorNotificationModal from '../components/ErrorNotificationModal';
+import SuccessNotificationModal from '../components/SuccessNotificationModal';
 
 const validationSchema = Yup.object().shape({
-    numberPlateValue: Yup.number().required('Enter the Plate Number of your bike.').label('numberPlateValue'),
+    numberPlateValue: Yup.number().required('Enter the Plate Number of Your Bike.').label('numberPlateValue'),
 });
 
 const BikePlateDetailsScreen = ({ navigation }) => {
 
-    const [currentUser] = useState({});
+    const currentUser = useSelector(selectUser);
+    const dispatch = useDispatch();
+    const [errorDetails, setErrorDetails] = useState("");
+    const [showErrorNotification, setShowErrorNotification] = useState(false);
+    const [successDetails, setSuccessDetails] = useState("");
+    const [showSuccessNotification, setShowSuccessNotification] = useState(false);
 
     const updateBikeNumberMutation = useMutation((updateParameters) =>
-        updateManufacturer(currentUser?._id, updateParameters)
+        updateBikeProfile(currentUser?._id, updateParameters)
     );
 
     const handleBikeCapacityUpdate = async (values) => {
 
         try {
             const { data } = await updateBikeNumberMutation.mutateAsync(values);
+            dispatch(setUserData(data));
         } catch (ex) {
             if (ex.response) {
-                console.error(ex.response.data);
+                setErrorDetails(ex.response.data);
+                setShowErrorNotification(true);
             }
         }
     };
@@ -42,7 +53,8 @@ const BikePlateDetailsScreen = ({ navigation }) => {
 
     useEffect(() => {
         if (updateBikeNumberMutation.isSuccess) {
-            // success logic....
+            setSuccessDetails('BikeNumber updated.');
+            setShowSuccessNotification(true);
         }
     }, [updateBikeNumberMutation.isSuccess]);
 
@@ -95,11 +107,14 @@ const BikePlateDetailsScreen = ({ navigation }) => {
                         </View>
 
                         <View className="items-center mb-72 px-4">
-                            <PrimaryButton handlePress={handleSubmit} isDisabled={values.numberPlateValue === '' ? true : false } isLoading={updateBikeNumberMutation.isLoading} text='Save' loadingText='Saving...' />
+                            <PrimaryButton handlePress={handleSubmit} isDisabled={values.numberPlateValue === '' ? true : false} isLoading={updateBikeNumberMutation.isLoading} text='Save' loadingText='Saving...' />
                         </View>
                     </>
                 )}
             </Formik>
+
+            <ErrorNotificationModal showError={showErrorNotification} errorMessage={errorDetails} handleClose={toggleErrorNotificationVisibility} />
+            <SuccessNotificationModal open={showSuccessNotification} successMessage={successDetails} handleClose={toggleSuccessNotificationVisibility} />
 
         </SafeAreaView>
     );
