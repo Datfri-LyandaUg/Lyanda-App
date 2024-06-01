@@ -18,3 +18,8 @@ export function updateBikeProfile(_id, data) {
   return http.patch(`${BASE_URL}/api/signup/${_id}`, data);
 }
 
+export function deleteAccount(_id){
+  return http.delete(`${BASE_URL}/api/signup/${_id}`);
+}
+
+
