@@ -10,7 +10,7 @@ axios.interceptors.response.use(null, error => {
   if (!ExpectedError) {
 
     Alert.alert(
-      'Server Currently unavailable.',
+      'Server Currently unavailable, Try Again Later.',
     );
   }
   return Promise.reject(error);

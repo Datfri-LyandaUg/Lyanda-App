@@ -11,15 +11,17 @@ import {
 } from 'react-native-heroicons/solid';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import jwt_decode from 'jwt-decode';
 import { reSendOtp, verifyOtp } from '../services/userService';
 import { useMutation } from 'react-query';
 import { useDispatch } from 'react-redux';
-import { setToken } from '../redux/slices/authSlice';
+import { setToken, setUserData } from '../redux/slices/authSlice';
 import { useRoute } from '@react-navigation/native';
 import OtpNotificationModal from '../components/OtpNotificationModal';
 import ErrorNotificationModal from '../components/ErrorNotificationModal';
 import { ErrorMessage } from '../components/forms';
 import PrimaryButton from '../components/PrimaryButton';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const validationSchema = Yup.object().shape({
   otp: Yup.string().min(6).max(6).required('Enter a valid OTP to continue.').label('Otp'),
@@ -29,7 +31,7 @@ const validationSchema = Yup.object().shape({
 const OtpScreen = ({ navigation }) => {
 
   const route = useRoute();
-  // const userData = route.params;
+  const userData = route.params;
   const [visible, setVisible] = useState(false);
   const [errorDetails, setErrorDetails] = useState("");
   const [showErrorNotification, setShowErrorNotification] = useState(false);
@@ -43,7 +45,7 @@ const OtpScreen = ({ navigation }) => {
     reSendOtp(resendParameters)
   );
 
-  const tongleModel = () => {
+  const toggleModal = () => {
     setVisible(!visible);
   };
 
@@ -54,11 +56,13 @@ const OtpScreen = ({ navigation }) => {
   const handleVerifyOtp = async (values) => {
 
     try {
-      const { data } = await otpVerificationMutation.mutateAsync(values.otp);
-      dispatch(setToken(data));
+      const { data: token } = await otpVerificationMutation.mutateAsync(values.otp);
+      await AsyncStorage.setItem('currentUserToken', token);
+      const decodedToken = jwt_decode(token);
+      dispatch(setToken(token));
+      dispatch(setUserData(decodedToken));
     } catch (ex) {
       if (ex.response) {
-        console.log(ex.response.data);
         setErrorDetails(ex.response.data);
         setShowErrorNotification(true);
       }
@@ -74,13 +78,12 @@ const OtpScreen = ({ navigation }) => {
     };
 
     try {
-
       const { data } = await resendingOtpMutation.mutateAsync(resendParameters);
-
 
     } catch (ex) {
       if (ex.response) {
-        console.log(ex.response.data);
+        setErrorDetails(ex.response.data);
+        setShowErrorNotification(true);
       }
 
     };
@@ -104,7 +107,6 @@ const OtpScreen = ({ navigation }) => {
       <View className="border-[#E0E0E0] border-[0.5px] mt-2 flex-1"></View>
 
 
-      {/* formik*/}
       <Formik
         initialValues={{ otp: '' }}
         onSubmit={values => handleVerifyOtp(values)}
@@ -132,6 +134,7 @@ const OtpScreen = ({ navigation }) => {
               </View>
             </View>
             <View className="pl-3">
+
               <View className="border-[#E0E0E0] border-[0.5px] px-3 w-80 mt-2 my-2"></View>
 
               <ErrorMessage error={errors['otp']} visible={touched['otp']} />
@@ -157,7 +160,7 @@ const OtpScreen = ({ navigation }) => {
       </Formik>
 
       {/* Notifications */}
-      <OtpNotificationModal visible={visible} setVisible={setVisible} handleClose={tongleModel} />
+      <OtpNotificationModal visible={visible} setVisible={setVisible} handleClose={toggleModal} />
       <ErrorNotificationModal showError={showErrorNotification} errorMessage={errorDetails} handleClose={toggleErrorNotificationVisibility} />
     </SafeAreaView>
   );

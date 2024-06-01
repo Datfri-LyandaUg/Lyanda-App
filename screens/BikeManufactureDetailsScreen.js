@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import {
     SafeAreaView,
     Text,
@@ -5,7 +6,6 @@ import {
     TextInput,
     TouchableOpacity,
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
 import {
     ChevronLeftIcon,
 } from 'react-native-heroicons/solid';
@@ -13,8 +13,12 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useMutation } from 'react-query';
 import { ErrorMessage } from '../components/forms';
-import { updateManufacturer } from '../services/userService';
+import { updateBikeProfile } from '../services/userService';
 import PrimaryButton from '../components/PrimaryButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser, setUserData } from '../redux/slices/authSlice';
+import ErrorNotificationModal from '../components/ErrorNotificationModal';
+import SuccessNotificationModal from '../components/SuccessNotificationModal';
 
 const validationSchema = Yup.object().shape({
     bikeManufacturer: Yup.string().required('Enter the Manufacturer of your bike.').label('bikeManufacturer'),
@@ -22,19 +26,35 @@ const validationSchema = Yup.object().shape({
 
 const BikeManufactureDetailsScreen = ({ navigation }) => {
 
-    const [currentUser] = useState({});
+    const currentUser = useSelector(selectUser);
+    const dispatch = useDispatch();
+    const [errorDetails, setErrorDetails] = useState("");
+    const [showErrorNotification, setShowErrorNotification] = useState(false);
+    const [successDetails, setSuccessDetails] = useState("");
+    const [showSuccessNotification, setShowSuccessNotification] = useState(false);
+
+
+    const toggleErrorNotificationVisibility = () => {
+        setShowErrorNotification(false);
+    }
+
+    const toggleSuccessNotificationVisibility = () => {
+        setShowSuccessNotification(false);
+    }
 
     const updateBikeManufactureMutation = useMutation((updateParameters) =>
-        updateManufacturer(currentUser?._id, updateParameters)
+        updateBikeProfile(currentUser?._id, updateParameters)
     );
 
     const handleManufacturesUpdate = async (values) => {
 
         try {
             const { data } = await updateBikeManufactureMutation.mutateAsync(values);
+            dispatch(setUserData(data));
         } catch (ex) {
             if (ex.response) {
-                console.error(ex.response.data);
+                setErrorDetails(ex.response.data);
+                setShowErrorNotification(true);
             }
         }
     };
@@ -42,7 +62,8 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
 
     useEffect(() => {
         if (updateBikeManufactureMutation.isSuccess) {
-            // success logic....
+            setSuccessDetails('BikeManufacturer updated.');
+            setShowSuccessNotification(true);
         }
     }, [updateBikeManufactureMutation.isSuccess]);
 
@@ -51,7 +72,7 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
 
             <View className="flex-row items-center mt-7 relative mb-2  justify-center">
                 <TouchableOpacity
-                    className="absolute  left-2.5"
+                    className="absolute  left-2.5 w-10"
                     onPress={() => navigation.goBack()}>
                     <ChevronLeftIcon color="#616161" size={20} />
                 </TouchableOpacity>
@@ -70,7 +91,6 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
                 {({ handleChange, handleSubmit, errors, touched, values }) => (
 
                     <>
-
                         <View className="border-[#E0E0E0] border-[0.5px]"></View>
 
                         <View className="items-center mt-7">
@@ -96,11 +116,14 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
 
                         </View>
                         <View className="items-center mb-72 px-4">
-                            <PrimaryButton handlePress={handleSubmit} isDisabled={ values.bikeManufacturer === '' ? true : false } isLoading={updateBikeManufactureMutation.isLoading} text='Save' loadingText='Saving...' />
+                            <PrimaryButton handlePress={handleSubmit} isDisabled={values.bikeManufacturer === '' ? true : false} isLoading={updateBikeManufactureMutation.isLoading} text='Save' loadingText='Saving...' />
                         </View>
                     </>
                 )}
             </Formik>
+
+            <ErrorNotificationModal showError={showErrorNotification} errorMessage={errorDetails} handleClose={toggleErrorNotificationVisibility} />
+            <SuccessNotificationModal open={showSuccessNotification} successMessage={successDetails} handleClose={toggleSuccessNotificationVisibility} />
 
         </SafeAreaView>
     );

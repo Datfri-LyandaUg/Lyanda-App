@@ -24,12 +24,6 @@ const PrivateStack = () => {
     <Stack.Navigator>
 
       <Stack.Screen
-        name="Home"
-        component={ProfileScreen}
-        options={{ headerShown: false }}
-      />
-
-      <Stack.Screen
         name="TermsAndConditons"
         component={TermsAndConditons}
         options={{ headerShown: false }}
@@ -42,6 +36,12 @@ const PrivateStack = () => {
       <Stack.Screen
         name="LocationScreen"
         component={LocationScreen}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="ProfileScreen"
+        component={ProfileScreen}
         options={{ headerShown: false }}
       />
 
@@ -137,4 +137,4 @@ const PrivateStack = () => {
   )
 }
 
-export default PrivateStack
+export default PrivateStack;

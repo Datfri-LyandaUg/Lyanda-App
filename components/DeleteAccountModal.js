@@ -1,8 +1,37 @@
+import React, { useEffect } from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
-import React from 'react';
 import Modal from 'react-native-modal';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout, selectUser } from '../redux/slices/authSlice';
+import { deleteAccount } from '../services/userService';
+import { useMutation } from 'react-query';
 
 const DeleteAccountModal = ({ visible, navigation, toggleModalVisibility }) => {
+
+  const currentUser = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  const deleteAccountMutation = useMutation(() =>
+    deleteAccount(currentUser?._id)
+  );
+
+  const handleDeleteAccount = async () => {
+    try {
+      const { data } = await deleteAccountMutation.mutateAsync();
+    } catch (ex) {
+      if (ex.response) {
+        console.log(ex.response.data);
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (deleteAccountMutation.isSuccess) {
+      dispatch(logout());
+      navigation.navigate('DeleteAccountScreen');
+    }
+  }, [deleteAccountMutation.isSuccess]);
+
   return (
     <Modal
       isVisible={visible}
@@ -43,7 +72,8 @@ const DeleteAccountModal = ({ visible, navigation, toggleModalVisibility }) => {
 
         <View className="flex w-full items-center justify-center px-4">
           <Pressable style={styles.button}
-            onPress={() => navigation.navigate('DeleteAccountScreen')}
+            // onPress={() => navigation.navigate('DeleteAccountScreen')}
+            onPress={handleDeleteAccount}
           >
             <Text style={styles.buttonText}>
               Delete account

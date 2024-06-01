@@ -40,7 +40,7 @@ const LoginScreen = ({ navigation }) => {
     try {
       const { data } = await signUpMutation.mutateAsync(signUpParameters);
     } catch (ex) {
-      if (ex.response && ex.response.status === 400) {
+      if (ex.response) {
         console.error(ex.response.data);
       }
     }
@@ -63,7 +63,7 @@ const LoginScreen = ({ navigation }) => {
   return (
     <SafeAreaView className=" bg-white h-full ">
       <TouchableOpacity
-        className="mb-5 mt-4 mx-2.5"
+        className="mb-5 mt-4 mx-2.5 bg"
         onPress={() => navigation.goBack()}>
         <ChevronLeftIcon color="#616161" size={26} />
       </TouchableOpacity>

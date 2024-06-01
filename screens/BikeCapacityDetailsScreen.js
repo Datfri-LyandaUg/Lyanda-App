@@ -13,30 +13,49 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useMutation } from 'react-query';
 import { ErrorMessage } from '../components/forms';
-import { updateManufacturer } from '../services/userService';
+import { updateBikeProfile } from '../services/userService';
 import PrimaryButton from '../components/PrimaryButton';
 import { BatteryFull } from 'lucide-react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from '../redux/slices/authSlice';
+import ErrorNotificationModal from '../components/ErrorNotificationModal';
+import SuccessNotificationModal from '../components/SuccessNotificationModal';
 
 
 const validationSchema = Yup.object().shape({
-    bikeCapacity: Yup.string().required('Enter the Capacity of your bike.').label('BikeCapacity'),
+    batteryCapacity: Yup.string().required('Enter the Capacity of your Bike.').label('BikeCapacity'),
 });
 
 const BikeCapacityDetailsScreen = ({ navigation }) => {
 
-    const [currentUser] = useState({});
+    const currentUser = useSelector(selectUser);
+    const dispatch = useDispatch();
+    const [errorDetails, setErrorDetails] = useState("");
+    const [showErrorNotification, setShowErrorNotification] = useState(false);
+    const [successDetails, setSuccessDetails] = useState("");
+    const [showSuccessNotification, setShowSuccessNotification] = useState(false);
 
     const updateBikeCapacityMutation = useMutation((updateParameters) =>
-        updateManufacturer(currentUser?._id, updateParameters)
+        updateBikeProfile(currentUser?._id, updateParameters)
     );
+
+    const toggleErrorNotificationVisibility = () => {
+        setShowErrorNotification(false);
+    }
+
+    const toggleSuccessNotificationVisibility = () => {
+        setShowSuccessNotification(false);
+    }
 
     const handleBikeCapacityUpdate = async (values) => {
 
         try {
             const { data } = await updateBikeCapacityMutation.mutateAsync(values);
+            dispatch(setUserData(data));
         } catch (ex) {
             if (ex.response) {
-                console.error(ex.response.data);
+                setErrorDetails(ex.response.data);
+                setShowErrorNotification(true);
             }
         }
     };
@@ -44,7 +63,8 @@ const BikeCapacityDetailsScreen = ({ navigation }) => {
 
     useEffect(() => {
         if (updateBikeCapacityMutation.isSuccess) {
-            // success logic....
+            setSuccessDetails('BatteryCapacity updated.');
+            setShowSuccessNotification(true);
         }
     }, [updateBikeCapacityMutation.isSuccess]);
 
@@ -53,7 +73,7 @@ const BikeCapacityDetailsScreen = ({ navigation }) => {
 
             <View className="flex-row items-center mt-7 relative mb-2  justify-center">
                 <TouchableOpacity
-                    className="absolute  left-2.5"
+                    className="absolute  left-2.5 w-10"
                     onPress={() => navigation.goBack()}>
                     <ChevronLeftIcon color="#616161" size={20} />
                 </TouchableOpacity>
@@ -64,7 +84,7 @@ const BikeCapacityDetailsScreen = ({ navigation }) => {
             </View>
 
             <Formik
-                initialValues={{ bikeCapacity: '' }}
+                initialValues={{ batteryCapacity : '' }}
                 onSubmit={values => handleBikeCapacityUpdate(values)}
                 validationSchema={validationSchema}
             >
@@ -88,7 +108,7 @@ const BikeCapacityDetailsScreen = ({ navigation }) => {
                                 <View className="h-[48] flex-1">
                                     <TextInput
                                         placeholder="250Watt-hours"
-                                        onChangeText={handleChange('bikeCapacity')}
+                                        onChangeText={handleChange('batteryCapacity')}
                                         placeholderTextColor="#616161"
                                         className="w-52"
                                     />
@@ -102,15 +122,18 @@ const BikeCapacityDetailsScreen = ({ navigation }) => {
                         </View>
 
                         <View className="pl-3">
-                            <ErrorMessage error={errors['bikeCapacity']} visible={touched['bikeCapacity']} />
+                            <ErrorMessage error={errors['batteryCapacity']} visible={touched['bikeCapacity']} />
                         </View>
 
                         <View className="items-center mb-72 px-4">
-                            <PrimaryButton isDisabled={values.bikeCapacity === "" ? true : false} handlePress={handleSubmit} isLoading={updateBikeCapacityMutation.isLoading} text='Save' loadingText='Saving...' />
+                            <PrimaryButton isDisabled={values.batteryCapacity === "" ? true : false} handlePress={handleSubmit} isLoading={updateBikeCapacityMutation.isLoading} text='Save' loadingText='Saving...' />
                         </View>
                     </>
                 )}
             </Formik>
+
+            <ErrorNotificationModal showError={showErrorNotification} errorMessage={errorDetails} handleClose={toggleErrorNotificationVisibility} />
+            <SuccessNotificationModal open={showSuccessNotification} successMessage={successDetails} handleClose={toggleSuccessNotificationVisibility} />
 
         </SafeAreaView>
     );

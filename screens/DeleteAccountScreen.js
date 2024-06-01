@@ -28,9 +28,9 @@ const DeleteAccountScreen = ({ navigation }) => {
 
                     <View className="">
                         <AwarenessModal title={"Account Deleted"} Icon={<BadgeInfo color="#C50F1F" size={40} />} description={"Your Lyanda information has been removed. We hope you had a great experience and we hope to see you soon."} />
-        
+
                         <View className=''>
-                            <PrimaryButton handlePress={() => {}} text={"Create Account"} />
+                            <PrimaryButton handlePress={() => navigation.navigate('Login')} text={"Create Account"} />
                         </View>
                     </View>
 

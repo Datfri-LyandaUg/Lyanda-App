@@ -2,10 +2,14 @@ import React from 'react'
 import { View, Text, SafeAreaView, Pressable } from 'react-native';
 import { ChevronLeftIcon } from 'react-native-heroicons/outline'
 import { Pen } from 'lucide-react-native';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../redux/slices/authSlice';
 
 
 
 const BikeProfileScreen = ({ navigation }) => {
+
+  const  currentUser = useSelector(selectUser);
 
   return (
     <SafeAreaView className='bg-white h-full'>
@@ -35,7 +39,7 @@ const BikeProfileScreen = ({ navigation }) => {
                   Bike manufacturer
                 </Text>
                 <Text className='text-[#616161] text-[13px] font-[400]'>
-                  Value
+                  { currentUser?.bikeManufacturer }
                 </Text>
               </View>
               <Pressable onPress={() => navigation.navigate('BikeManufactureDetailsScreen')}>
@@ -52,7 +56,7 @@ const BikeProfileScreen = ({ navigation }) => {
                   Battery capacity
                 </Text>
                 <Text className='text-[#616161] text-[13px] font-[400]'>
-                  Value
+                   { currentUser?.batteryCapacity }
                 </Text>
               </View>
               <Pressable onPress={() => navigation.navigate('BikeCapacityDetailsScreen')}>
@@ -69,7 +73,7 @@ const BikeProfileScreen = ({ navigation }) => {
                   Number plate
                 </Text>
                 <Text className='text-[#616161] text-[13px] font-[400]'>
-                  Value
+                   { currentUser?.numberPlateValue }
                 </Text>
               </View>
               <Pressable onPress={() => navigation.navigate('BikePlateDetailsScreen')}>
