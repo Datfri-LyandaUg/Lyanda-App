@@ -37,6 +37,14 @@ const BikePlateDetailsScreen = ({ navigation }) => {
         updateBikeProfile(currentUser?._id, updateParameters)
     );
 
+    const toggleErrorNotificationVisibility = () => {
+        setShowErrorNotification(false);
+    }
+
+    const toggleSuccessNotificationVisibility = () => {
+        setShowSuccessNotification(false);
+    }
+
     const handleBikeCapacityUpdate = async (values) => {
 
         try {

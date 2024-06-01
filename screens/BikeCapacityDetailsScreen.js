@@ -23,7 +23,7 @@ import SuccessNotificationModal from '../components/SuccessNotificationModal';
 
 
 const validationSchema = Yup.object().shape({
-    bikeCapacity: Yup.string().required('Enter the Capacity of your Bike.').label('BikeCapacity'),
+    batteryCapacity: Yup.string().required('Enter the Capacity of your Bike.').label('BikeCapacity'),
 });
 
 const BikeCapacityDetailsScreen = ({ navigation }) => {
@@ -63,7 +63,7 @@ const BikeCapacityDetailsScreen = ({ navigation }) => {
 
     useEffect(() => {
         if (updateBikeCapacityMutation.isSuccess) {
-            setSuccessDetails('BikeCapacity updated.');
+            setSuccessDetails('BatteryCapacity updated.');
             setShowSuccessNotification(true);
         }
     }, [updateBikeCapacityMutation.isSuccess]);
@@ -84,7 +84,7 @@ const BikeCapacityDetailsScreen = ({ navigation }) => {
             </View>
 
             <Formik
-                initialValues={{ bikeCapacity: '' }}
+                initialValues={{ batteryCapacity : '' }}
                 onSubmit={values => handleBikeCapacityUpdate(values)}
                 validationSchema={validationSchema}
             >
@@ -108,7 +108,7 @@ const BikeCapacityDetailsScreen = ({ navigation }) => {
                                 <View className="h-[48] flex-1">
                                     <TextInput
                                         placeholder="250Watt-hours"
-                                        onChangeText={handleChange('bikeCapacity')}
+                                        onChangeText={handleChange('batteryCapacity')}
                                         placeholderTextColor="#616161"
                                         className="w-52"
                                     />
@@ -122,11 +122,11 @@ const BikeCapacityDetailsScreen = ({ navigation }) => {
                         </View>
 
                         <View className="pl-3">
-                            <ErrorMessage error={errors['bikeCapacity']} visible={touched['bikeCapacity']} />
+                            <ErrorMessage error={errors['batteryCapacity']} visible={touched['bikeCapacity']} />
                         </View>
 
                         <View className="items-center mb-72 px-4">
-                            <PrimaryButton isDisabled={values.bikeCapacity === "" ? true : false} handlePress={handleSubmit} isLoading={updateBikeCapacityMutation.isLoading} text='Save' loadingText='Saving...' />
+                            <PrimaryButton isDisabled={values.batteryCapacity === "" ? true : false} handlePress={handleSubmit} isLoading={updateBikeCapacityMutation.isLoading} text='Save' loadingText='Saving...' />
                         </View>
                     </>
                 )}

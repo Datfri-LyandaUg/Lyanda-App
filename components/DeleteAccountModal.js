@@ -4,6 +4,7 @@ import Modal from 'react-native-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout, selectUser } from '../redux/slices/authSlice';
 import { deleteAccount } from '../services/userService';
+import { useMutation } from 'react-query';
 
 const DeleteAccountModal = ({ visible, navigation, toggleModalVisibility }) => {
 
