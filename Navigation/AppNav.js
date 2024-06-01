@@ -30,7 +30,7 @@ const AppNav = () => {
   const token = useSelector(state => state.auth.token);
   return (
     <NavigationContainer>
-      {/* {token === null ? <AuthStack /> : <PrivateStack />} */}
+      {token === null ? <AuthStack /> : <PrivateStack />}
       {/* <LoginScreen/> */}
       {/* <DeleteAccountScreen/> */}
       {/* <BikeManufactureDetailsScreen/> */}
@@ -52,7 +52,7 @@ const AppNav = () => {
       {/* <AppearanceScreen /> */}
       {/* <NotificationSettingsScreen /> */}
       {/* <LocationSettingsScreen/> */}
-      <PrivateStack />
+      {/* <PrivateStack /> */}
     </NavigationContainer>
   );
 };

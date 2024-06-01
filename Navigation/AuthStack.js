@@ -7,6 +7,7 @@ import OtpScreen from '../screens/OtpScreen';
 
 
 const AuthStack = () => {
+  
   const Stack = createNativeStackNavigator();
 
   return (
