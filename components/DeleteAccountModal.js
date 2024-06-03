@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { View, Text, Pressable, StyleSheet, ActivityIndicator } from 'react-native';
 import Modal from 'react-native-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout, selectUser } from '../redux/slices/authSlice';
 import { deleteAccount } from '../services/userService';
 import { useMutation } from 'react-query';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const DeleteAccountModal = ({ visible, navigation, toggleModalVisibility }) => {
 
@@ -18,6 +19,7 @@ const DeleteAccountModal = ({ visible, navigation, toggleModalVisibility }) => {
   const handleDeleteAccount = async () => {
     try {
       const { data } = await deleteAccountMutation.mutateAsync();
+      await AsyncStorage.removeItem('currentUserToken');
     } catch (ex) {
       if (ex.response) {
         console.log(ex.response.data);
@@ -28,7 +30,6 @@ const DeleteAccountModal = ({ visible, navigation, toggleModalVisibility }) => {
   useEffect(() => {
     if (deleteAccountMutation.isSuccess) {
       dispatch(logout());
-      navigation.navigate('DeleteAccountScreen');
     }
   }, [deleteAccountMutation.isSuccess]);
 
@@ -72,14 +73,27 @@ const DeleteAccountModal = ({ visible, navigation, toggleModalVisibility }) => {
 
         <View className="flex w-full items-center justify-center px-4">
           <Pressable style={styles.button}
-            // onPress={() => navigation.navigate('DeleteAccountScreen')}
             onPress={handleDeleteAccount}
           >
-            <Text style={styles.buttonText}>
-              Delete account
-            </Text>
+
+            {
+              deleteAccountMutation?.isLoading ? (
+                <View className="flex flex-row items-center space-x-1 justify-center">
+                  <View className="flex items-center justify-center">
+                    <Text className="mr-2"><ActivityIndicator size="small" color="white" /></Text>
+                  </View>
+
+                  <View className="flex items-center justify-center">
+                    <Text style={styles.buttonText}>{'Deleting Account ..'}</Text>
+                  </View>
+                </View>
+              ) : (<Text style={styles.buttonText}>
+                Delete account
+              </Text>)
+            }
 
           </Pressable>
+
           <Pressable className='mt-7' onPress={toggleModalVisibility}>
             <Text className='text-[#242424] text-[17px] font-[600]'>
               Cancel

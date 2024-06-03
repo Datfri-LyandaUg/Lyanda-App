@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import jwt_decode from 'jwt-decode';
 import PrivateStack from './PrivateStack';
 import AuthStack from './AuthStack';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginScreen from '../screens/LoginScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import BikeManufactureDetailsScreen from '../screens/BikeManufactureDetailsScreen';
@@ -23,12 +24,41 @@ import BikeCapacityDetailsScreen from '../screens/BikeCapacityDetailsScreen';
 import BikePlateDetailsScreen from '../screens/BikePlateDetailsScreen';
 import LocationScreen from '../screens/LocationScreen';
 import OtpScreen from '../screens/OtpScreen';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { setToken, setUserData } from '../redux/slices/authSlice';
 
 
 
 const AppNav = () => {
-  
+
   const token = useSelector(state => state.auth.token);
+  const dispatch = useDispatch();
+
+  // Keeping User Authenticated.....
+  useEffect(() => {
+
+    const authenticateUser = async () => {
+
+      try {
+
+        const token = await AsyncStorage.getItem("currentUserToken");
+
+        if (token !== null) {
+          dispatch(setToken(token));
+          const decodedToken = jwt_decode(token);
+          dispatch(setUserData(decodedToken));
+        }
+
+      } catch (error) {
+        console.error("Error Retrieving Token:", error);
+      }
+    };
+
+    authenticateUser();
+
+  }, []);
+
+
   return (
     <NavigationContainer>
       {token === null ? <AuthStack /> : <PrivateStack />}

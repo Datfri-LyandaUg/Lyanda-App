@@ -14,11 +14,13 @@ import { Formik } from 'formik';
 import { useMutation } from 'react-query';
 import { ErrorMessage } from '../components/forms';
 import { updateBikeProfile } from '../services/userService';
+import jwt_decode from 'jwt-decode';
 import PrimaryButton from '../components/PrimaryButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser, setUserData } from '../redux/slices/authSlice';
+import { selectUser, setToken, setUserData } from '../redux/slices/authSlice';
 import ErrorNotificationModal from '../components/ErrorNotificationModal';
 import SuccessNotificationModal from '../components/SuccessNotificationModal';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const validationSchema = Yup.object().shape({
     bikeManufacturer: Yup.string().required('Enter the Manufacturer of your bike.').label('bikeManufacturer'),
@@ -49,8 +51,11 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
     const handleManufacturesUpdate = async (values) => {
 
         try {
-            const { data } = await updateBikeManufactureMutation.mutateAsync(values);
-            dispatch(setUserData(data));
+            const { data : token } = await updateBikeManufactureMutation.mutateAsync(values);
+            await AsyncStorage.setItem('currentUserToken', token);
+            const decodedToken = jwt_decode(token);
+            dispatch(setToken(token));
+            dispatch(setUserData(decodedToken));
         } catch (ex) {
             if (ex.response) {
                 setErrorDetails(ex.response.data);

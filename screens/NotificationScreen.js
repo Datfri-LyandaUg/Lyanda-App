@@ -1,12 +1,8 @@
 import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
 import { PermissionsAndroid, Platform, Linking } from 'react-native';
 import React from 'react';
-import {
-  Bars3BottomLeftIcon,
-  ChatBubbleLeftRightIcon,
-  ChevronLeftIcon,
-  SpeakerWaveIcon,
-} from 'react-native-heroicons/solid';
+import { ChevronLeftIcon } from 'react-native-heroicons/solid';
+import { ListTodo, Mailbox , MessagesSquare } from 'lucide-react-native';
 import SecondaryButton from '../components/SecondaryButton';
 import PrimaryButton from '../components/PrimaryButton';
 
@@ -32,7 +28,7 @@ const NotificationScreen = ({ navigation }) => {
       <View className="flex-1">
         <View className="flex-row items-center mt-7 relative mb-2  justify-center">
           <TouchableOpacity
-            className="absolute  left-2.5"
+            className="absolute  left-2.5 w-10"
             onPress={() => navigation.goBack()}>
             <ChevronLeftIcon color="#616161" size={26} />
           </TouchableOpacity>
@@ -66,7 +62,7 @@ const NotificationScreen = ({ navigation }) => {
             <View className='items-center justify-center mt-8'>
               <View className='space-y-8'>
                 <View className='flex-row items-center space-x-4 '>
-                  <Bars3BottomLeftIcon color="#242424" className='ml-2=' />
+                  <ListTodo  size={33} color="#808080" className='ml-2' />
                   <View
                   >
                     <Text className="font-[400] text-[17px]  text-[#242424]">
@@ -84,7 +80,7 @@ const NotificationScreen = ({ navigation }) => {
 
                 <View className='items-center justify-center '>
                   <View className='flex-row items-center space-x-4 '>
-                    <SpeakerWaveIcon color="#242424" />
+                    <Mailbox size={33} color="#808080" />
                     <View>
                       <Text className="font-[400] text-[17px]  text-[#242424]">
                         Announcements and offers
@@ -106,7 +102,7 @@ const NotificationScreen = ({ navigation }) => {
 
 
                 <View className='flex-row items-center space-x-4 '>
-                  <ChatBubbleLeftRightIcon color="#242424" />
+                  <MessagesSquare size={33} color="#808080" />
                   <View className='f'>
                     <Text className="font-[400] text-[17px]  text-[#242424]">
                       Feedback
