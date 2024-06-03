@@ -4,7 +4,6 @@ import TermsAndConditons from '../screens/TermsAndConditions';
 import NotificationScreen from '../screens/NotificationScreen';
 import LocationScreen from '../screens/LocationScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-import DeleteAccountScreen from '../screens/DeleteAccountScreen';
 import ProfileUser from '../screens/ProfileUser';
 import BikeManufactureDetailsScreen from '../screens/BikeManufactureDetailsScreen';
 import BikeProfileScreen from '../screens/BikeProfileScreen';
@@ -40,7 +39,7 @@ const PrivateStack = () => {
       />
 
       <Stack.Screen
-        name="ProfileScreen"
+        name="Home"
         component={ProfileScreen}
         options={{ headerShown: false }}
       />
@@ -57,17 +56,9 @@ const PrivateStack = () => {
         options={{ headerShown: false }}
       />
 
-
       <Stack.Screen
         name="BikeManufactureDetailsScreen"
         component={BikeManufactureDetailsScreen}
-        options={{ headerShown: false }}
-      />
-
-      <Stack.Screen
-        name="DeleteAccountScreen"
-        component={DeleteAccountScreen}
-
         options={{ headerShown: false }}
       />
 

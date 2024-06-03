@@ -4,18 +4,26 @@ import LoginScreen from '../screens/LoginScreen';
 import SignupLoginOptionScreen from '../screens/SignupLoginOptionScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import OtpScreen from '../screens/OtpScreen';
+import DeleteAccountScreen from '../screens/DeleteAccountScreen';
 
 
 const AuthStack = () => {
-  
+
   const Stack = createNativeStackNavigator();
 
   return (
 
     <Stack.Navigator>
       <Stack.Screen
-        name="Home"
+        name="SplashScreen"
         component={SplashScreen}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="Home"
+        component={ DeleteAccountScreen }
+
         options={{ headerShown: false }}
       />
       <Stack.Screen
