@@ -3,6 +3,7 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal';
 import PrimaryButton from './PrimaryButton';
+import { HandCoins, Route } from 'lucide-react-native';
 
 const GetStartedModel = ({ visible }) => {
   const navigation = useNavigation();
@@ -40,7 +41,11 @@ const GetStartedModel = ({ visible }) => {
         }}
         className="rounded-[28px]  items-center pt-14">
         <View className="flex-row  mx-3 space-x-4  ">
-          <Image source={require('./../assets/Icon(40x40).png')} />
+         
+
+          <View className="flex items-center justify-center">
+            <HandCoins size={40} color='#808080' />
+          </View>
 
           <View>
             <Text className="font-[400] text-[17px] text-[#242424]">
@@ -57,7 +62,10 @@ const GetStartedModel = ({ visible }) => {
         </View>
 
         <View className="flex-row py-4 mx-3 space-x-4 items-center mt-3">
-          <Image source={require('./../assets/Icon240x40).png')} />
+        
+          <View className="flex items-center justify-center">
+            <Route size={40} color='#808080' />
+          </View>
 
           <View>
             <Text className="font-[400] text-[17px] text-[#242424]">
