@@ -13,13 +13,15 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useMutation } from 'react-query';
 import { ErrorMessage } from '../components/forms';
+import jwt_decode from 'jwt-decode';
 import { updateBikeProfile } from '../services/userService';
 import PrimaryButton from '../components/PrimaryButton';
 import { BatteryFull } from 'lucide-react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../redux/slices/authSlice';
+import { selectUser, setToken, setUserData } from '../redux/slices/authSlice';
 import ErrorNotificationModal from '../components/ErrorNotificationModal';
 import SuccessNotificationModal from '../components/SuccessNotificationModal';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const validationSchema = Yup.object().shape({
@@ -50,8 +52,11 @@ const BikeCapacityDetailsScreen = ({ navigation }) => {
     const handleBikeCapacityUpdate = async (values) => {
 
         try {
-            const { data } = await updateBikeCapacityMutation.mutateAsync(values);
-            dispatch(setUserData(data));
+            const { data : token } = await updateBikeCapacityMutation.mutateAsync(values);
+            await AsyncStorage.setItem('currentUserToken', token);
+            const decodedToken = jwt_decode(token);
+            dispatch(setToken(token));
+            dispatch(setUserData(decodedToken));
         } catch (ex) {
             if (ex.response) {
                 setErrorDetails(ex.response.data);

@@ -12,17 +12,20 @@ import {
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useMutation } from 'react-query';
+import jwt_decode from 'jwt-decode';
 import { ErrorMessage } from '../components/forms';
 import { updateBikeProfile } from '../services/userService';
 import PrimaryButton from '../components/PrimaryButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../redux/slices/authSlice';
+import { selectUser, setToken, setUserData } from '../redux/slices/authSlice';
 import ErrorNotificationModal from '../components/ErrorNotificationModal';
 import SuccessNotificationModal from '../components/SuccessNotificationModal';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const validationSchema = Yup.object().shape({
     numberPlateValue: Yup.number().required('Enter the Plate Number of Your Bike.').label('numberPlateValue'),
 });
+
 
 const BikePlateDetailsScreen = ({ navigation }) => {
 
@@ -48,8 +51,11 @@ const BikePlateDetailsScreen = ({ navigation }) => {
     const handleBikeCapacityUpdate = async (values) => {
 
         try {
-            const { data } = await updateBikeNumberMutation.mutateAsync(values);
-            dispatch(setUserData(data));
+            const { data : token  } = await updateBikeNumberMutation.mutateAsync(values);
+            await AsyncStorage.setItem('currentUserToken', token);
+            const decodedToken = jwt_decode(token);
+            dispatch(setToken(token));
+            dispatch(setUserData(decodedToken));
         } catch (ex) {
             if (ex.response) {
                 setErrorDetails(ex.response.data);
@@ -61,7 +67,7 @@ const BikePlateDetailsScreen = ({ navigation }) => {
 
     useEffect(() => {
         if (updateBikeNumberMutation.isSuccess) {
-            setSuccessDetails('BikeNumber updated.');
+            setSuccessDetails('BikePlateNumber updated.');
             setShowSuccessNotification(true);
         }
     }, [updateBikeNumberMutation.isSuccess]);
