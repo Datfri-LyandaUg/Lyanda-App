@@ -30,7 +30,6 @@ const DeleteAccountModal = ({ visible, navigation, toggleModalVisibility }) => {
   useEffect(() => {
     if (deleteAccountMutation.isSuccess) {
       dispatch(logout());
-      navigation.navigate('DeleteAccountScreen');
     }
   }, [deleteAccountMutation.isSuccess]);
 

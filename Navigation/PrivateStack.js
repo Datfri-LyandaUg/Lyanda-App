@@ -21,7 +21,6 @@ const PrivateStack = () => {
   const Stack = createNativeStackNavigator();
   return (
     <Stack.Navigator>
-
       <Stack.Screen
         name="TermsAndConditons"
         component={TermsAndConditons}

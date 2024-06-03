@@ -19,9 +19,13 @@ const TermsAndConditions = ({ navigation }) => {
       try {
         const isCheckedTermsAndConditions = await AsyncStorage.getItem('isCheckedTermsAndConditions');
         if (isCheckedTermsAndConditions === null) {
-          // This is the first launch..
+           // This is the first launch.
           await AsyncStorage.setItem('isCheckedTermsAndConditions', 'true');
-
+          const timer = setTimeout(() => {
+             //
+          }, 1000);
+          return () => clearTimeout(timer);
+         
         } else {
           // Already Checked Terms And Conditions.
           navigation.navigate('Home');
@@ -35,12 +39,13 @@ const TermsAndConditions = ({ navigation }) => {
 
   }, [navigation]);
 
+
   return (
     <SafeAreaView className="relative flex-1 bg-white">
       <View className="flex-1">
         <View className="flex-row items-center mt-7  mb-2 justify-center relative ">
           <TouchableOpacity
-            className="absolute left-2.5"
+            className="absolute left-2.5 w-10"
           >
             <ChevronLeftIcon color="#616161" size={26} />
           </TouchableOpacity>
