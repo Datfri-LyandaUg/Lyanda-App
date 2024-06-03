@@ -4,20 +4,44 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   ChevronLeftIcon,
 } from 'react-native-heroicons/solid';
 import PrimaryButton from '../components/PrimaryButton';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const TermsAndConditions = ({ navigation }) => {
+
+  useEffect(() => {
+
+    const checkTermsAndConditions = async () => {
+      try {
+        const isCheckedTermsAndConditions = await AsyncStorage.getItem('isCheckedTermsAndConditions');
+        if (isCheckedTermsAndConditions === null) {
+          // This is the first launch..
+          await AsyncStorage.setItem('isCheckedTermsAndConditions', 'true');
+
+        } else {
+          // Already Checked Terms And Conditions.
+          navigation.navigate('Home');
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    checkTermsAndConditions();
+
+  }, [navigation]);
+
   return (
     <SafeAreaView className="relative flex-1 bg-white">
       <View className="flex-1">
         <View className="flex-row items-center mt-7  mb-2 justify-center relative ">
           <TouchableOpacity
             className="absolute left-2.5"
-            onPress={() => { }}>
+          >
             <ChevronLeftIcon color="#616161" size={26} />
           </TouchableOpacity>
 
