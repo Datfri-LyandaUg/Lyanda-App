@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pressable, View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 
-const PrimaryButton = ({ isLoading, handlePress, text, loadingText, Icon , isDisabled }) => {
+const PrimaryButton = ({ isLoading, handlePress, text, loadingText, Icon, isDisabled }) => {
     return (
 
         <Pressable
