@@ -1,4 +1,4 @@
-import { SafeAreaView, Text, View, Pressable } from 'react-native'
+import { SafeAreaView, Text, View, Pressable, Linking } from 'react-native'
 import React from 'react'
 import { ChevronLeftIcon, ChevronRightIcon } from 'react-native-heroicons/solid'
 import CustomSettingButton from '../components/CustomSettingButton'
@@ -8,6 +8,17 @@ import { selectUser } from '../redux/slices/authSlice';
 
 const ProfileScreen = ({ navigation }) => {
   const currentUser = useSelector(selectUser);
+
+  const handleFeedbackPress = () => {
+
+    const email = 'datfriapp@gmail.com';
+    const subject = 'Feedback';
+    const body = 'Type Your Feedback Here..';
+    const url = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    Linking.openURL(url).catch(err => console.error('Error opening email:', err));
+  };
+
   return (
     <SafeAreaView className='bg-white h-full'>
       <View className='flex-row mx-4 mt-4 items-center space-x-6 '>
@@ -60,7 +71,7 @@ const ProfileScreen = ({ navigation }) => {
 
           <CustomSettingButton onPress={() => navigation.navigate('HelpScreen')} title="Help" icon1={<BadgeHelp size={25} color='#808080' />} icon2={<ChevronRightIcon size={18} color='#808080' />} />
 
-          <CustomSettingButton title="Feedback" icon1={<MessagesSquare size={25} color='#808080' />} icon2={<ChevronRightIcon size={18} color='#808080' />} />
+          <CustomSettingButton onPress={handleFeedbackPress} title="Feedback" icon1={<MessagesSquare size={25} color='#808080' />} icon2={<ChevronRightIcon size={18} color='#808080' />} />
 
           <CustomSettingButton onPress={() => navigation.navigate('AboutScreen')} title="About" icon1={<Info size={25} color='#808080' />} icon2={<ChevronRightIcon size={18} color='#808080' />} />
         </View>
