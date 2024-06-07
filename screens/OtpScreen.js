@@ -149,7 +149,7 @@ const OtpScreen = ({ navigation }) => {
 
             <View className="items-center mt-5">
               <TouchableOpacity onPress={handleResendOtp}>
-                <Text className=" text-[#2C7721] font-[600] text-[17px]">
+                <Text className="text-[#2C7721] font-[600] text-[17px]">
                   I did not receive the code
                 </Text>
               </TouchableOpacity>

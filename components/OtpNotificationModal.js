@@ -22,14 +22,15 @@ const OtpNotificationModal = ({ visible, handleClose }) => {
       animationOutTiming={500}
       backdropTransitionInTiming={1000}
       backdropTransitionOutTiming={500}
-      backdropColor="rgba(0,0,0,0.3)"
-      backdropOpacity={1}
+      hasBackdrop={false}
+      coverScreen={true}
+
       style={{
-        justifyContent: '',
+        backgroundColor: 'rgba(0,0,0,0.2)',
         margin: 0,
-        marginBottom: 30,
-        marginTop : 15
+        marginTop: 15
       }}
+      
       className="items-center">
       <View
         style={{

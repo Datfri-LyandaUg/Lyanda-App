@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
-import { ChevronRightIcon, WifiIcon } from 'react-native-heroicons/solid';
+import { ChevronRightIcon } from 'react-native-heroicons/solid';
+import { Wifi,WifiOff } from 'lucide-react-native';
 
 const NotificationBanner = () => {
+
   const [isConnected, setIsConnected] = useState(null);
   const [showOnlineBanner, setShowOnlineBanner] = useState(false);
   const [prevConnection, setPrevConnection] = useState(null);  // Track the previous connection status
@@ -18,7 +20,7 @@ const NotificationBanner = () => {
     // Subscribe to network state changes
     const unsubscribe = NetInfo.addEventListener(state => {
       setIsConnected(state.isConnected);
-      if (state.isConnected && !prevConnection) {  // Only trigger if going from offline to online
+      if (state.isConnected && prevConnection === false) {  // Only trigger if going from offline to online
         triggerOnlineBanner();
       }
       setPrevConnection(state.isConnected);  // Update the previous connection state after handling
@@ -39,7 +41,7 @@ const NotificationBanner = () => {
       <SafeAreaView style={styles.bannerOnline}>
         <View style={[styles.row, styles.justifyBetween, styles.padding]}>
           <View style={[styles.row, styles.spaceX5]}>
-            <WifiIcon color="white" />
+            <Wifi color="white" />
             <Text style={styles.text}>Back Online</Text>
           </View>
           
@@ -47,13 +49,14 @@ const NotificationBanner = () => {
       </SafeAreaView>
     );
   } else if (isConnected === false) {
+
     return (
       <SafeAreaView style={styles.bannerOffline}>
         <View style={[styles.row, styles.justifyBetween, styles.padding]}>
           <View style={[styles.row, styles.spaceX5]}>
-            <WifiIcon color="white" />
+            <WifiOff color="white" />
             <View style={styles.row}>
-              <Text style={styles.text}>No internet connection  </Text>
+              <Text style={styles.text}> No internet. Connect to wi-fi or cellular network.</Text>
           
             </View>
           </View>
