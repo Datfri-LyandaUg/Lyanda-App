@@ -1,4 +1,4 @@
-import { View, Text, Image } from 'react-native';
+import { View, Text } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal';
@@ -19,13 +19,16 @@ const GetStartedModel = ({ visible }) => {
       animationOutTiming={500}
       backdropTransitionInTiming={1000}
       backdropTransitionOutTiming={500}
-      backdropColor="rgba(0,0,0,0.3)"
-      backdropOpacity={1}
+      hasBackdrop= {false}
+      coverScreen ={ true }
+
       style={{
         justifyContent: 'flex-end',
+        backgroundColor: 'rgba(0,0,0,0.2)',
         margin: 0,
-        marginBottom: 20,
+        paddingBottom: 20,
       }}
+
       className="items-center">
       <View
         style={{
@@ -40,8 +43,7 @@ const GetStartedModel = ({ visible }) => {
           alignSelf: 'center',
         }}
         className="rounded-[28px]  items-center pt-14">
-        <View className="flex-row  mx-3 space-x-4  ">
-         
+        <View className="flex-row  mx-3 space-x-4">
 
           <View className="flex items-center justify-center">
             <HandCoins size={40} color='#808080' />
@@ -62,7 +64,7 @@ const GetStartedModel = ({ visible }) => {
         </View>
 
         <View className="flex-row py-4 mx-3 space-x-4 items-center mt-3">
-        
+
           <View className="flex items-center justify-center">
             <Route size={40} color='#808080' />
           </View>

@@ -17,10 +17,11 @@ const SignupLoginOptionScreen = () => {
     setVisible(true);
   }
 
-  const title = 'Get started'
-
   return (
     <SafeAreaView className="bg-[#FFFFFF] h-full w-full flex-1">
+
+      <GetStartedModel visible={visible} />
+
       <View className="mt-36 items-center flex-1">
         <ImageBackground
           source={require('./../assets/image30.png')}
@@ -33,7 +34,7 @@ const SignupLoginOptionScreen = () => {
           </View>
         </ImageBackground>
 
-        <View className="items-center mt-7   ">
+        <View className="items-center mt-7">
           <View className=''>
             <Text className="text-[#242424] font-[600] mb-4 text-[17px]">
               Battery swapping stations at your fingertips
@@ -51,10 +52,8 @@ const SignupLoginOptionScreen = () => {
       </View>
 
       <View className='items-center px-4 mb-7'>
-        <PrimaryButton handlePress={toggleModalVisibility} text={title} />
+        <PrimaryButton handlePress={toggleModalVisibility} text={'Get started'} />
       </View>
-
-      <GetStartedModel visible={visible} />
 
     </SafeAreaView>
   );
