@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Pressable, View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { ThemeContext } from '../utils/ThemeContext';
+import colors from '../config/colors';
 
 const PrimaryButton = ({ isLoading, handlePress, text, loadingText, Icon, isDisabled }) => {
+
+    const { theme } = useContext(ThemeContext);
+
+    const styles = createStyles(theme);
+
     return (
 
         <Pressable
@@ -13,7 +20,7 @@ const PrimaryButton = ({ isLoading, handlePress, text, loadingText, Icon, isDisa
             ]}
         >
 
-            {isLoading ? (
+            { isLoading ? (
                 <View className="flex flex-row items-center space-x-1 justify-center">
                     <View className="flex items-center justify-center">
                         <Text className="mr-2"><ActivityIndicator size="small" color="white" /></Text>
@@ -42,7 +49,8 @@ const PrimaryButton = ({ isLoading, handlePress, text, loadingText, Icon, isDisa
 };
 
 
-const styles = StyleSheet.create({
+const createStyles = (theme) => StyleSheet.create({
+
     button: {
         paddingBottom: 13,
         paddingTop: 13,
@@ -53,12 +61,12 @@ const styles = StyleSheet.create({
         marginTop: 15,
     },
     buttonText: {
-        color: 'white',
+        color: theme === 'light' ? colors.light.primaryButtonText : colors.dark.primaryButtonText,
         fontSize: 17,
         fontWeight: '600',
     },
     disabledText: {
-        color: '#BDBDBD',
+        color: theme === 'light' ? '#BDBDBD' : "#5C5C5C",
         fontSize: 17,
         fontWeight: '600',
     },
@@ -69,8 +77,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#214A19',
     },
     disabled: {
-        backgroundColor: '#F0F0F0',
+        backgroundColor: theme === 'light'? '#F0F0F0': '#4D4D4D',
     },
 });
+
+
 
 export default PrimaryButton;

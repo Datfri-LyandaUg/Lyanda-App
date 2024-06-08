@@ -63,7 +63,6 @@ const AppNav = () => {
     <NavigationContainer>
       {/* {token === null ? <AuthStack /> : <PrivateStack />} */}
       {/* <LoginScreen/> */}
-      {/* <DeleteAccountScreen/> */}
       {/* <BikeManufactureDetailsScreen/> */}
       {/* <NotificationScreen/> */}
       {/* <TermsAndConditions/> */}
@@ -74,9 +73,9 @@ const AppNav = () => {
       {/* <BikePlateDetailsScreen/> */}
       {/* <ProfileScreen /> */}
       {/* <ProfileUser /> */}
-      {/* <BikeProfileScreen /> */}
+      <BikeProfileScreen />
       {/* <DeleteAccountScreen /> */}
-      <HelpScreen />
+      {/* <HelpScreen /> */}
       {/* <AboutScreen /> */}
       {/* <PolicyScreen /> */}
       {/* <FaqScreen /> */}
