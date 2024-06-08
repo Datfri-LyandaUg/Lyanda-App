@@ -1,12 +1,17 @@
 import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
 import { PermissionsAndroid, Platform, Linking } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import { ChevronLeftIcon } from 'react-native-heroicons/solid';
-import { ListTodo, Mailbox , MessagesSquare } from 'lucide-react-native';
+import { ListTodo, Mailbox, MessagesSquare } from 'lucide-react-native';
 import SecondaryButton from '../components/SecondaryButton';
 import PrimaryButton from '../components/PrimaryButton';
+import { ThemeContext } from '../utils/ThemeContext';
+import colors from '../config/colors';
 
 const NotificationScreen = ({ navigation }) => {
+
+  const { theme } = useContext(ThemeContext);
+
   async function enableNotificationAccess() {
     if (Platform.OS === 'android') {
       const granted = await PermissionsAndroid.request(
@@ -24,34 +29,62 @@ const NotificationScreen = ({ navigation }) => {
     }
   }
   return (
-    <SafeAreaView className="relative flex-1 bg-white">
+    <SafeAreaView
+      style={{
+        backgroundColor: theme === 'light' ? colors.light.background : colors.dark.background
+      }}
+      className="relative flex-1">
       <View className="flex-1">
-        <View className="flex-row items-center mt-7 relative mb-2  justify-center">
+        <View
+          style={{
+            backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
+          }}
+          className="flex-row items-center py-4 relative   justify-center">
           <TouchableOpacity
             className="absolute  left-2.5 w-10"
             onPress={() => navigation.goBack()}>
-            <ChevronLeftIcon color="#616161" size={26} />
+            <ChevronLeftIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={26} />
           </TouchableOpacity>
 
-          <Text className="text-[#242424] text-[17px] font-[600]">
+          <Text
+            style={{
+              color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+            }}
+            className="text-[17px] font-[600]">
             Notification access
           </Text>
         </View>
-        <View className="border-[#E0E0E0] border-[0.5px] mt-2 "></View>
+
+        {theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
 
         <View className=" mt-7 mx-4">
-          <Text className="font-[700] text-[28px] text-[#242424] mb-1 ">
+          <Text
+            style={{
+              color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+            }}
+            className="font-[700] text-[28px] mb-1 ">
             Lets set up your
           </Text>
 
-          <Text className="font-[700] text-[28px] text-[#242424] mb-3 ">
+          <Text
+            style={{
+              color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+            }} className="font-[700] text-[28px] mb-3 ">
             notifications.
           </Text>
         </View>
-        <Text className=" font-[400] text-[17px] text-[#242424] mx-4">
+        <Text
+          style={{
+            color: theme === 'light' ? colors.light.text : colors.dark.text
+          }}
+          className=" font-[400] text-[17px] mx-4">
           You can modify and turn off individual
         </Text>
-        <Text className=" font-[400] text-[17px] text-[#242424] mx-4">
+        <Text
+          style={{
+            color: theme === 'light' ? colors.light.text : colors.dark.text
+          }}
+          className=" font-[400] text-[17px] mx-4">
           notifications at anytime in the Settings.
         </Text>
 
@@ -62,16 +95,28 @@ const NotificationScreen = ({ navigation }) => {
             <View className='items-center justify-center mt-8'>
               <View className='space-y-8'>
                 <View className='flex-row items-center space-x-4 '>
-                  <ListTodo  size={33} color="#808080" className='ml-2' />
+                  <ListTodo size={33} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} className='ml-2' />
                   <View
                   >
-                    <Text className="font-[400] text-[17px]  text-[#242424]">
+                    <Text
+                      style={{
+                        color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+                      }}
+                      className="font-[400] text-[17px] ">
                       Order status
                     </Text>
-                    <Text className="font-[400] text-[13px] text-[#616161]">
+                    <Text
+                      style={{
+                        color: theme === 'light' ? colors.light.text : colors.dark.text
+                      }}
+                      className="font-[400] text-[13px] ">
                       Never miss an update! Receive notifications{' '}
                     </Text>
-                    <Text className="font-[400] text-[13px] text-[#616161]">
+                    <Text
+                      style={{
+                        color: theme === 'light' ? colors.light.text : colors.dark.text
+                      }}
+                      className="font-[400] text-[13px] ">
                       about your fuel delivery.
                     </Text>
                   </View>
@@ -80,18 +125,34 @@ const NotificationScreen = ({ navigation }) => {
 
                 <View className='items-center justify-center '>
                   <View className='flex-row items-center space-x-4 '>
-                    <Mailbox size={33} color="#808080" />
+                    <Mailbox size={33} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
                     <View>
-                      <Text className="font-[400] text-[17px]  text-[#242424]">
+                      <Text
+                        style={{
+                          color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+                        }}
+                        className="font-[400] text-[17px] ">
                         Announcements and offers
                       </Text>
-                      <Text className="font-[400] text-[13px] text-[#616161]">
+                      <Text
+                        style={{
+                          color: theme === 'light' ? colors.light.text : colors.dark.text
+                        }}
+                        className="font-[400] text-[13px] ">
                         Never miss a new release, grab limited-time deals,
                       </Text>
-                      <Text className="font-[400] text-[13px] text-[#616161]">
+                      <Text
+                        style={{
+                          color: theme === 'light' ? colors.light.text : colors.dark.text
+                        }}
+                        className="font-[400] text-[13px] ">
                         and be the first to know about exclusive
                       </Text>
-                      <Text className="font-[400] text-[13px] text-[#616161]">
+                      <Text
+                        style={{
+                          color: theme === 'light' ? colors.light.text : colors.dark.text
+                        }}
+                        className="font-[400] text-[13px] ">
                         events.
                       </Text>
                     </View>
@@ -102,16 +163,28 @@ const NotificationScreen = ({ navigation }) => {
 
 
                 <View className='flex-row items-center space-x-4 '>
-                  <MessagesSquare size={33} color="#808080" />
-                  <View className='f'>
-                    <Text className="font-[400] text-[17px]  text-[#242424]">
+                  <MessagesSquare size={33} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
+                  <View className=''>
+                    <Text
+                      style={{
+                        color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+                      }}
+                      className="font-[400] text-[17px] ">
                       Feedback
                     </Text>
-                    <Text className="font-[400] text-[13px] text-[#616161]">
+                    <Text
+                      style={{
+                        color: theme === 'light' ? colors.light.text : colors.dark.text
+                      }}
+                      className="font-[400] text-[13px] ">
                       Get notified about bug fixes, feature additions
 
                     </Text>
-                    <Text className="font-[400] text-[13px] text-[#616161]">
+                    <Text
+                      style={{
+                        color: theme === 'light' ? colors.light.text : colors.dark.text
+                      }}
+                      className="font-[400] text-[13px] ">
                       and more. Be the first to know.
                     </Text>
                   </View>
