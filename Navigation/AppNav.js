@@ -72,8 +72,8 @@ const AppNav = () => {
       {/* <BikeCapacityDetailsScreen/> */}
       {/* <BikePlateDetailsScreen/> */}
       {/* <ProfileScreen /> */}
-      {/* <ProfileUser /> */}
-      <BikeProfileScreen />
+      <ProfileUser />
+      {/* <BikeProfileScreen /> */}
       {/* <DeleteAccountScreen /> */}
       {/* <HelpScreen /> */}
       {/* <AboutScreen /> */}
