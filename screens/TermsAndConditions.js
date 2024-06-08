@@ -4,14 +4,18 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
   ChevronLeftIcon,
 } from 'react-native-heroicons/solid';
 import PrimaryButton from '../components/PrimaryButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ThemeContext } from '../utils/ThemeContext';
+import colors from '../config/colors';
 
 const TermsAndConditions = ({ navigation }) => {
+
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
 
@@ -19,13 +23,13 @@ const TermsAndConditions = ({ navigation }) => {
       try {
         const isCheckedTermsAndConditions = await AsyncStorage.getItem('isCheckedTermsAndConditions');
         if (isCheckedTermsAndConditions === null) {
-           // This is the first launch.
+          // This is the first launch.
           await AsyncStorage.setItem('isCheckedTermsAndConditions', 'true');
           const timer = setTimeout(() => {
-             //
+            //
           }, 1000);
           return () => clearTimeout(timer);
-         
+
         } else {
           // Already Checked Terms And Conditions.
           navigation.navigate('Home');
@@ -41,24 +45,40 @@ const TermsAndConditions = ({ navigation }) => {
 
 
   return (
-    <SafeAreaView className="relative flex-1 bg-white">
+    <SafeAreaView
+      style={{
+        backgroundColor: theme === 'light' ? colors.light.background : colors.dark.background
+      }}
+      className="relative flex-1">
       <View className="flex-1">
-        <View className="flex-row items-center mt-7  mb-2 justify-center relative ">
+        <View
+          style={{
+            backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
+          }}
+          className="flex-row items-center py-4 justify-center relative ">
           <TouchableOpacity
             className="absolute left-2.5 w-10"
           >
-            <ChevronLeftIcon color="#616161" size={26} />
+            <ChevronLeftIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={26} />
           </TouchableOpacity>
 
-          <Text className="text-[#242424] text-[17px] font-[600]">
+          <Text
+            style={{
+              color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+            }}
+            className="text-[17px] font-[600]">
             Terms and privacy policy
           </Text>
         </View>
 
-        <View className="border-[#E0E0E0] border-[0.5px] mt-2 "></View>
+        { theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px] mt-2 " />)}
 
         <View className=" mt-7 mx-4">
-          <Text className="font-[400] text-[17px] text-[#242424] mb-6 ">
+          <Text
+            style={{
+              color: theme === 'light' ? colors.light.text : colors.dark.text
+            }}
+            className="font-[400] text-[17px] mb-6 ">
             By selecting "I understand" below, i agree to the
           </Text>
 
@@ -66,7 +86,11 @@ const TermsAndConditions = ({ navigation }) => {
             <Text className="text-[#25591C] text-[17px] font-[400] mr-2  border-b-2 border-[#25591C]">
               Terms of use
             </Text>
-            <Text className="font-[400] text-[17px] text-[#242424]">
+            <Text
+              style={{
+                color: theme === 'light' ? colors.light.text : colors.dark.text
+              }}
+              className="font-[400] text-[17px]">
               and acknowledge the
             </Text>
           </View>

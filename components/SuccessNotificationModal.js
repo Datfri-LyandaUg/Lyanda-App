@@ -1,10 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import Modal from 'react-native-modal';
 import { CheckIcon, XMarkIcon } from 'react-native-heroicons/solid';
+import { ThemeContext } from '../utils/ThemeContext';
+import colors from '../config/colors';
 
 
 const SuccessNotificationModal = ({ open, handleClose, successMessage }) => {
+
+    const { theme } = useContext(ThemeContext);
 
     useEffect(() => {
         setTimeout(() => {
@@ -23,21 +27,22 @@ const SuccessNotificationModal = ({ open, handleClose, successMessage }) => {
             animationOutTiming={500}
             backdropTransitionInTiming={1000}
             backdropTransitionOutTiming={500}
-            hasBackdrop= {false}
-            coverScreen ={ true }
+            hasBackdrop={false}
+            coverScreen={true}
 
             style={{
+                justifyContent: 'flex-start',
                 backgroundColor: 'rgba(0,0,0,0.2)',
                 margin: 0,
                 marginTop: 15
             }}
-            
+
             className="items-center">
             <View
                 style={{
-                    backgroundColor: 'white',
+                    backgroundColor: theme === 'light' ? colors.light.background : colors.dark.background,
                     height: 50,
-                    width: 311,
+                    width: "90%",
                     alignItems: "center",
                     justifyContent: "center",
                     shadowColor: '#000',
@@ -50,18 +55,22 @@ const SuccessNotificationModal = ({ open, handleClose, successMessage }) => {
                 className="rounded-[12px] items-center">
                 <View className="flex-row  space-x-2 items-center justify-between  w-full  py-2 px-4">
                     <TouchableOpacity className="flex items-center justify-center bg-green-400 w-5 h-5 rounded-full">
-                        <CheckIcon color="white" size={10} />
+                        <CheckIcon color='white' size={10} />
                     </TouchableOpacity>
 
                     <View className="items-center">
-                        <Text className="text-[#242424] text-center text-[15px] font-[400]">
+                        <Text
+                            style={{
+                                color: theme === 'light' ? colors.light.text : colors.dark.text
+                            }}
+                            className="text-center text-[15px] font-[400]">
                             {successMessage}
                         </Text>
 
                     </View>
 
                     <TouchableOpacity onPress={handleClose}>
-                        <XMarkIcon color="#242424" size={20} />
+                        <XMarkIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={20} />
                     </TouchableOpacity>
                 </View>
             </View>

@@ -5,8 +5,8 @@ export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
     const systemColorScheme = useColorScheme();
-    // const [theme, setTheme] = useState(systemColorScheme);
-    const [theme, setTheme] = useState('dark');
+    const [theme, setTheme] = useState(systemColorScheme);
+    
 
     useEffect(() => {
       if (theme === 'system') {
@@ -15,7 +15,6 @@ export const ThemeProvider = ({ children }) => {
     }, [systemColorScheme, theme]);
   
     const toggleTheme = (selectedTheme) => {
-      console.log("Toggling theme to:", selectedTheme);  // Add this line
       if (selectedTheme === 'system') {
         setTheme(systemColorScheme);
       } else {

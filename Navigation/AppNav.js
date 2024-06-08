@@ -61,15 +61,12 @@ const AppNav = () => {
 
   return (
     <NavigationContainer>
-      {/* {token === null ? <AuthStack /> : <PrivateStack />} */}
+      {token === null ? <AuthStack /> : <PrivateStack />}
       {/* <LoginScreen/> */}
-      
-      {/* <TermsAndConditions/> */}
-     
       {/* <OtpScreen/> */}
       {/* <SignupLoginOptionScreen/> */}
-       
-      <NotificationScreen/>
+      {/* <TermsAndConditions/> */}
+      {/* <NotificationScreen/> */}
       {/* <LocationScreen/> */}
       {/* <ProfileScreen /> */}
       {/* <BikeManufactureDetailsScreen/> */}

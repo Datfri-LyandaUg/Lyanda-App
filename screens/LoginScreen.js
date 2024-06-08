@@ -5,7 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   ChevronLeftIcon,
 } from 'react-native-heroicons/solid';
@@ -15,6 +15,8 @@ import { useMutation } from 'react-query';
 import { registerUser } from '../services/userService';
 import { ErrorMessage } from '../components/forms';
 import PrimaryButton from '../components/PrimaryButton';
+import { ThemeContext } from '../utils/ThemeContext';
+import colors from '../config/colors';
 
 const validationSchema = Yup.object().shape({
   phoneNumber: Yup.string().required('Enter a valid phone number to continue.').label('PhoneNumber'),
@@ -22,6 +24,7 @@ const validationSchema = Yup.object().shape({
 
 const LoginScreen = ({ navigation }) => {
 
+  const { theme } = useContext(ThemeContext);
   const [currentContact, setCurrentContact] = useState("");
   const signUpMutation = useMutation((signUpParameters) =>
     registerUser(signUpParameters)
@@ -61,12 +64,24 @@ const LoginScreen = ({ navigation }) => {
 
 
   return (
-    <SafeAreaView className=" bg-white h-full ">
-      <TouchableOpacity
-        className="mb-5 mt-4 mx-2.5 bg"
-        onPress={() => navigation.goBack()}>
-        <ChevronLeftIcon color="#616161" size={26} />
-      </TouchableOpacity>
+    <SafeAreaView
+      style={{
+        backgroundColor: theme === 'light' ? colors.light.background : colors.dark.background
+      }}
+      className="h-full">
+
+      <View
+        style={{
+          backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
+        }}
+
+        className="py-4">
+        <TouchableOpacity
+          className="mx-2.5 w-10"
+          onPress={() => navigation.goBack()}>
+          <ChevronLeftIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={26} />
+        </TouchableOpacity>
+      </View>
 
 
       <Formik
@@ -78,14 +93,22 @@ const LoginScreen = ({ navigation }) => {
 
           <>
 
-            <View className="border-[#E0E0E0] border-[0.5px]"></View>
+            { theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
 
             <View className="items-center mt-7">
-              <Text className="font-[400] text-[17px] text-[#242424] mb-7">
+              <Text
+                style={{
+                  color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+                }}
+                className="font-[400] text-[17px] mb-7">
                 Enter your phone number
               </Text>
               <View className="w-[375] h-[48] px-4">
-                <Text className="text-[#616161]  text-[12px] font-[400]">
+                <Text
+                  style={{
+                    color: theme === 'light' ? colors.light.text : colors.dark.text
+                  }}
+                  className="text-[12px] font-[400]">
                   Phone number
                 </Text>
 
@@ -94,6 +117,9 @@ const LoginScreen = ({ navigation }) => {
                   onChangeText={handleChange('phoneNumber')}
                   placeholderTextColor="#616161"
                   className="w-52"
+                  style={{
+                    color: theme === 'light' ? colors.light.text : colors.dark.text
+                  }}
                 />
 
               </View>

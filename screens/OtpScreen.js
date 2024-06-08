@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -22,6 +22,9 @@ import ErrorNotificationModal from '../components/ErrorNotificationModal';
 import { ErrorMessage } from '../components/forms';
 import PrimaryButton from '../components/PrimaryButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ThemeContext } from '../utils/ThemeContext';
+import colors from '../config/colors';
+
 
 const validationSchema = Yup.object().shape({
   otp: Yup.string().min(6).max(6).required('Enter a valid OTP to continue.').label('Otp'),
@@ -32,6 +35,7 @@ const OtpScreen = ({ navigation }) => {
 
   const route = useRoute();
   const userData = route.params;
+  const { theme } = useContext(ThemeContext);
   const [visible, setVisible] = useState(false);
   const [errorDetails, setErrorDetails] = useState("");
   const [showErrorNotification, setShowErrorNotification] = useState(false);
@@ -98,13 +102,26 @@ const OtpScreen = ({ navigation }) => {
 
 
   return (
-    <SafeAreaView className="">
-      <TouchableOpacity
-        className="mt-7 mx-3"
-        onPress={() => navigation.goBack()}>
-        <ChevronLeftIcon color="#616161" size={26} />
-      </TouchableOpacity>
-      <View className="border-[#E0E0E0] border-[0.5px] mt-2 flex-1"></View>
+    <SafeAreaView
+      style={{
+        backgroundColor: theme === 'light' ? colors.light.background : colors.dark.background
+      }}
+      className="h-full">
+
+      <View
+        style={{
+          backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
+        }}
+
+        className="py-4">
+        <TouchableOpacity
+          className="mx-2.5 w-10"
+          onPress={() => navigation.goBack()}>
+          <ChevronLeftIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={26} />
+        </TouchableOpacity>
+      </View>
+
+      {theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
 
 
       <Formik
@@ -116,26 +133,42 @@ const OtpScreen = ({ navigation }) => {
 
           <>
             <View className="items-center mt-7">
-              <Text className="font-[400] text-[17px] text-[#242424] ">
+              <Text
+                style={{
+                  color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+                }}
+                className="font-[400] text-[17px]">
                 Enter the 6-digit code from your text message
               </Text>
-              <Text className="font-[400] text-[17px] text-[#242424]  mb-7">
+              <Text
+                style={{
+                  color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+                }}
+                className="font-[400] text-[17px] mb-7">
                 to verify your account
               </Text>
               <View className="w-[375] h-[48] px-4">
-                <Text className="text-[#616161]  text-[12px] font-[400]">OTP</Text>
+                <Text
+                  style={{
+                    color: theme === 'light' ? colors.light.text : colors.dark.text
+                  }}
+                  className="text-[12px] font-[400]">OTP</Text>
                 <TextInput
-                  placeholder="Enter code here "
+                  placeholder="Enter code here"
                   onChangeText={handleChange('otp')}
                   placeholderTextColor="#616161"
                   className="w-52"
                   keyboardType='numeric'
+                  style={{
+                    color: theme === 'light' ? colors.light.text : colors.dark.text
+                }}
                 />
               </View>
             </View>
+
             <View className="pl-3">
 
-              <View className="border-[#E0E0E0] border-[0.5px] px-3 w-80 mt-2 my-2"></View>
+              <View className="border-[#E0E0E0] border-[0.5px] px-3 w-80 mt-2 my-2"/>
 
               <ErrorMessage error={errors['otp']} visible={touched['otp']} />
 
