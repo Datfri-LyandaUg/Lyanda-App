@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   View,
   Text,
@@ -8,9 +8,13 @@ import {
 } from 'react-native';
 import GetStartedModel from '../components/GetStartedModel';
 import PrimaryButton from '../components/PrimaryButton';
+import { ThemeContext } from '../utils/ThemeContext';
+import colors from '../config/colors';
 
 const SignupLoginOptionScreen = () => {
 
+
+  const { theme } = useContext(ThemeContext);
   const [visible, setVisible] = useState(false);
 
   const toggleModalVisibility = () => {
@@ -18,7 +22,11 @@ const SignupLoginOptionScreen = () => {
   }
 
   return (
-    <SafeAreaView className="bg-[#FFFFFF] h-full w-full flex-1">
+    <SafeAreaView
+      style={{
+        backgroundColor: theme === 'light' ? colors.light.background : colors.dark.background
+      }}
+      className="h-full w-full flex-1">
 
       <GetStartedModel visible={visible} />
 
@@ -28,7 +36,11 @@ const SignupLoginOptionScreen = () => {
           className="h-[337px] w-[327px]  relative  justify-end  items-center "
           resizeMode="cover">
           <View style={styles.shadow}>
-            <Text className="text-[#242424] text-[34px] font-[700] bottom-96 items-center">
+            <Text
+              style={{
+                color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+              }}
+              className="text-[34px] font-[700] bottom-96 items-center">
               Lyanda
             </Text>
           </View>
@@ -36,12 +48,20 @@ const SignupLoginOptionScreen = () => {
 
         <View className="items-center mt-7">
           <View className=''>
-            <Text className="text-[#242424] font-[600] mb-4 text-[17px]">
+            <Text
+              style={{
+                color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+              }}
+              className="text-[#242424] font-[600] mb-4 text-[17px]">
               Battery swapping stations at your fingertips
             </Text>
 
           </View>
-          <Text className="text-[#616161]  text-[15px] font-[400]  ">
+          <Text
+            style={{
+              color: theme === 'light' ? colors.light.text : colors.dark.text
+            }}
+            className="text-[15px] font-[400]  ">
             The super app for electric bike owners
           </Text>
 

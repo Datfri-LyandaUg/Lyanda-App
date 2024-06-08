@@ -6,6 +6,7 @@ import AppNav from './Navigation/AppNav';
 import NotificationBanner from './components/NotificationBanner';
 import { StyleSheet, SafeAreaView } from 'react-native';
 import { ThemeContext, ThemeProvider } from './utils/ThemeContext';
+import colors from './config/colors';
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => {
 };
 
 const ThemedApp = () => {
+
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -38,10 +40,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   lightContainer: {
-    backgroundColor: 'white',
+    backgroundColor: colors.light.background,
   },
   darkContainer: {
-    backgroundColor: 'black',
+    backgroundColor: colors.dark.background,
   },
 });
 

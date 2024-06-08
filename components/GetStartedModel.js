@@ -1,15 +1,21 @@
 import { View, Text } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal';
 import PrimaryButton from './PrimaryButton';
 import { HandCoins, Route } from 'lucide-react-native';
+import { ThemeContext } from '../utils/ThemeContext';
+import colors from '../config/colors';
 
 const GetStartedModel = ({ visible }) => {
+
+  const { theme } = useContext(ThemeContext);
+
   const navigation = useNavigation();
   const handleNextNavigation = () => {
     navigation.navigate('Login');
   };
+
   return (
     <Modal
       isVisible={visible}
@@ -19,8 +25,8 @@ const GetStartedModel = ({ visible }) => {
       animationOutTiming={500}
       backdropTransitionInTiming={1000}
       backdropTransitionOutTiming={500}
-      hasBackdrop= {false}
-      coverScreen ={ true }
+      hasBackdrop={false}
+      coverScreen={true}
 
       style={{
         justifyContent: 'flex-end',
@@ -32,7 +38,7 @@ const GetStartedModel = ({ visible }) => {
       className="items-center">
       <View
         style={{
-          backgroundColor: 'white',
+          backgroundColor: theme === 'light' ? colors.light.background : colors.dark.background,
           height: '40%', // Adjusted for assumed screen height of 667px
           width: '92.8%',
           shadowColor: '#000',
@@ -46,17 +52,29 @@ const GetStartedModel = ({ visible }) => {
         <View className="flex-row  mx-3 space-x-4">
 
           <View className="flex items-center justify-center">
-            <HandCoins size={40} color='#808080' />
+            <HandCoins size={40} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
           </View>
 
           <View>
-            <Text className="font-[400] text-[17px] text-[#242424]">
+            <Text
+              style={{
+                color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+              }}
+              className="font-[400] text-[17px] ">
               Track your loans and payments
             </Text>
-            <Text className="text-[13px]  font-[400] text-[#616161]">
+            <Text
+              style={{
+                color: theme === 'light' ? colors.light.text : colors.dark.text
+              }}
+              className="text-[13px]  font-[400] ">
               Efficiently pay for your bike’s loan and
             </Text>
-            <Text className="font-[400] text-[#616161]">
+            <Text
+              style={{
+                color: theme === 'light' ? colors.light.text : colors.dark.text
+              }}
+              className="font-[400] ">
               have a smoother workflow.
             </Text>
           </View>
@@ -66,17 +84,29 @@ const GetStartedModel = ({ visible }) => {
         <View className="flex-row py-4 mx-3 space-x-4 items-center mt-3">
 
           <View className="flex items-center justify-center">
-            <Route size={40} color='#808080' />
+            <Route size={40} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
           </View>
 
           <View>
-            <Text className="font-[400] text-[17px] text-[#242424]">
+            <Text
+              style={{
+                color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+              }}
+              className="font-[400] text-[17px] ">
               Get optimized routes
             </Text>
-            <Text className="text-[13px]  font-[400] text-[#616161]">
+            <Text
+              style={{
+                color: theme === 'light' ? colors.light.text : colors.dark.text
+              }}
+              className="text-[13px]  font-[400] ">
               Get to the swapping stations 2X faster
             </Text>
-            <Text className="font-[400] text-[#616161]">
+            <Text
+              style={{
+                color: theme === 'light' ? colors.light.text : colors.dark.text
+              }}
+              className="font-[400] ">
               with our route optimization technology.
             </Text>
           </View>

@@ -60,19 +60,37 @@ const AppNav = () => {
 
 
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      // Persisting the Navigation State ...
+      persistNavigationState={ async (state) => {
+        try {
+          await AsyncStorage.setItem('NAVIGATION_STATE', JSON.stringify(state));
+        } catch (error) {
+          console.error('Error persisting navigation state:', error);
+        }
+      }}
+
+      // Loading the Stored Navigation state ...
+      loadNavigationState={async () => {
+        try {
+          const savedState = await AsyncStorage.getItem('NAVIGATION_STATE');
+          return savedState ? JSON.parse(savedState) : undefined;
+        } catch (error) {
+          console.error('Error loading navigation state:', error);
+        }
+      }}
+    >
       {token === null ? <AuthStack /> : <PrivateStack />}
       {/* <LoginScreen/> */}
-      {/* <DeleteAccountScreen/> */}
-      {/* <BikeManufactureDetailsScreen/> */}
-      {/* <NotificationScreen/> */}
-      {/* <TermsAndConditions/> */}
-      {/* <LocationScreen/> */}
       {/* <OtpScreen/> */}
       {/* <SignupLoginOptionScreen/> */}
+      {/* <TermsAndConditions/> */}
+      {/* <NotificationScreen/> */}
+      {/* <LocationScreen/> */}
+      {/* <ProfileScreen /> */}
+      {/* <BikeManufactureDetailsScreen/> */}
       {/* <BikeCapacityDetailsScreen/> */}
       {/* <BikePlateDetailsScreen/> */}
-      {/* <ProfileScreen /> */}
       {/* <ProfileUser /> */}
       {/* <BikeProfileScreen /> */}
       {/* <DeleteAccountScreen /> */}
@@ -83,7 +101,6 @@ const AppNav = () => {
       {/* <AppearanceScreen /> */}
       {/* <NotificationSettingsScreen /> */}
       {/* <LocationSettingsScreen/> */}
-      {/* <PrivateStack /> */}
     </NavigationContainer>
   );
 };

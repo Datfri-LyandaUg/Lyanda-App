@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
     SafeAreaView,
     Text,
@@ -21,6 +21,8 @@ import { selectUser, setToken, setUserData } from '../redux/slices/authSlice';
 import ErrorNotificationModal from '../components/ErrorNotificationModal';
 import SuccessNotificationModal from '../components/SuccessNotificationModal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ThemeContext } from '../utils/ThemeContext';
+import colors from '../config/colors';
 
 const validationSchema = Yup.object().shape({
     bikeManufacturer: Yup.string().required('Enter the Manufacturer of your bike.').label('bikeManufacturer'),
@@ -30,6 +32,7 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
 
     const currentUser = useSelector(selectUser);
     const dispatch = useDispatch();
+    const { theme } = useContext(ThemeContext);
     const [errorDetails, setErrorDetails] = useState("");
     const [showErrorNotification, setShowErrorNotification] = useState(false);
     const [successDetails, setSuccessDetails] = useState("");
@@ -51,7 +54,7 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
     const handleManufacturesUpdate = async (values) => {
 
         try {
-            const { data : token } = await updateBikeManufactureMutation.mutateAsync(values);
+            const { data: token } = await updateBikeManufactureMutation.mutateAsync(values);
             await AsyncStorage.setItem('currentUserToken', token);
             const decodedToken = jwt_decode(token);
             dispatch(setToken(token));
@@ -73,16 +76,28 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
     }, [updateBikeManufactureMutation.isSuccess]);
 
     return (
-        <SafeAreaView className=" bg-white h-full">
+        <SafeAreaView
+            style={{
+                backgroundColor: theme === 'light' ? colors.light.background : colors.dark.background
+            }}
+            className="h-full">
 
-            <View className="flex-row items-center mt-7 relative mb-2  justify-center">
+            <View
+                style={{
+                    backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
+                }}
+                className="flex-row items-center py-4 relative justify-center">
                 <TouchableOpacity
                     className="absolute  left-2.5 w-10"
                     onPress={() => navigation.goBack()}>
-                    <ChevronLeftIcon color="#616161" size={20} />
+                    <ChevronLeftIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={20} />
                 </TouchableOpacity>
 
-                <Text className="text-[#242424] text-[17px] font-[600]">
+                <Text
+                    style={{
+                        color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+                    }}
+                    className=" text-[17px] font-[600]">
                     Bike manufacturer
                 </Text>
             </View>
@@ -96,10 +111,14 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
                 {({ handleChange, handleSubmit, errors, touched, values }) => (
 
                     <>
-                        <View className="border-[#E0E0E0] border-[0.5px]"></View>
+                        { theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
 
                         <View className="items-center mt-7">
-                            <Text className="font-[400] text-[17px] text-[#242424] mb-7">
+                            <Text
+                                style={{
+                                    color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+                                }}
+                                className="font-[400] text-[17px]  mb-7">
                                 What brand is your bike?
                             </Text>
                             <View className="w-[375] h-[48] px-4">
@@ -109,6 +128,9 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
                                     onChangeText={handleChange('bikeManufacturer')}
                                     placeholderTextColor="#616161"
                                     className="w-52"
+                                    style={{
+                                        color: theme === 'light' ? colors.light.text : colors.dark.text
+                                    }}
                                 />
 
                             </View>

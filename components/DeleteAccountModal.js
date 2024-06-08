@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, Text, Pressable, StyleSheet, ActivityIndicator } from 'react-native';
 import Modal from 'react-native-modal';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,11 +6,16 @@ import { logout, selectUser } from '../redux/slices/authSlice';
 import { deleteAccount } from '../services/userService';
 import { useMutation } from 'react-query';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ThemeContext } from '../utils/ThemeContext';
+import colors from '../config/colors';
 
-const DeleteAccountModal = ({ visible, navigation, toggleModalVisibility }) => {
+const DeleteAccountModal = ({ visible, toggleModalVisibility }) => {
 
   const currentUser = useSelector(selectUser);
+  const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
+
+  const styles = createStyles(theme);
 
   const deleteAccountMutation = useMutation(() =>
     deleteAccount(currentUser?._id)
@@ -51,7 +56,7 @@ const DeleteAccountModal = ({ visible, navigation, toggleModalVisibility }) => {
       className="items-center">
       <View
         style={{
-          backgroundColor: 'white',
+          backgroundColor: theme === 'light' ? colors.light.background : colors.dark.background,
           height: '35%', // Adjusted for assumed screen height of 667px
           width: '100%',
           shadowColor: '#000',
@@ -61,13 +66,21 @@ const DeleteAccountModal = ({ visible, navigation, toggleModalVisibility }) => {
           elevation: 28,
           alignSelf: 'center',
         }}
-        className="rounded-t-[30px]  items-center pt-6">
+        className="rounded-t-[30px] items-center pt-6">
 
-        <Text className='text-[18px]  font-[600] text-[#242424]'>
+        <Text
+          style={{
+            color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+          }}
+          className='text-[18px]  font-[600]'>
           Warning!
         </Text>
 
-        <Text className='mx-3 text-[13px] text-[#242424] font-[400] mt-5 mb-'>
+        <Text
+          style={{
+            color: theme === 'light' ? colors.light.text : colors.dark.text
+          }}
+          className='mx-3 text-[13px] font-[400] mt-5'>
           Deleting your account will permanently erase all your data and activity from the app. This action cannot be undone.
         </Text>
 
@@ -95,7 +108,11 @@ const DeleteAccountModal = ({ visible, navigation, toggleModalVisibility }) => {
           </Pressable>
 
           <Pressable className='mt-7' onPress={toggleModalVisibility}>
-            <Text className='text-[#242424] text-[17px] font-[600]'>
+            <Text
+              style={{
+                color: theme === 'light' ? colors.light.text : colors.dark.text
+              }}
+              className='text-[17px] font-[600]'>
               Cancel
             </Text>
           </Pressable>
@@ -107,7 +124,7 @@ const DeleteAccountModal = ({ visible, navigation, toggleModalVisibility }) => {
 }
 
 
-const styles = StyleSheet.create({
+const createStyles = (theme) => StyleSheet.create({
   button: {
     backgroundColor: '#C50F1F',
     paddingBottom: 13,
@@ -119,7 +136,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   buttonText: {
-    color: 'white',
+    color: theme === 'light' ? colors.light.primaryButtonText : colors.dark.primaryButtonText,
     fontSize: 17,
     fontWeight: '600',
   },

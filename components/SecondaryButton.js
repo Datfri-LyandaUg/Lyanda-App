@@ -12,10 +12,8 @@ const SecondaryButton = ({ title, handleOnPress }) => {
   )
 }
 
-
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: 'white',
     paddingBottom: 13,
     paddingTop: 13,
     justifyContent: 'center',

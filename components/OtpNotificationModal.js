@@ -1,9 +1,13 @@
 import { View, Text, TouchableOpacity } from 'react-native';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Modal from 'react-native-modal';
 import { CheckIcon, XMarkIcon } from 'react-native-heroicons/solid';
+import { ThemeContext } from '../utils/ThemeContext';
+import colors from '../config/colors';
 
 const OtpNotificationModal = ({ visible, handleClose }) => {
+
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     setTimeout(() => {
@@ -26,17 +30,18 @@ const OtpNotificationModal = ({ visible, handleClose }) => {
       coverScreen={true}
 
       style={{
+        justifyContent: 'flex-start',
         backgroundColor: 'rgba(0,0,0,0.2)',
         margin: 0,
         marginTop: 15
       }}
-      
+
       className="items-center">
       <View
         style={{
-          backgroundColor: 'white',
+          backgroundColor: theme === 'light' ? colors.light.background : colors.dark.background,
           height: 55,
-          width: 311,
+          width: "90%",
           shadowColor: '#000',
           shadowOffset: { width: 0, height: 10 },
           shadowOpacity: 0.8,
@@ -47,20 +52,28 @@ const OtpNotificationModal = ({ visible, handleClose }) => {
         className="rounded-[12px] items-center  pb-3">
         <View className="flex-row  space-x-2 items-center py-2 px-4">
           <TouchableOpacity>
-            <CheckIcon color="#616161" size={20} />
+            <CheckIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={20} />
           </TouchableOpacity>
 
           <View className="items-center">
-            <Text className="text-[#242424] text-[15px] font-[400]">
+            <Text
+              style={{
+                color: theme === 'light' ? colors.light.text : colors.dark.text
+              }}
+              className="text-[15px] font-[400]">
               A new OTP code has been sent to
             </Text>
-            <Text className="text-[#242424] text-[15px] font-[400]">
+            <Text
+              style={{
+                color: theme === 'light' ? colors.light.text : colors.dark.text
+              }}
+              className="text-[15px] font-[400]">
               your number
             </Text>
           </View>
 
           <TouchableOpacity onPress={handleClose}>
-            <XMarkIcon color="#242424" size={20} />
+            <XMarkIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={20} />
           </TouchableOpacity>
         </View>
       </View>
