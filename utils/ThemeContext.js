@@ -5,7 +5,8 @@ export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
     const systemColorScheme = useColorScheme();
-    const [theme, setTheme] = useState(systemColorScheme);
+    // const [theme, setTheme] = useState(systemColorScheme);
+    const [theme, setTheme] = useState('dark');
 
     useEffect(() => {
       if (theme === 'system') {

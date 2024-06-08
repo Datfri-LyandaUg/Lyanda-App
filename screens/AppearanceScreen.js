@@ -18,14 +18,16 @@ const AppearanceScreen = ({ navigation }) => {
 
             <View style={{
                 backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
-            }} className={`flex-row items-center relative mb-2 py-4 justify-center`}>
+            }} className={`flex-row items-center relative  py-4 justify-center`}>
                 <TouchableOpacity
                     className="absolute  left-2.5 w-10"
                     onPress={() => navigation.goBack()}>
                     <ChevronLeftIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={20} />
                 </TouchableOpacity>
 
-                <Text className={`text-[17px] font-[600] text-[${theme === 'light' ? colors.light.headerText : colors.dark.headerText}] `}>
+                <Text style={{
+                    color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+                }} className={`text-[17px] font-[600] `}>
                     Appearance
                 </Text>
             </View>
@@ -66,7 +68,7 @@ const AppearanceScreen = ({ navigation }) => {
                 </View>
             </View>
         </View>
-        
+
     )
 }
 

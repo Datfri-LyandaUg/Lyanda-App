@@ -61,7 +61,7 @@ const AppNav = () => {
 
   return (
     <NavigationContainer>
-      {token === null ? <AuthStack /> : <PrivateStack />}
+      {/* {token === null ? <AuthStack /> : <PrivateStack />} */}
       {/* <LoginScreen/> */}
       {/* <DeleteAccountScreen/> */}
       {/* <BikeManufactureDetailsScreen/> */}
@@ -78,7 +78,7 @@ const AppNav = () => {
       {/* <DeleteAccountScreen /> */}
       {/* <HelpScreen /> */}
       {/* <AboutScreen /> */}
-      {/* <PolicyScreen /> */}
+      <PolicyScreen />
       {/* <FaqScreen /> */}
       {/* <AppearanceScreen /> */}
       {/* <NotificationSettingsScreen /> */}
