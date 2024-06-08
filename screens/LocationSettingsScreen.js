@@ -1,34 +1,60 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { SafeAreaView, Text, View, TouchableOpacity, Switch } from 'react-native'
 import { ChevronLeftIcon } from 'react-native-heroicons/solid'
+import { ThemeContext } from '../utils/ThemeContext';
+import colors from '../config/colors';
 
 
 const LocationSettingsScreen = ({ navigation }) => {
-    
+
+    const { theme } = useContext(ThemeContext);
+
     const [isLocationEnabled, setIsLocationEnabled] = useState(true);
 
     const toggleLocationSwitch = () => setIsLocationEnabled(previousState => !previousState);
 
     return (
-        <SafeAreaView className='bg-white h-full'>
-            <View className="flex-row items-center mt-7 relative mb-2  justify-center">
+        <SafeAreaView
+            style={{
+                backgroundColor: theme === 'light' ? colors.light.background : colors.dark.background
+            }}
+            className='h-full'>
+            <View
+                style={{
+                    backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
+                }}
+                className="flex-row items-center py-4 relative  justify-center">
                 <TouchableOpacity
-                    className="absolute  left-2.5"
+                    className="absolute  left-2.5 w-10"
                     onPress={() => navigation.goBack()}>
-                    <ChevronLeftIcon color="#616161" size={20} />
+                    <ChevronLeftIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={20} />
                 </TouchableOpacity>
 
-                <Text className="text-[#242424] text-[17px] font-[600]">
+                <Text
+                    style={{
+                        color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+                    }}
+                    className=" text-[17px] font-[600]">
                     Location
                 </Text>
             </View>
 
             <View className="flex items-center justify-center px-4">
-                <View className='bg-[#FAFAFA] rounded-[12px] mt-5 py-3 px-3 w-full'>
+                <View
+                    style={{
+                        backgroundColor: theme === 'light' ? colors.light.container : colors.dark.container
+                    }}
+                    className='rounded-[12px] mt-5 py-3 px-3 w-full'>
                     <View className="w-full flex flex-row mb-3">
                         <View className="flex-1">
-                            <Text className="text-xl font-semibold">Location</Text>
-                            <Text>
+                            <Text
+                                style={{
+                                    color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+                                }}
+                                className="text-xl font-semibold">Location</Text>
+                            <Text style={{
+                                color: theme === 'light' ? colors.light.text : colors.dark.text
+                            }}>
                                 Enables us to know your current location so as
                                 to enable  smooth deliveries.
                             </Text>

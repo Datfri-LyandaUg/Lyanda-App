@@ -33,7 +33,7 @@ const FaqScreen = ({ navigation }) => {
         </Text>
       </View>
 
-      <View className="border-[#E0E0E0] border-[0.5px]"/>
+      { theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]"/>)}
 
       <View className='items-center px-2 mt-4'>
 

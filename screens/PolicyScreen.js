@@ -33,7 +33,7 @@ const PolicyScreen = ({ navigation }) => {
         </Text>
       </View>
 
-      <View className="border-[#E0E0E0] border-[0.5px]" />
+      {theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
 
 
       <View className='items-center py-3 px-2 flex-1'>
@@ -203,7 +203,6 @@ const PolicyScreen = ({ navigation }) => {
                   </Text>
 
                 </View>
-
 
                 <View>
                   <Text
