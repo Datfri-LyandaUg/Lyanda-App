@@ -48,7 +48,7 @@ const GetStartedModel = ({ visible }) => {
           elevation: 28,
           alignSelf: 'center',
         }}
-        className="rounded-[28px]  items-center pt-14">
+        className="rounded-[28px]  items-center pt-8">
         <View className="flex-row  mx-3 space-x-4">
 
           <View className="flex items-center justify-center">

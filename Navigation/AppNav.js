@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import jwt_decode from 'jwt-decode';
 import PrivateStack from './PrivateStack';
@@ -32,7 +32,6 @@ import SplashScreen from '../screens/SplashScreen';
 
 const AppNav = () => {
 
-  const [isLoading, setIsLoading] = useState(true);
   const token = useSelector(state => state.auth.token);
   const dispatch = useDispatch();
 
@@ -54,18 +53,11 @@ const AppNav = () => {
       } catch (error) {
         console.error("Error Retrieving Token:", error);
       }
-      finally {
-        setIsLoading(false);
-      }
     };
 
     authenticateUser();
 
   }, []);
-
-  if (isLoading) {
-    return <SplashScreen />;
-  }
 
 
   return (
