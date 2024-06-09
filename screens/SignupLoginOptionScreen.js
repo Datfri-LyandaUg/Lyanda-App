@@ -61,7 +61,7 @@ const SignupLoginOptionScreen = () => {
             style={{
               color: theme === 'light' ? colors.light.text : colors.dark.text
             }}
-            className="text-[15px] font-[400]  ">
+            className="text-[15px] font-[400]">
             The super app for electric bike owners
           </Text>
 

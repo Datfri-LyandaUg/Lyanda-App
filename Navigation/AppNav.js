@@ -32,41 +32,62 @@ import SplashScreen from '../screens/SplashScreen';
 
 const AppNav = () => {
 
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const token = useSelector(state => state.auth.token);
   const dispatch = useDispatch();
 
   // Keeping User Authenticated.....
+  // useEffect(() => {
+
+  //   const authenticateUser = async () => {
+
+  //     try {
+
+  //       const token = await AsyncStorage.getItem("currentUserToken");
+
+  //       if (token !== null) {
+  //         dispatch(setToken(token));
+  //         const decodedToken = jwt_decode(token);
+  //         dispatch(setUserData(decodedToken));
+  //       }
+
+  //       // setIsLoading(false);
+
+  //     } catch (error) {
+  //       console.error("Error Retrieving Token:", error);
+  //     }
+  //   };
+
+  //   authenticateUser();
+
+  // }, []);
+
+  const authenticateUser = async () => {
+    setIsLoading(true);
+    try {
+      const token = await AsyncStorage.getItem("currentUserToken");
+      if (token !== null) {
+        dispatch(setToken(token));
+        const decodedToken = jwt_decode(token);
+        dispatch(setUserData(decodedToken));
+      }
+    } catch (error) {
+      console.error("Error Retrieving Token:", error);
+    }
+  };
+
   useEffect(() => {
-
-    const authenticateUser = async () => {
-
-      try {
-
-        const token = await AsyncStorage.getItem("currentUserToken");
-
-        if (token !== null) {
-          dispatch(setToken(token));
-          const decodedToken = jwt_decode(token);
-          dispatch(setUserData(decodedToken));
-        }
-
-      } catch (error) {
-        console.error("Error Retrieving Token:", error);
-      }
-      finally {
-        setIsLoading(false);
-      }
+    const loadAppData = async () => {
+      await authenticateUser();
+      setIsLoading(false);
     };
 
-    authenticateUser();
-
-  }, []);
+    loadAppData();
+  }, [dispatch]);
 
   if (isLoading) {
     return <SplashScreen />;
   }
-
 
   return (
     <NavigationContainer
