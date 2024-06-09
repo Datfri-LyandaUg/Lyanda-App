@@ -28,6 +28,8 @@ const SplashScreen = ({ navigation }) => {
     checkFirstLaunch();
 
   }, [navigation]);
+
+ 
   
   return (
     <SafeAreaView className="bg-[#38C92B] h-full w-full flex-1 justify-center items-center">
