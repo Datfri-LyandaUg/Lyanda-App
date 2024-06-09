@@ -34,7 +34,7 @@ const ErrorNotificationModal = ({ showError, handleClose, errorMessage }) => {
                 justifyContent: 'flex-start',
                 backgroundColor: 'rgba(0,0,0,0.2)',
                 margin: 0,
-                marginTop: 15
+                paddingTop: 15
             }}
 
             className="items-center">
