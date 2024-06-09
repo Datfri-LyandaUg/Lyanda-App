@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import jwt_decode from 'jwt-decode';
 import PrivateStack from './PrivateStack';
@@ -32,62 +32,33 @@ import SplashScreen from '../screens/SplashScreen';
 
 const AppNav = () => {
 
-  const [isLoading, setIsLoading] = useState(false);
   const token = useSelector(state => state.auth.token);
   const dispatch = useDispatch();
 
   // Keeping User Authenticated.....
-  // useEffect(() => {
-
-  //   const authenticateUser = async () => {
-
-  //     try {
-
-  //       const token = await AsyncStorage.getItem("currentUserToken");
-
-  //       if (token !== null) {
-  //         dispatch(setToken(token));
-  //         const decodedToken = jwt_decode(token);
-  //         dispatch(setUserData(decodedToken));
-  //       }
-
-  //       // setIsLoading(false);
-
-  //     } catch (error) {
-  //       console.error("Error Retrieving Token:", error);
-  //     }
-  //   };
-
-  //   authenticateUser();
-
-  // }, []);
-
-  const authenticateUser = async () => {
-    setIsLoading(true);
-    try {
-      const token = await AsyncStorage.getItem("currentUserToken");
-      if (token !== null) {
-        dispatch(setToken(token));
-        const decodedToken = jwt_decode(token);
-        dispatch(setUserData(decodedToken));
-      }
-    } catch (error) {
-      console.error("Error Retrieving Token:", error);
-    }
-  };
-
   useEffect(() => {
-    const loadAppData = async () => {
-      await authenticateUser();
-      setIsLoading(false);
+
+    const authenticateUser = async () => {
+
+      try {
+
+        const token = await AsyncStorage.getItem("currentUserToken");
+
+        if (token !== null) {
+          dispatch(setToken(token));
+          const decodedToken = jwt_decode(token);
+          dispatch(setUserData(decodedToken));
+        }
+
+      } catch (error) {
+        console.error("Error Retrieving Token:", error);
+      }
     };
 
-    loadAppData();
-  }, [dispatch]);
+    authenticateUser();
 
-  if (isLoading) {
-    return <SplashScreen />;
-  }
+  }, []);
+
 
   return (
     <NavigationContainer
