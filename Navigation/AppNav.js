@@ -91,13 +91,13 @@ const AppNav = () => {
     >
       {/* {token === null ? <AuthStack /> : <PrivateStack />} */}
       {/* <LoginScreen/> */}
-      <OtpScreen/>
+      {/* <OtpScreen/> */}
       {/* <SignupLoginOptionScreen/> */}
       {/* <TermsAndConditions/> */}
       {/* <NotificationScreen/> */}
       {/* <LocationScreen/> */}
       {/* <ProfileScreen /> */}
-      {/* <BikeManufactureDetailsScreen/> */}
+      <BikeManufactureDetailsScreen/>
       {/* <BikeCapacityDetailsScreen/> */}
       {/* <BikePlateDetailsScreen/> */}
       {/* <ProfileUser /> */}
