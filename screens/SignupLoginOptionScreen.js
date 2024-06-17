@@ -13,7 +13,6 @@ import colors from '../config/colors';
 
 const SignupLoginOptionScreen = () => {
 
-
   const { theme } = useContext(ThemeContext);
   const [visible, setVisible] = useState(false);
 
@@ -66,9 +65,6 @@ const SignupLoginOptionScreen = () => {
           </Text>
 
         </View>
-
-
-
       </View>
 
       <View className='items-center px-4 mb-7'>

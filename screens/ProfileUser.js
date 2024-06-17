@@ -48,7 +48,7 @@ const ProfileUser = ({ navigation }) => {
         <View className='m-5'>
           <View className="">
             <View className="flex items-center justify-center w-16 h-16 rounded-full bg-[#2C7721]">
-              < UserRound size={45} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
+              < UserRound size={45} color={`${theme === 'light' ? 'white' : 'black'}`} />
             </View>
           </View>
           <View
@@ -86,7 +86,11 @@ const ProfileUser = ({ navigation }) => {
                       className='text-[17px] font-[400] '> Bike profile </Text>
                   </View>
                 </View>
-                <ChevronRightIcon size={15} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
+
+                <View className='flex items-center justify-center'>
+                  <ChevronRightIcon size={15} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
+                </View>
+
               </Pressable>
 
               <View className='items-center'>

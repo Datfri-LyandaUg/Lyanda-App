@@ -49,7 +49,7 @@ const ProfileScreen = ({ navigation }) => {
         className=' mx-6 mt-5 flex-row items-center justify-between'>
         <View className='flex-row items-center space-x-3' >
           <View className="flex items-center justify-center w-16 h-16 rounded-full bg-[#2C7721]">
-            < UserRound size={45} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
+            < UserRound size={45} color={`${theme === 'light' ? 'white' : 'black'}`} />
           </View>
           <View>
             <Text style={{

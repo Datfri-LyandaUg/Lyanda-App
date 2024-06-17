@@ -92,7 +92,7 @@ const AppNav = () => {
       {/* {token === null ? <AuthStack /> : <PrivateStack />} */}
       {/* <LoginScreen/> */}
       {/* <OtpScreen/> */}
-      {/* <SignupLoginOptionScreen/> */}
+      <SignupLoginOptionScreen/>
       {/* <TermsAndConditions/> */}
       {/* <NotificationScreen/> */}
       {/* <LocationScreen/> */}
@@ -107,7 +107,7 @@ const AppNav = () => {
       {/* <AboutScreen /> */}
       {/* <PolicyScreen /> */}
       {/* <FaqScreen /> */}
-      <AppearanceScreen />
+      {/* <AppearanceScreen /> */}
       {/* <NotificationSettingsScreen /> */}
       {/* <LocationSettingsScreen/> */}
     </NavigationContainer>
