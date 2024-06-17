@@ -7,12 +7,14 @@ import { HandCoins, Route } from 'lucide-react-native';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
 
-const GetStartedModel = ({ visible }) => {
+const GetStartedModel = ({ visible, onClose }) => {
 
   const { theme } = useContext(ThemeContext);
 
   const navigation = useNavigation();
+  
   const handleNextNavigation = () => {
+    onClose();
     navigation.navigate('Login');
   };
 
