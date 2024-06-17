@@ -49,7 +49,6 @@ const LoginScreen = ({ navigation }) => {
     }
   };
 
-
   useEffect(() => {
     if (signUpMutation.isSuccess) {
 
@@ -93,47 +92,60 @@ const LoginScreen = ({ navigation }) => {
 
           <>
 
-            { theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
+            {theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
 
-            <View className="items-center mt-7">
-              <Text
-                style={{
-                  color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-                }}
-                className="font-[400] text-[17px] mb-7">
-                Enter your phone number
-              </Text>
-              <View className="w-[375] h-[48] px-4">
+            <View className="w-full px-4">
+
+              <View className="flex items-center justify-center px-3 py-4 mb-3">
+
                 <Text
                   style={{
-                    color: theme === 'light' ? colors.light.text : colors.dark.text
+                    color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
                   }}
-                  className="text-[12px] font-[400]">
-                  Phone number
+                  className="font-[400] text-[17px] w-full text-center">
+                  Enter your phone number
                 </Text>
 
-                <TextInput
-                  placeholder="07.."
-                  onChangeText={handleChange('phoneNumber')}
-                  placeholderTextColor="#616161"
-                  className="w-52"
-                  style={{
-                    color: theme === 'light' ? colors.light.text : colors.dark.text
-                  }}
-                />
+              </View>
+
+              <View className="">
+
+                <View className="flex items-center justify-center px-3 pt-3 w-full">
+                  <View className="w-full">
+                    <Text
+                      style={{
+                        color: theme === 'light' ? colors.light.text : colors.dark.text
+                      }}
+                      className="text-[12px] font-[400] w-full text-left">
+                      Phone number
+                    </Text>
+                  </View>
+                </View>
+
+                <View className="flex items-center justify-center px-4 py-3 w-full">
+                  <TextInput
+                    placeholder="07.."
+                    onChangeText={handleChange('phoneNumber')}
+                    placeholderTextColor="#616161"
+                    className="w-full"
+                    style={{
+                      color: theme === 'light' ? colors.light.text : colors.dark.text
+                    }}
+                  />
+
+                </View>
+
+                <View className="px-4">
+                  <View className="border-[#E0E0E0] border-[0.5px] w-full" />
+                  <ErrorMessage error={errors['phoneNumber']} visible={touched['phoneNumber']} />
+                </View>
 
               </View>
-            </View>
-            <View className="pl-3">
 
-              <View className="border-[#E0E0E0] border-[0.5px] px-3 w-80 mt-2 my-2" />
+              <View className="items-center">
+                <PrimaryButton handlePress={handleSubmit} isLoading={signUpMutation.isLoading} text='Continue' loadingText='Continuing...' />
+              </View>
 
-              <ErrorMessage error={errors['phoneNumber']} visible={touched['phoneNumber']} />
-
-            </View>
-
-            <View className="items-center mb-72 px-4">
-              <PrimaryButton handlePress={handleSubmit} isLoading={signUpMutation.isLoading} text='Continue' loadingText='Continuing...' />
             </View>
           </>
         )}

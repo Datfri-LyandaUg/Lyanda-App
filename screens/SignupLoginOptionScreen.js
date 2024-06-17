@@ -13,12 +13,11 @@ import colors from '../config/colors';
 
 const SignupLoginOptionScreen = () => {
 
-
   const { theme } = useContext(ThemeContext);
   const [visible, setVisible] = useState(false);
 
   const toggleModalVisibility = () => {
-    setVisible(true);
+    setVisible(!visible);
   }
 
   return (
@@ -28,7 +27,7 @@ const SignupLoginOptionScreen = () => {
       }}
       className="h-full w-full flex-1">
 
-      <GetStartedModel visible={visible} />
+      { visible && <GetStartedModel visible={visible} onClose={() => setVisible(false)}  /> } 
 
       <View className="mt-36 items-center flex-1">
         <ImageBackground
@@ -66,9 +65,6 @@ const SignupLoginOptionScreen = () => {
           </Text>
 
         </View>
-
-
-
       </View>
 
       <View className='items-center px-4 mb-7'>

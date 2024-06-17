@@ -19,10 +19,10 @@ import PrimaryButton from '../components/PrimaryButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser, setToken, setUserData } from '../redux/slices/authSlice';
 import ErrorNotificationModal from '../components/ErrorNotificationModal';
-import SuccessNotificationModal from '../components/SuccessNotificationModal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
+import SuccessNotificationModal from '../components/SuccessNotificationModal';
 
 const validationSchema = Yup.object().shape({
     bikeManufacturer: Yup.string().required('Enter the Manufacturer of your bike.').label('bikeManufacturer'),

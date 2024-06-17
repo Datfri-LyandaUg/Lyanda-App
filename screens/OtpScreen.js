@@ -17,13 +17,14 @@ import { useMutation } from 'react-query';
 import { useDispatch } from 'react-redux';
 import { setToken, setUserData } from '../redux/slices/authSlice';
 import { useRoute } from '@react-navigation/native';
-import OtpNotificationModal from '../components/OtpNotificationModal';
 import ErrorNotificationModal from '../components/ErrorNotificationModal';
 import { ErrorMessage } from '../components/forms';
 import PrimaryButton from '../components/PrimaryButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
+import SuccessNotificationModal from '../components/SuccessNotificationModal';
+
 
 
 const validationSchema = Yup.object().shape({
@@ -121,7 +122,7 @@ const OtpScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      {theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
+      { theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
 
 
       <Formik
@@ -132,60 +133,74 @@ const OtpScreen = ({ navigation }) => {
         {({ handleChange, handleSubmit, errors, touched }) => (
 
           <>
-            <View className="items-center mt-7">
-              <Text
-                style={{
-                  color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-                }}
-                className="font-[400] text-[17px]">
-                Enter the 6-digit code from your text message
-              </Text>
-              <Text
-                style={{
-                  color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-                }}
-                className="font-[400] text-[17px] mb-7">
-                to verify your account
-              </Text>
-              <View className="w-[375] h-[48] px-4">
+            <View className="w-full px-4">
+
+              <View className="flex items-center justify-center px-3 py-4">
+
                 <Text
                   style={{
-                    color: theme === 'light' ? colors.light.text : colors.dark.text
+                    color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
                   }}
-                  className="text-[12px] font-[400]">OTP</Text>
-                <TextInput
-                  placeholder="Enter code here"
-                  onChangeText={handleChange('otp')}
-                  placeholderTextColor="#616161"
-                  className="w-52"
-                  keyboardType='numeric'
-                  style={{
-                    color: theme === 'light' ? colors.light.text : colors.dark.text
-                }}
-                />
-              </View>
-            </View>
-
-            <View className="pl-3">
-
-              <View className="border-[#E0E0E0] border-[0.5px] px-3 w-80 mt-2 my-2"/>
-
-              <ErrorMessage error={errors['otp']} visible={touched['otp']} />
-
-            </View>
-
-            <View className="items-center px-4">
-
-              <PrimaryButton handlePress={handleSubmit} isLoading={otpVerificationMutation.isLoading} text='Continue' loadingText='Verifying Otp...' />
-
-            </View>
-
-            <View className="items-center mt-5">
-              <TouchableOpacity onPress={handleResendOtp}>
-                <Text className="text-[#2C7721] font-[600] text-[17px]">
-                  I did not receive the code
+                  className="font-[400] text-[17px] w-full text-center">
+                  Enter the 6-digit code from your text
                 </Text>
-              </TouchableOpacity>
+                <Text
+                  style={{
+                    color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+                  }}
+                  className="font-[400] text-[17px] w-full text-center">
+                  messages to verify your account
+                </Text>
+
+
+              </View>
+
+              <View className="">
+
+                <View className="flex items-center justify-center px-3 pt-3 w-full">
+                  <View className="w-full">
+                    <Text
+                      style={{
+                        color: theme === 'light' ? colors.light.text : colors.dark.text
+                      }}
+                      className="text-[12px] font-[400] w-full text-left">
+                      OTP
+                    </Text>
+                  </View>
+                </View>
+
+                <View className="flex items-center justify-center px-4 py-1 w-full">
+                  <TextInput
+                    placeholder="Enter code here"
+                    onChangeText={handleChange('otp')}
+                    placeholderTextColor="#616161"
+                    className="w-full"
+                    keyboardType='numeric'
+                    style={{
+                      color: theme === 'light' ? colors.light.text : colors.dark.text
+                    }}
+                  />
+                </View>
+
+                <View className="px-4">
+                  <View className="border-[#E0E0E0] border-[0.5px] w-full" />
+                  <ErrorMessage error={errors['otp']} visible={touched['otp']} />
+                </View>
+
+              </View>
+
+              <View className="items-center">
+                <PrimaryButton handlePress={handleSubmit} isLoading={otpVerificationMutation.isLoading} text='Continue' loadingText='Verifying Otp...' />
+              </View>
+
+              <View className="items-center mt-3">
+                <TouchableOpacity onPress={handleResendOtp}>
+                  <Text className="text-[#2C7721] font-[500] text-[15px]">
+                    I did not receive the code
+                  </Text>
+                </TouchableOpacity>
+              </View>
+
             </View>
 
           </>
@@ -193,7 +208,7 @@ const OtpScreen = ({ navigation }) => {
       </Formik>
 
       {/* Notifications */}
-      <OtpNotificationModal visible={visible} setVisible={setVisible} handleClose={toggleModal} />
+      <SuccessNotificationModal visible={visible} setVisible={setVisible} successMessage = {"A new OTP code has been sent to your number"} handleClose={toggleModal} />
       <ErrorNotificationModal showError={showErrorNotification} errorMessage={errorDetails} handleClose={toggleErrorNotificationVisibility} />
     </SafeAreaView>
   );
