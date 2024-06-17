@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import jwt_decode from 'jwt-decode';
 import PrivateStack from './PrivateStack';
@@ -27,19 +27,21 @@ import OtpScreen from '../screens/OtpScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { setToken, setUserData } from '../redux/slices/authSlice';
 import SplashScreen from '../screens/SplashScreen';
+import SecondSplashScreen from '../screens/SecondSplashScreen';
 
 
 
 const AppNav = () => {
 
   const token = useSelector(state => state.auth.token);
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
   // Keeping User Authenticated.....
   useEffect(() => {
 
     const authenticateUser = async () => {
-
+      setIsLoading(true);
       try {
 
         const token = await AsyncStorage.getItem("currentUserToken");
@@ -50,6 +52,8 @@ const AppNav = () => {
           dispatch(setUserData(decodedToken));
         }
 
+        setIsLoading(false);
+
       } catch (error) {
         console.error("Error Retrieving Token:", error);
       }
@@ -58,6 +62,10 @@ const AppNav = () => {
     authenticateUser();
 
   }, []);
+
+  if(isLoading){
+    return <SecondSplashScreen/>
+  }
 
 
   return (
@@ -81,7 +89,7 @@ const AppNav = () => {
         }
       }}
     >
-      {token === null ? <AuthStack /> : <PrivateStack />}
+      {/* {token === null ? <AuthStack /> : <PrivateStack />} */}
       {/* <LoginScreen/> */}
       {/* <OtpScreen/> */}
       {/* <SignupLoginOptionScreen/> */}
@@ -99,11 +107,14 @@ const AppNav = () => {
       {/* <AboutScreen /> */}
       {/* <PolicyScreen /> */}
       {/* <FaqScreen /> */}
-      {/* <AppearanceScreen /> */}
+      <AppearanceScreen />
       {/* <NotificationSettingsScreen /> */}
       {/* <LocationSettingsScreen/> */}
     </NavigationContainer>
   );
+
+
+
 };
 
 export default AppNav;
