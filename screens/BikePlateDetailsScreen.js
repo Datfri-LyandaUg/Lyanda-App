@@ -6,9 +6,7 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
-import {
-    ChevronLeftIcon,
-} from 'react-native-heroicons/solid';
+import { ChevronLeftIcon } from 'react-native-heroicons/solid';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useMutation } from 'react-query';
@@ -25,8 +23,25 @@ import colors from '../config/colors';
 import SuccessNotificationModal from '../components/SuccessNotificationModal';
 
 const validationSchema = Yup.object().shape({
-    numberPlateValue: Yup.number().required('Enter the Plate Number of Your Bike.').label('numberPlateValue'),
-});
+    numberPlateValue: Yup.string()
+      .required('Enter the Plate Number of Your Bike.')
+      .test(
+        'length',
+        'Plate number must be exactly 7 characters long.',
+        (value) => value && value.length === 7
+      )
+      .test(
+        'format',
+        'Please enter a valid license number. Format: LETTERS(3)+NUMBER(3)+LETTER(1)',
+        (value) => /^[A-Z]{3}[0-9]{3}[A-Z]$/.test(value)
+      )
+      .test(
+        'invalid-characters',
+        'Invalid characters entered.',
+        (value) => /^[A-Z0-9]+$/.test(value)
+      )
+      .label('NumberPlateValue')
+  });
 
 
 const BikePlateDetailsScreen = ({ navigation }) => {
@@ -112,40 +127,48 @@ const BikePlateDetailsScreen = ({ navigation }) => {
                     <>
                         { theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
 
-                        <View className="items-center mt-7">
-                            <Text
-                                style={{
-                                    color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-                                }}
-                                className="font-[400] text-[17px]  mb-7">
-                                Enter your bike's number plate
-                            </Text>
-                            <View className="w-full h-[48] px-5">
+                        <View className="w-full px-4">
 
-                                <TextInput
-                                    placeholder="value"
-                                    onChangeText={handleChange('numberPlateValue')}
-                                    placeholderTextColor="#616161"
-                                    keyboardType="numeric"
-                                    className="w-52"
+                            <View className="flex items-center justify-center px-3 py-4 mb-3">
+
+                                <Text
                                     style={{
-                                        color: theme === 'light' ? colors.light.text : colors.dark.text
+                                        color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
                                     }}
-                                />
+                                    className="font-[400] text-[17px] w-full text-center">
+                                    Enter your bike's number plate
+                                </Text>
 
                             </View>
-                        </View>
 
-                        <View className="pl-3">
-                            <View className="border-[#E0E0E0] border-[0.5px] px-3 w-80 mt-2 my-2" />
-                            <ErrorMessage error={errors['numberPlateValue']} visible={touched['numberPlateValue']} />
-                            <Text style={{
-                                color: theme === 'light' ? colors.light.text : colors.dark.text
-                            }} className="text-xs">This information is safe and thus not shared with a third party.</Text>
-                        </View>
+                            <View className="">
 
-                        <View className="items-center mb-72 px-4">
-                            <PrimaryButton handlePress={handleSubmit} isDisabled={values.numberPlateValue === '' ? true : false} isLoading={updateBikeNumberMutation.isLoading} text='Save' loadingText='Saving...' />
+                                <View className="flex items-center justify-center px-4 py-1 w-full">
+                                    <TextInput
+                                        placeholder="Number plate (e.g., UAB123Z)"
+                                        onChangeText={handleChange('numberPlateValue')}
+                                        placeholderTextColor="#616161"
+                                        className="w-full "
+                                        style={{
+                                            color: theme === 'light' ? colors.light.text : colors.dark.text
+                                        }}
+                                    />
+                                </View>
+
+                                <View className="px-3">
+                                    <View className="border-[#E0E0E0] border-[0.5px] w-full mb-1" />
+                                    <ErrorMessage error={errors['numberPlateValue']} visible={touched['numberPlateValue']} />
+                                    <Text style={{
+                                        color: theme === 'light' ? colors.light.text : colors.dark.text
+                                    }} className="text-xs my-1">This information is safe and thus not shared with a third party.</Text>
+                                </View>
+
+                            </View>
+
+                            <View className="items-center">
+                                <PrimaryButton handlePress={handleSubmit} isDisabled={values.numberPlateValue === '' ? true : false} isLoading={updateBikeNumberMutation.isLoading} text='Save' loadingText='Saving...' />
+                            </View>
+
                         </View>
                     </>
                 )}

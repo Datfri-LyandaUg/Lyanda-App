@@ -97,9 +97,9 @@ const AppNav = () => {
       {/* <NotificationScreen/> */}
       {/* <LocationScreen/> */}
       {/* <ProfileScreen /> */}
-      <BikeManufactureDetailsScreen/>
+      {/* <BikeManufactureDetailsScreen/> */}
       {/* <BikeCapacityDetailsScreen/> */}
-      {/* <BikePlateDetailsScreen/> */}
+      <BikePlateDetailsScreen/>
       {/* <ProfileUser /> */}
       {/* <BikeProfileScreen /> */}
       {/* <DeleteAccountScreen /> */}
