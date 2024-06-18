@@ -90,9 +90,9 @@ const AppNav = () => {
       }}
     >
       {/* {token === null ? <AuthStack /> : <PrivateStack />} */}
-      <LoginScreen/>
+      {/* <LoginScreen/> */}
       {/* <OtpScreen/> */}
-      {/* <SignupLoginOptionScreen/> */}
+      <SignupLoginOptionScreen/>
       {/* <TermsAndConditions/> */}
       {/* <NotificationScreen/> */}
       {/* <LocationScreen/> */}

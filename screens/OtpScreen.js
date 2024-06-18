@@ -107,7 +107,7 @@ const OtpScreen = ({ navigation }) => {
       }}
       className="h-full">
 
-      <PrimaryNav title={""} onPress={() => navigation.goBack()}/>
+      <PrimaryNav title={""} />
 
       <Formik
         initialValues={{ otp: '' }}

@@ -40,7 +40,6 @@ const GetStartedModel = ({ visible, onClose }) => {
       <View
         style={{
           backgroundColor: theme === 'light' ? colors.light.background : colors.dark.background,
-          // height: '33%',
           width: '92.8%',
           shadowColor: '#000',
           shadowOffset: { width: 0, height: 10 },
@@ -51,7 +50,7 @@ const GetStartedModel = ({ visible, onClose }) => {
         }}
         className="rounded-[28px] flex items-center py-3">
 
-        <View className="flex-row  mx-3 space-x-4">
+        <View className="flex-row py-3  mx-3 space-x-4">
           <View className="flex items-center  justify-center">
             <HandCoins size={40} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
           </View>
@@ -80,7 +79,7 @@ const GetStartedModel = ({ visible, onClose }) => {
           </View>
         </View>
 
-        <View className="flex-row py-4 mx-3 space-x-4 items-center mt-3">
+        <View className="flex-row py-3 mx-3 space-x-4 items-center">
           <View className="flex items-center justify-center">
             <Route size={40} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
           </View>
