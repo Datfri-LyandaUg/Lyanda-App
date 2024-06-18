@@ -1,13 +1,13 @@
 import { View, Text, SafeAreaView, Pressable } from 'react-native';
 import React, { useContext, useState } from 'react';
 import { ChevronRightIcon } from 'react-native-heroicons/solid';
-import { ChevronLeftIcon } from 'react-native-heroicons/outline';
 import { Bike, UserRound } from 'lucide-react-native';
 import DeleteAccountModal from '../components/DeleteAccountModal';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../redux/slices/authSlice';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
+import PrimaryNav from '../components/PrimaryNav';
 
 const ProfileUser = ({ navigation }) => {
 
@@ -26,24 +26,8 @@ const ProfileUser = ({ navigation }) => {
       }}
       className='h-full'>
       <View className=''>
-        <View
-          style={{
-            backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
-          }}
-          className='flex-row items-center relative py-4 justify-center'>
-          <Pressable onPress={() => navigation.goBack()} className='absolute left-4  w-10'>
-            <ChevronLeftIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={20} />
-          </Pressable>
-          <Text
-            style={{
-              color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-            }}
-            className='text-[17px] font-[600] '>
-            Account info
-          </Text>
-        </View>
-
-        {theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
+      
+        <PrimaryNav title={"Account info"} onPress={() => navigation.goBack()}/>
 
         <View className='m-5'>
           <View className="">

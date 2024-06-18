@@ -3,12 +3,8 @@ import {
     SafeAreaView,
     Text,
     View,
-    TextInput,
-    TouchableOpacity,
+    TextInput
 } from 'react-native';
-import {
-    ChevronLeftIcon,
-} from 'react-native-heroicons/solid';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useMutation } from 'react-query';
@@ -23,6 +19,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
 import SuccessNotificationModal from '../components/SuccessNotificationModal';
+import PrimaryNav from '../components/PrimaryNav';
 
 const validationSchema = Yup.object().shape({
     bikeManufacturer: Yup.string().required('Enter the Manufacturer of your bike.').label('bikeManufacturer'),
@@ -82,26 +79,7 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
             }}
             className="h-full">
 
-            <View
-                style={{
-                    backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
-                }}
-                className="flex-row items-center py-4 relative justify-center">
-                <TouchableOpacity
-                    className="absolute  left-2.5 w-10"
-                    onPress={() => navigation.goBack()}>
-                    <ChevronLeftIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={20} />
-                </TouchableOpacity>
-
-                <Text
-                    style={{
-                        color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-                    }}
-                    className=" text-[17px] font-[600]">
-                    Bike manufacturer
-                </Text>
-            </View>
-
+            <PrimaryNav title={"Bike manufacturer"} onPress={() => navigation.goBack()}/>
 
             <Formik
                 initialValues={{ bikeManufacturer: '' }}
@@ -111,8 +89,6 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
                 {({ handleChange, handleSubmit, errors, touched, values }) => (
 
                     <>
-                        {theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
-
                         <View className="w-full px-4">
 
                             <View className="flex items-center justify-center px-3 py-4 mb-3">

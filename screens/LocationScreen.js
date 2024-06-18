@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { View, Text, SafeAreaView, TouchableOpacity, Alert } from 'react-native';
-import { ChevronLeftIcon } from 'react-native-heroicons/solid';
+import { View, Text, SafeAreaView, Alert } from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 import { request, PERMISSIONS, RESULTS } from 'react-native-permissions';
 import SecondaryButton from '../components/SecondaryButton';
 import PrimaryButton from '../components/PrimaryButton';
 import colors from '../config/colors';
 import { ThemeContext } from '../utils/ThemeContext';
+import PrimaryNav from '../components/PrimaryNav';
 
 const LocationScreen = ({ navigation }) => {
 
@@ -47,23 +47,8 @@ const LocationScreen = ({ navigation }) => {
       }}
       className="relative flex-1">
       <View className="flex-1">
-        <View style={{
-          backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
-        }} className={`flex-row items-center relative  py-4 justify-center`}>
-          <TouchableOpacity
-            className="absolute  left-2.5 w-10"
-            onPress={() => navigation.goBack()}>
-            <ChevronLeftIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={20} />
-          </TouchableOpacity>
-
-          <Text style={{
-            color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-          }} className={`text-[17px] font-[600] `}>
-            Location access
-          </Text>
-        </View>
-
-        {theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px] " />)}
+      
+        <PrimaryNav title={"Location access"} onPress={() => navigation.goBack()}/>
 
         <View className=" mt-7 mx-4">
           <Text
@@ -98,7 +83,6 @@ const LocationScreen = ({ navigation }) => {
 
       <View className="items-center  mb-8  px-4">
         <PrimaryButton handlePress={requestLocationPermission} text='Allow location access' />
-
         <SecondaryButton title='Not Now' handleOnPress={() => navigation.navigate('Home')} />
       </View>
     </SafeAreaView>

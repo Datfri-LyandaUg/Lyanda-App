@@ -6,9 +6,6 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import {
-  ChevronLeftIcon,
-} from 'react-native-heroicons/solid';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import jwt_decode from 'jwt-decode';
@@ -24,6 +21,7 @@ import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
 import SuccessNotificationModal from '../components/SuccessNotificationModal';
 import ErrorNotificationModal from '../components/ErrorNotificationModal';
+import PrimaryNav from '../components/PrimaryNav';
 
 
 
@@ -109,21 +107,7 @@ const OtpScreen = ({ navigation }) => {
       }}
       className="h-full">
 
-      <View
-        style={{
-          backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
-        }}
-
-        className="py-4">
-        <TouchableOpacity
-          className="mx-2.5 w-10"
-          onPress={() => navigation.goBack()}>
-          <ChevronLeftIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={26} />
-        </TouchableOpacity>
-      </View>
-
-      { theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
-
+      <PrimaryNav title={""} onPress={() => navigation.goBack()}/>
 
       <Formik
         initialValues={{ otp: '' }}

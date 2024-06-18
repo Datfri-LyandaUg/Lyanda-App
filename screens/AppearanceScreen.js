@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native'
-import { ChevronLeftIcon } from 'react-native-heroicons/solid'
+import { Text, View } from 'react-native';
 import { Sun, Moon, Cog, Info } from 'lucide-react-native';
 import CustomAppearanceButton from '../components/CustomAppearanceButton';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
+import PrimaryNav from '../components/PrimaryNav';
 
 const AppearanceScreen = ({ navigation }) => {
 
@@ -16,21 +16,7 @@ const AppearanceScreen = ({ navigation }) => {
             backgroundColor: theme === 'light' ? colors.light.background : colors.dark.background
         }} className={`h-full`}>
 
-            <View style={{
-                backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
-            }} className={`flex-row items-center relative  py-4 justify-center`}>
-                <TouchableOpacity
-                    className="absolute  left-2.5 w-10"
-                    onPress={() => navigation.goBack()}>
-                    <ChevronLeftIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={20} />
-                </TouchableOpacity>
-
-                <Text style={{
-                    color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-                }} className={`text-[17px] font-[600] `}>
-                    Appearance
-                </Text>
-            </View>
+            <PrimaryNav title={"Appearance"} onPress={() => navigation.goBack()} />
 
             <View className="flex items-center justify-center px-4">
                 <View
@@ -68,8 +54,7 @@ const AppearanceScreen = ({ navigation }) => {
                 </View>
             </View>
         </View>
-
-    )
+    );
 }
 
 export default AppearanceScreen;

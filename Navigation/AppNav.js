@@ -93,13 +93,13 @@ const AppNav = () => {
       {/* <LoginScreen/> */}
       {/* <OtpScreen/> */}
       {/* <SignupLoginOptionScreen/> */}
-      {/* <TermsAndConditions/> */}
+      <TermsAndConditions/>
       {/* <NotificationScreen/> */}
       {/* <LocationScreen/> */}
       {/* <ProfileScreen /> */}
       {/* <BikeManufactureDetailsScreen/> */}
       {/* <BikeCapacityDetailsScreen/> */}
-      <BikePlateDetailsScreen/>
+      {/* <BikePlateDetailsScreen/> */}
       {/* <ProfileUser /> */}
       {/* <BikeProfileScreen /> */}
       {/* <DeleteAccountScreen /> */}
