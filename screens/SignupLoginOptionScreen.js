@@ -18,7 +18,7 @@ const SignupLoginOptionScreen = ({ navigation }) => {
   const [visible, setVisible] = useState(false);
 
   const toggleModalVisibility = () => {
-    setVisible(!visible);
+    setVisible(true);
   }
 
   const handleNextNavigation = () => {

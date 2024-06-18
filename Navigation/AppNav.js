@@ -33,14 +33,14 @@ import SplashScreen from '../screens/SplashScreen';
 const AppNav = () => {
 
   const token = useSelector(state => state.auth.token);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
   // Keeping User Authenticated.....
   useEffect(() => {
 
     const authenticateUser = async () => {
-      setIsLoading(true);
+      // setIsLoading(true);
       try {
 
         const token = await AsyncStorage.getItem("currentUserToken");
@@ -51,7 +51,7 @@ const AppNav = () => {
           dispatch(setUserData(decodedToken));
         }
 
-        setIsLoading(false);
+        // setIsLoading(false);
 
       } catch (error) {
         console.error("Error Retrieving Token:", error);
@@ -62,9 +62,9 @@ const AppNav = () => {
 
   }, []);
 
-  if(isLoading){
-    return <SecondSplashScreen/>
-  }
+  // if(isLoading){
+  //   return <SecondSplashScreen/>
+  // }
 
   return (
     <NavigationContainer
