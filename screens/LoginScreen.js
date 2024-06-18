@@ -16,7 +16,7 @@ import colors from '../config/colors';
 import PrimaryNav from '../components/PrimaryNav';
 
 const validationSchema = Yup.object().shape({
-  phoneNumber: Yup.string().required('Enter a valid phone number to continue.').label('PhoneNumber'),
+  phoneNumber: Yup.string().min(10).max(13).required('Enter a valid phone number to continue.').label('PhoneNumber'),
 });
 
 const LoginScreen = ({ navigation }) => {
@@ -111,12 +111,12 @@ const LoginScreen = ({ navigation }) => {
                     placeholder="07.."
                     onChangeText={handleChange('phoneNumber')}
                     placeholderTextColor="#616161"
+                    keyboardType='phone-pad'
                     className="w-full"
                     style={{
                       color: theme === 'light' ? colors.light.text : colors.dark.text
                     }}
                   />
-
                 </View>
 
                 <View className="px-4">
