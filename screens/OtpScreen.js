@@ -17,13 +17,13 @@ import { useMutation } from 'react-query';
 import { useDispatch } from 'react-redux';
 import { setToken, setUserData } from '../redux/slices/authSlice';
 import { useRoute } from '@react-navigation/native';
-import ErrorNotificationModal from '../components/ErrorNotificationModal';
 import { ErrorMessage } from '../components/forms';
 import PrimaryButton from '../components/PrimaryButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
 import SuccessNotificationModal from '../components/SuccessNotificationModal';
+import ErrorNotificationModal from '../components/ErrorNotificationModal';
 
 
 
@@ -152,7 +152,6 @@ const OtpScreen = ({ navigation }) => {
                   messages to verify your account
                 </Text>
 
-
               </View>
 
               <View className="">
@@ -202,7 +201,6 @@ const OtpScreen = ({ navigation }) => {
               </View>
 
             </View>
-
           </>
         )}
       </Formik>
