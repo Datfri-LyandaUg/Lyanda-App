@@ -33,14 +33,14 @@ import SplashScreen from '../screens/SplashScreen';
 const AppNav = () => {
 
   const token = useSelector(state => state.auth.token);
-  // const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
   // Keeping User Authenticated.....
   useEffect(() => {
 
     const authenticateUser = async () => {
-      // setIsLoading(true);
+      setIsLoading(true);
       try {
 
         const token = await AsyncStorage.getItem("currentUserToken");
@@ -51,7 +51,7 @@ const AppNav = () => {
           dispatch(setUserData(decodedToken));
         }
 
-        // setIsLoading(false);
+        setIsLoading(false);
 
       } catch (error) {
         console.error("Error Retrieving Token:", error);
@@ -60,56 +60,59 @@ const AppNav = () => {
 
     authenticateUser();
 
-  }, []);
+  }, [dispatch]);
 
-  // if(isLoading){
-  //   return <SecondSplashScreen/>
-  // }
+  if(isLoading){
+    return <SecondSplashScreen/>
+  } else {
+    return (
+      <NavigationContainer
+        // Persisting the Navigation State ...
+        persistNavigationState={async (state) => {
+          try {
+            await AsyncStorage.setItem('NAVIGATION_STATE', JSON.stringify(state));
+          } catch (error) {
+            console.error('Error persisting navigation state:', error);
+          }
+        }}
+  
+        // Loading the Stored Navigation state ...
+        loadNavigationState={async () => {
+          try {
+            const savedState = await AsyncStorage.getItem('NAVIGATION_STATE');
+            return savedState ? JSON.parse(savedState) : undefined;
+          } catch (error) {
+            console.error('Error loading navigation state:', error);
+          }
+        }}
+      >
+        {token === null ? <AuthStack /> : <PrivateStack />}
+        {/* <LoginScreen/> */}
+        {/* <OtpScreen/> */}
+        {/* <SignupLoginOptionScreen/> */}
+        {/* <TermsAndConditions/>  */}
+        {/* <NotificationScreen/> */}
+        {/* <LocationScreen/> */}
+        {/* <ProfileScreen /> */}
+        {/* <BikeManufactureDetailsScreen/> */}
+        {/* <BikeCapacityDetailsScreen/> */}
+        {/* <BikePlateDetailsScreen/> */}
+        {/* <ProfileUser /> */}
+        {/* <BikeProfileScreen /> */}
+        {/* <DeleteAccountScreen /> */}
+        {/* <HelpScreen /> */}
+        {/* <AboutScreen /> */}
+        {/* <PolicyScreen /> */}
+        {/* <FaqScreen /> */}
+        {/* <AppearanceScreen /> */}
+        {/* <NotificationSettingsScreen /> */}
+        {/* <LocationSettingsScreen/> */}
+      </NavigationContainer>
+    );
 
-  return (
-    <NavigationContainer
-      // Persisting the Navigation State ...
-      persistNavigationState={async (state) => {
-        try {
-          await AsyncStorage.setItem('NAVIGATION_STATE', JSON.stringify(state));
-        } catch (error) {
-          console.error('Error persisting navigation state:', error);
-        }
-      }}
+  }
 
-      // Loading the Stored Navigation state ...
-      loadNavigationState={async () => {
-        try {
-          const savedState = await AsyncStorage.getItem('NAVIGATION_STATE');
-          return savedState ? JSON.parse(savedState) : undefined;
-        } catch (error) {
-          console.error('Error loading navigation state:', error);
-        }
-      }}
-    >
-      {token === null ? <AuthStack /> : <PrivateStack />}
-      {/* <LoginScreen/> */}
-      {/* <OtpScreen/> */}
-      {/* <SignupLoginOptionScreen/> */}
-      {/* <TermsAndConditions/>  */}
-      {/* <NotificationScreen/> */}
-      {/* <LocationScreen/> */}
-      {/* <ProfileScreen /> */}
-      {/* <BikeManufactureDetailsScreen/> */}
-      {/* <BikeCapacityDetailsScreen/> */}
-      {/* <BikePlateDetailsScreen/> */}
-      {/* <ProfileUser /> */}
-      {/* <BikeProfileScreen /> */}
-      {/* <DeleteAccountScreen /> */}
-      {/* <HelpScreen /> */}
-      {/* <AboutScreen /> */}
-      {/* <PolicyScreen /> */}
-      {/* <FaqScreen /> */}
-      {/* <AppearanceScreen /> */}
-      {/* <NotificationSettingsScreen /> */}
-      {/* <LocationSettingsScreen/> */}
-    </NavigationContainer>
-  );
+ 
 
 };
 
