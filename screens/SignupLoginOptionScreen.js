@@ -10,14 +10,16 @@ import GetStartedModel from '../components/GetStartedModel';
 import PrimaryButton from '../components/PrimaryButton';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
+import { useNavigation } from '@react-navigation/native';
 
-const SignupLoginOptionScreen = ({ navigation }) => {
+const SignupLoginOptionScreen = () => {
 
   const { theme } = useContext(ThemeContext);
+  const navigation = useNavigation();
   const [visible, setVisible] = useState(false);
 
   const toggleModalVisibility = () => {
-    setVisible(!visible);
+    setVisible(true);
   }
 
   const handleNextNavigation = () => {
@@ -32,7 +34,7 @@ const SignupLoginOptionScreen = ({ navigation }) => {
       }}
       className="h-full w-full flex-1">
 
-      { visible && <GetStartedModel visible={visible} onPress={handleNextNavigation}  /> } 
+      { visible && <GetStartedModel visible={visible} onPress={handleNextNavigation}   /> } 
 
       <View className="mt-36 items-center flex-1">
         <ImageBackground
@@ -61,6 +63,7 @@ const SignupLoginOptionScreen = ({ navigation }) => {
             </Text>
 
           </View>
+          
           <Text
             style={{
               color: theme === 'light' ? colors.light.text : colors.dark.text
