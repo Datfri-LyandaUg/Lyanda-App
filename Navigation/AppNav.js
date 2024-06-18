@@ -4,6 +4,9 @@ import jwt_decode from 'jwt-decode';
 import PrivateStack from './PrivateStack';
 import AuthStack from './AuthStack';
 import { useDispatch, useSelector } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { setToken, setUserData } from '../redux/slices/authSlice';
+import SecondSplashScreen from '../screens/SecondSplashScreen';
 import LoginScreen from '../screens/LoginScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import BikeManufactureDetailsScreen from '../screens/BikeManufactureDetailsScreen';
@@ -24,11 +27,7 @@ import BikeCapacityDetailsScreen from '../screens/BikeCapacityDetailsScreen';
 import BikePlateDetailsScreen from '../screens/BikePlateDetailsScreen';
 import LocationScreen from '../screens/LocationScreen';
 import OtpScreen from '../screens/OtpScreen';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { setToken, setUserData } from '../redux/slices/authSlice';
 import SplashScreen from '../screens/SplashScreen';
-import SecondSplashScreen from '../screens/SecondSplashScreen';
-
 
 
 const AppNav = () => {
@@ -67,7 +66,6 @@ const AppNav = () => {
     return <SecondSplashScreen/>
   }
 
-
   return (
     <NavigationContainer
       // Persisting the Navigation State ...
@@ -92,9 +90,9 @@ const AppNav = () => {
       {/* {token === null ? <AuthStack /> : <PrivateStack />} */}
       {/* <LoginScreen/> */}
       {/* <OtpScreen/> */}
-      {/* <SignupLoginOptionScreen/> */}
+      <SignupLoginOptionScreen/>
       {/* <TermsAndConditions/>  */}
-       {/* <NotificationScreen/> */}
+      {/* <NotificationScreen/> */}
       {/* <LocationScreen/> */}
       {/* <ProfileScreen /> */}
       {/* <BikeManufactureDetailsScreen/> */}
@@ -103,7 +101,7 @@ const AppNav = () => {
       {/* <ProfileUser /> */}
       {/* <BikeProfileScreen /> */}
       {/* <DeleteAccountScreen /> */}
-      <HelpScreen />
+      {/* <HelpScreen /> */}
       {/* <AboutScreen /> */}
       {/* <PolicyScreen /> */}
       {/* <FaqScreen /> */}
@@ -112,8 +110,6 @@ const AppNav = () => {
       {/* <LocationSettingsScreen/> */}
     </NavigationContainer>
   );
-
-
 
 };
 

@@ -20,6 +20,8 @@ const SignupLoginOptionScreen = () => {
     setVisible(!visible);
   }
 
+  console.log("CURRENT MODEL STATE", visible);
+
   return (
     <SafeAreaView
       style={{

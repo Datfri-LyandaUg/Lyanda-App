@@ -14,7 +14,7 @@ export default function PrimaryNav({ title, onPress }) {
         backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
       }}
       className="flex flex-row items-center relative justify-between">
-     
+
       <Pressable
         className="absolute left-0 flex items-center justify-center w-12 py-4"
         onPress={onPress}>
