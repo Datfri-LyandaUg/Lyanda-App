@@ -111,39 +111,47 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
                 {({ handleChange, handleSubmit, errors, touched, values }) => (
 
                     <>
-                        { theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
+                        {theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
 
-                        <View className="items-center mt-7">
-                            <Text
-                                style={{
-                                    color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-                                }}
-                                className="font-[400] text-[17px]  mb-7">
-                                What brand is your bike?
-                            </Text>
-                            <View className="w-[375] h-[48] px-4">
+                        <View className="w-full px-4">
 
-                                <TextInput
-                                    placeholder="Type your brand..."
-                                    onChangeText={handleChange('bikeManufacturer')}
-                                    placeholderTextColor="#616161"
-                                    className="w-52"
+                            <View className="flex items-center justify-center px-3 py-4 mb-3">
+
+                                <Text
                                     style={{
-                                        color: theme === 'light' ? colors.light.text : colors.dark.text
+                                        color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
                                     }}
-                                />
+                                    className="font-[400] text-[17px] w-full text-center">
+                                    What brand is your bike?
+                                </Text>
 
                             </View>
-                        </View>
-                        <View className="pl-3">
 
-                            <View className="border-[#E0E0E0] border-[0.5px] px-3 w-80 mt-2 my-2" />
+                            <View className="">
 
-                            <ErrorMessage error={errors['bikeManufacturer']} visible={touched['bikeManufacturer']} />
+                                <View className="flex items-center justify-center px-4 py-3 w-full">
+                                    <TextInput
+                                        placeholder="Type your brand..."
+                                        onChangeText={handleChange('bikeManufacturer')}
+                                        placeholderTextColor="#616161"
+                                        className="w-full"
+                                        style={{
+                                            color: theme === 'light' ? colors.light.text : colors.dark.text
+                                        }}
+                                    />
+                                </View>
 
-                        </View>
-                        <View className="items-center mb-72 px-4">
-                            <PrimaryButton handlePress={handleSubmit} isDisabled={values.bikeManufacturer === '' ? true : false} isLoading={updateBikeManufactureMutation.isLoading} text='Save' loadingText='Saving...' />
+                                <View className="px-4">
+                                    <View className="border-[#E0E0E0] border-[0.5px] w-full" />
+                                    <ErrorMessage error={errors['bikeManufacturer']} visible={touched['bikeManufacturer']} />
+                                </View>
+
+                            </View>
+
+                            <View className="items-center">
+                                <PrimaryButton handlePress={handleSubmit} isDisabled={values.bikeManufacturer === '' ? true : false} isLoading={updateBikeManufactureMutation.isLoading} text='Save' loadingText='Saving...' />
+                            </View>
+
                         </View>
                     </>
                 )}
