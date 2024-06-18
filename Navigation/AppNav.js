@@ -92,9 +92,9 @@ const AppNav = () => {
       {/* {token === null ? <AuthStack /> : <PrivateStack />} */}
       {/* <LoginScreen/> */}
       {/* <OtpScreen/> */}
-      <SignupLoginOptionScreen/>
-      {/* <TermsAndConditions/> */}
-      {/* <NotificationScreen/> */}
+      {/* <SignupLoginOptionScreen/> */}
+      {/* <TermsAndConditions/>  */}
+       {/* <NotificationScreen/> */}
       {/* <LocationScreen/> */}
       {/* <ProfileScreen /> */}
       {/* <BikeManufactureDetailsScreen/> */}
@@ -103,7 +103,7 @@ const AppNav = () => {
       {/* <ProfileUser /> */}
       {/* <BikeProfileScreen /> */}
       {/* <DeleteAccountScreen /> */}
-      {/* <HelpScreen /> */}
+      <HelpScreen />
       {/* <AboutScreen /> */}
       {/* <PolicyScreen /> */}
       {/* <FaqScreen /> */}

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { View, Text, SafeAreaView, Pressable } from 'react-native'
+import { View, Text, SafeAreaView, Pressable, Linking } from 'react-native'
 import { ChevronRightIcon } from 'react-native-heroicons/outline';
 import { Phone, MessageCircleQuestion, Bug } from 'lucide-react-native';
 import { ThemeContext } from '../utils/ThemeContext';
@@ -9,6 +9,16 @@ import PrimaryNav from '../components/PrimaryNav';
 const HelpScreen = ({ navigation }) => {
 
   const { theme } = useContext(ThemeContext);
+
+  const handleReportProblem = () => {
+
+    const email = 'datfriapp@gmail.com';
+    const subject = 'Report Problem';
+    const body = 'Type the problem to report Here..';
+    const url = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    Linking.openURL(url).catch(err => console.error('Error opening email:', err));
+  };
 
   return (
     <SafeAreaView
@@ -98,7 +108,7 @@ const HelpScreen = ({ navigation }) => {
           </Pressable>
 
           <Pressable
-            onPress={() => { }}
+            onPress={handleReportProblem}
             className='my-2 flex-row justify-between items-center'>
 
             <View className='flex-row space-x-3 items-center flex-1'>
