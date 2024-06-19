@@ -12,7 +12,7 @@ import jwt_decode from 'jwt-decode';
 import { reSendOtp, verifyOtp } from '../services/userService';
 import { useMutation } from 'react-query';
 import { useDispatch } from 'react-redux';
-import { setToken, setUserData } from '../redux/slices/authSlice';
+import { setCurrentStack, setToken, setUserData } from '../redux/slices/authSlice';
 import { useRoute } from '@react-navigation/native';
 import { ErrorMessage } from '../components/forms';
 import PrimaryButton from '../components/PrimaryButton';
@@ -64,6 +64,7 @@ const OtpScreen = ({ navigation }) => {
       const decodedToken = jwt_decode(token);
       dispatch(setToken(token));
       dispatch(setUserData(decodedToken));
+      dispatch(setCurrentStack('PrivateStack'));
     } catch (ex) {
       if (ex.response) {
         setErrorDetails(ex.response.data);

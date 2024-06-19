@@ -3,9 +3,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import jwt_decode from 'jwt-decode';
 import PrivateStack from './PrivateStack';
 import AuthStack from './AuthStack';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { setToken, setUserData } from '../redux/slices/authSlice';
+import { setCurrentStack, setToken, setUserData } from '../redux/slices/authSlice';
 import SecondSplashScreen from '../screens/SecondSplashScreen';
 import LoginScreen from '../screens/LoginScreen';
 import NotificationScreen from '../screens/NotificationScreen';
@@ -32,8 +32,8 @@ import SplashScreen from '../screens/SplashScreen';
 
 const AppNav = () => {
 
+  const currentStack = useSelector(state => state.auth.currentStack);
   const [isLoading, setIsLoading] = useState(true);
-  const [initialRoute, setInitialRoute] = useState(null);
   const dispatch = useDispatch();
 
   // Checking if User Is Authenticated..
@@ -48,9 +48,9 @@ const AppNav = () => {
           dispatch(setToken(token));
           const decodedToken = jwt_decode(token);
           dispatch(setUserData(decodedToken));
-          setInitialRoute('PrivateStack');
+          dispatch(setCurrentStack('PrivateStack'));
         } else {
-          setInitialRoute('AuthStack');
+          dispatch(setCurrentStack('AuthStack'));
         }
         setIsLoading(false);
       } catch (error) {
@@ -87,7 +87,7 @@ const AppNav = () => {
         }
       }}
     >
-      {initialRoute === 'AuthStack' ? <AuthStack /> : <PrivateStack />}
+      { currentStack === 'AuthStack' ? <AuthStack /> : <PrivateStack />}
       {/* <LoginScreen/> */}
       {/* <OtpScreen/> */}
       {/* <SignupLoginOptionScreen/> */}
