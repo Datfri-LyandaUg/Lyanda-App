@@ -3,16 +3,18 @@ import {
   Text,
   SafeAreaView,
 } from 'react-native';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PrimaryButton from '../components/PrimaryButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
 import PrimaryNav from '../components/PrimaryNav';
+import SecondSplashScreen from './SecondSplashScreen';
 
 const TermsAndConditions = ({ navigation }) => {
 
   const { theme } = useContext(ThemeContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
 
@@ -22,6 +24,7 @@ const TermsAndConditions = ({ navigation }) => {
         if (isCheckedTermsAndConditions === null) {
           // This is the first launch.
           await AsyncStorage.setItem('isCheckedTermsAndConditions', 'true');
+          // setIsLoading(false); 
           const timer = setTimeout(() => {
             //
           }, 1000);
@@ -29,7 +32,7 @@ const TermsAndConditions = ({ navigation }) => {
 
         } else {
           // Already Checked Terms And Conditions.
-          navigation.navigate('Home');
+          navigation.navigate('Home'); 
         }
       } catch (error) {
         console.error(error);
@@ -40,6 +43,10 @@ const TermsAndConditions = ({ navigation }) => {
 
   }, [navigation]);
 
+
+  if (isLoading) {
+    return <SecondSplashScreen />
+  }
 
   return (
     <SafeAreaView

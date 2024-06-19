@@ -69,7 +69,7 @@ const AppNav = () => {
   return (
     <NavigationContainer
       // Persisting the Navigation State ...
-      persistNavigationState={async (state) => {
+      persistNavigationState={ async (state) => {
         try {
           await AsyncStorage.setItem('NAVIGATION_STATE', JSON.stringify(state));
         } catch (error) {
@@ -78,7 +78,7 @@ const AppNav = () => {
       }}
 
       // Loading the Stored Navigation state ...
-      loadNavigationState={async () => {
+      loadNavigationState={ async () => {
         try {
           const savedState = await AsyncStorage.getItem('NAVIGATION_STATE');
           return savedState ? JSON.parse(savedState) : undefined;

@@ -3,20 +3,38 @@ import React, { useContext, useState } from 'react';
 import { ChevronRightIcon } from 'react-native-heroicons/solid';
 import { Bike, UserRound } from 'lucide-react-native';
 import DeleteAccountModal from '../components/DeleteAccountModal';
-import { useSelector } from 'react-redux';
-import { selectUser } from '../redux/slices/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout, selectUser } from '../redux/slices/authSlice';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
 import PrimaryNav from '../components/PrimaryNav';
+import SuccessNotificationModal from '../components/SuccessNotificationModal';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ProfileUser = ({ navigation }) => {
 
   const currentUser = useSelector(selectUser);
   const { theme } = useContext(ThemeContext);
+  const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
+  const [deleteAccountSuccess, setDeleteAccountSuccess] = useState(false);
 
   const toggleModalVisibility = () => {
     setVisible(!visible);
+  }
+
+  const toggleDeleteAccountSuccessModalVisibility = () => {
+     setDeleteAccountSuccess(!deleteAccountSuccess);
+  }
+
+  const handleRemoveAccount =  async () => {
+     setVisible(false);
+     setDeleteAccountSuccess(true);
+     await AsyncStorage.removeItem('currentUserToken');
+     // Remove Account from Async storage..
+     setTimeout(() => {
+      dispatch(logout());
+    }, 5000);
   }
 
   return (
@@ -90,7 +108,8 @@ const ProfileUser = ({ navigation }) => {
         </View>
       </View>
 
-      <DeleteAccountModal visible={visible} toggleModalVisibility={toggleModalVisibility} />
+      <DeleteAccountModal visible={visible} toggleModalVisibility={toggleModalVisibility} handleRemoveAccount = {handleRemoveAccount} />
+      <SuccessNotificationModal visible ={deleteAccountSuccess} successMessage={'Account Deleted Successfully.'} handleClose={toggleDeleteAccountSuccessModalVisibility} />
 
     </SafeAreaView>
 
