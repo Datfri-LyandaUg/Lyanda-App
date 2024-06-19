@@ -2,12 +2,8 @@ import {
   View,
   Text,
   SafeAreaView,
-  TouchableOpacity,
 } from 'react-native';
 import React, { useContext, useEffect } from 'react';
-import {
-  ChevronLeftIcon,
-} from 'react-native-heroicons/solid';
 import PrimaryButton from '../components/PrimaryButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeContext } from '../utils/ThemeContext';
@@ -55,7 +51,7 @@ const TermsAndConditions = ({ navigation }) => {
       
         <PrimaryNav title={"Terms and privacy policy"}/>
 
-        <View className=" mt-7 mx-4">
+        <View className="mt-7 mx-4">
           <Text
             style={{
               color: theme === 'light' ? colors.light.text : colors.dark.text
