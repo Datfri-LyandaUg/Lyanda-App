@@ -14,8 +14,8 @@ import SecondSplashScreen from './SecondSplashScreen';
 const TermsAndConditions = ({ navigation }) => {
 
   const { theme } = useContext(ThemeContext);
-  const [isLoading, setIsLoading] = useState(false);
-
+  const [isFirstLaunch, setIsFirstLaunch] = useState(null);
+ 
   useEffect(() => {
 
     const checkTermsAndConditions = async () => {
@@ -24,7 +24,8 @@ const TermsAndConditions = ({ navigation }) => {
         if (isCheckedTermsAndConditions === null) {
           // This is the first launch.
           await AsyncStorage.setItem('isCheckedTermsAndConditions', 'true');
-          // setIsLoading(false); 
+          setIsFirstLaunch(true);
+
           const timer = setTimeout(() => {
             //
           }, 1000);
@@ -32,6 +33,7 @@ const TermsAndConditions = ({ navigation }) => {
 
         } else {
           // Already Checked Terms And Conditions.
+          setIsFirstLaunch(false);
           navigation.navigate('Home'); 
         }
       } catch (error) {
@@ -44,8 +46,8 @@ const TermsAndConditions = ({ navigation }) => {
   }, [navigation]);
 
 
-  if (isLoading) {
-    return <SecondSplashScreen />
+  if (isFirstLaunch === null) {
+    return <SecondSplashScreen />;
   }
 
   return (
