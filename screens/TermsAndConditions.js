@@ -81,8 +81,8 @@ const TermsAndConditions = ({ navigation }) => {
               and acknowledge the
             </Text>
           </View>
-          <Text className="text-[#25591C] text-[17px] font-[400] mr-2  mt-7 border-b-2 border-[#25591C] w-[106]">
-            Privacy Policy
+          <Text className="text-[#25591C] text-[17px] font-[400]">
+            Privacy Policy.
           </Text>
         </View>
       </View>

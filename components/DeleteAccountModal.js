@@ -55,7 +55,7 @@ const DeleteAccountModal = ({ visible, toggleModalVisibility, handleRemoveAccoun
       <View
         style={{
           backgroundColor: theme === 'light' ? colors.light.background : colors.dark.background,
-          height: '35%', // Adjusted for assumed screen height of 667px
+          height: '41%',
           width: '100%',
           shadowColor: '#000',
           shadowOffset: { width: 0, height: 10 },

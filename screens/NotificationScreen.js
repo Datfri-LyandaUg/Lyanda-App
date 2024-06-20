@@ -7,6 +7,7 @@ import PrimaryButton from '../components/PrimaryButton';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
 import PrimaryNav from '../components/PrimaryNav';
+import CustomNotification from '../components/CustomNotification';
 
 const NotificationScreen = ({ navigation }) => {
 
@@ -36,9 +37,9 @@ const NotificationScreen = ({ navigation }) => {
       className="relative flex-1">
       <View className="flex-1">
 
-        <PrimaryNav title={"Notification access"} onPress={() => navigation.goBack()}/>
+        <PrimaryNav title={"Notification access"} onPress={() => navigation.goBack()} />
 
-        <View className=" mt-7 mx-4">
+        <View className="mt-4 mx-4">
           <Text
             style={{
               color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
@@ -53,138 +54,26 @@ const NotificationScreen = ({ navigation }) => {
             }} className="font-[700] text-[28px] mb-3 ">
             notifications.
           </Text>
+
+          <Text
+            style={{
+              color: theme === 'light' ? colors.light.text : colors.dark.text
+            }}
+            className=" font-[400] text-[17px] mx-4">
+            You can modify and turn off individual  notifications at anytime in the Settings.
+          </Text>
         </View>
-        <Text
-          style={{
-            color: theme === 'light' ? colors.light.text : colors.dark.text
-          }}
-          className=" font-[400] text-[17px] mx-4">
-          You can modify and turn off individual
-        </Text>
-        <Text
-          style={{
-            color: theme === 'light' ? colors.light.text : colors.dark.text
-          }}
-          className=" font-[400] text-[17px] mx-4">
-          notifications at anytime in the Settings.
-        </Text>
 
-        <View>
-
-          <View>
-
-            <View className='items-center justify-center mt-8'>
-              <View className='space-y-8'>
-                <View className='flex-row items-center space-x-4 '>
-                  <ListTodo size={33} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} className='ml-2' />
-                  <View
-                  >
-                    <Text
-                      style={{
-                        color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-                      }}
-                      className="font-[400] text-[17px] ">
-                      Order status
-                    </Text>
-                    <Text
-                      style={{
-                        color: theme === 'light' ? colors.light.text : colors.dark.text
-                      }}
-                      className="font-[400] text-[13px] ">
-                      Never miss an update! Receive notifications{' '}
-                    </Text>
-                    <Text
-                      style={{
-                        color: theme === 'light' ? colors.light.text : colors.dark.text
-                      }}
-                      className="font-[400] text-[13px] ">
-                      about your fuel delivery.
-                    </Text>
-                  </View>
-                </View>
-
-
-                <View className='items-center justify-center '>
-                  <View className='flex-row items-center space-x-4 '>
-                    <Mailbox size={33} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
-                    <View>
-                      <Text
-                        style={{
-                          color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-                        }}
-                        className="font-[400] text-[17px] ">
-                        Announcements and offers
-                      </Text>
-                      <Text
-                        style={{
-                          color: theme === 'light' ? colors.light.text : colors.dark.text
-                        }}
-                        className="font-[400] text-[13px] ">
-                        Never miss a new release, grab limited-time deals,
-                      </Text>
-                      <Text
-                        style={{
-                          color: theme === 'light' ? colors.light.text : colors.dark.text
-                        }}
-                        className="font-[400] text-[13px] ">
-                        and be the first to know about exclusive
-                      </Text>
-                      <Text
-                        style={{
-                          color: theme === 'light' ? colors.light.text : colors.dark.text
-                        }}
-                        className="font-[400] text-[13px] ">
-                        events.
-                      </Text>
-                    </View>
-
-                  </View>
-
-                </View>
-
-
-                <View className='flex-row items-center space-x-4 '>
-                  <MessagesSquare size={33} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
-                  <View className=''>
-                    <Text
-                      style={{
-                        color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-                      }}
-                      className="font-[400] text-[17px] ">
-                      Feedback
-                    </Text>
-                    <Text
-                      style={{
-                        color: theme === 'light' ? colors.light.text : colors.dark.text
-                      }}
-                      className="font-[400] text-[13px] ">
-                      Get notified about bug fixes, feature additions
-
-                    </Text>
-                    <Text
-                      style={{
-                        color: theme === 'light' ? colors.light.text : colors.dark.text
-                      }}
-                      className="font-[400] text-[13px] ">
-                      and more. Be the first to know.
-                    </Text>
-                  </View>
-                </View>
-
-              </View>
-            </View>
-          </View>
-
+        <View className="w-full mt-2">
+          <CustomNotification Icon={<ListTodo size={33} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />} title={"Order status"} body={"Never miss an update! Receive notifications about your fuel delivery."} />
+          <CustomNotification Icon={<Mailbox size={33} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />} title={"Announcements and offers"} body={"Never miss a new release, grab limited-time deals, and be the first to know about exclusive events."} />
+          <CustomNotification Icon={<MessagesSquare size={33} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />} title={"Feedback"} body={"Get notified about bug fixes, feature additions and more. Be the first to know."} />
         </View>
       </View>
 
       <View className="items-center mb-8 px-7">
-
         <PrimaryButton handlePress={enableNotificationAccess} text='Turn on notifications' />
-
-
         <SecondaryButton title='Not Now' handleOnPress={() => navigation.navigate('LocationScreen')} />
-
       </View>
     </SafeAreaView>
   );
