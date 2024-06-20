@@ -1,19 +1,17 @@
 import React, { useContext, useEffect } from 'react';
 import { View, Text, Pressable, StyleSheet, ActivityIndicator } from 'react-native';
 import Modal from 'react-native-modal';
-import { useDispatch, useSelector } from 'react-redux';
-import { logout, selectUser } from '../redux/slices/authSlice';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../redux/slices/authSlice';
 import { deleteAccount } from '../services/userService';
 import { useMutation } from 'react-query';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
 
-const DeleteAccountModal = ({ visible, toggleModalVisibility }) => {
+const DeleteAccountModal = ({ visible, toggleModalVisibility, handleRemoveAccount }) => {
 
   const currentUser = useSelector(selectUser);
   const { theme } = useContext(ThemeContext);
-  const dispatch = useDispatch();
 
   const styles = createStyles(theme);
 
@@ -24,7 +22,7 @@ const DeleteAccountModal = ({ visible, toggleModalVisibility }) => {
   const handleDeleteAccount = async () => {
     try {
       const { data } = await deleteAccountMutation.mutateAsync();
-      await AsyncStorage.removeItem('currentUserToken');
+    
     } catch (ex) {
       if (ex.response) {
         console.log(ex.response.data);
@@ -34,7 +32,7 @@ const DeleteAccountModal = ({ visible, toggleModalVisibility }) => {
 
   useEffect(() => {
     if (deleteAccountMutation.isSuccess) {
-      dispatch(logout());
+      handleRemoveAccount();
     }
   }, [deleteAccountMutation.isSuccess]);
 

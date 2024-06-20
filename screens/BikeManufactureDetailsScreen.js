@@ -3,12 +3,8 @@ import {
     SafeAreaView,
     Text,
     View,
-    TextInput,
-    TouchableOpacity,
+    TextInput
 } from 'react-native';
-import {
-    ChevronLeftIcon,
-} from 'react-native-heroicons/solid';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useMutation } from 'react-query';
@@ -23,6 +19,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
 import SuccessNotificationModal from '../components/SuccessNotificationModal';
+import PrimaryNav from '../components/PrimaryNav';
 
 const validationSchema = Yup.object().shape({
     bikeManufacturer: Yup.string().required('Enter the Manufacturer of your bike.').label('bikeManufacturer'),
@@ -82,26 +79,7 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
             }}
             className="h-full">
 
-            <View
-                style={{
-                    backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
-                }}
-                className="flex-row items-center py-4 relative justify-center">
-                <TouchableOpacity
-                    className="absolute  left-2.5 w-10"
-                    onPress={() => navigation.goBack()}>
-                    <ChevronLeftIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={20} />
-                </TouchableOpacity>
-
-                <Text
-                    style={{
-                        color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-                    }}
-                    className=" text-[17px] font-[600]">
-                    Bike manufacturer
-                </Text>
-            </View>
-
+            <PrimaryNav title={"Bike manufacturer"} onPress={() => navigation.goBack()}/>
 
             <Formik
                 initialValues={{ bikeManufacturer: '' }}
@@ -111,46 +89,52 @@ const BikeManufactureDetailsScreen = ({ navigation }) => {
                 {({ handleChange, handleSubmit, errors, touched, values }) => (
 
                     <>
-                        { theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
+                        <View className="w-full px-4">
 
-                        <View className="items-center mt-7">
-                            <Text
-                                style={{
-                                    color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-                                }}
-                                className="font-[400] text-[17px]  mb-7">
-                                What brand is your bike?
-                            </Text>
-                            <View className="w-[375] h-[48] px-4">
+                            <View className="flex items-center justify-center px-3 py-4 mb-3">
 
-                                <TextInput
-                                    placeholder="Type your brand..."
-                                    onChangeText={handleChange('bikeManufacturer')}
-                                    placeholderTextColor="#616161"
-                                    className="w-52"
+                                <Text
                                     style={{
-                                        color: theme === 'light' ? colors.light.text : colors.dark.text
+                                        color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
                                     }}
-                                />
+                                    className="font-[400] text-[17px] w-full text-center">
+                                    What brand is your bike?
+                                </Text>
 
                             </View>
-                        </View>
-                        <View className="pl-3">
 
-                            <View className="border-[#E0E0E0] border-[0.5px] px-3 w-80 mt-2 my-2" />
+                            <View className="">
 
-                            <ErrorMessage error={errors['bikeManufacturer']} visible={touched['bikeManufacturer']} />
+                                <View className="flex items-center justify-center px-4 py-3 w-full">
+                                    <TextInput
+                                        placeholder="Type your brand..."
+                                        onChangeText={handleChange('bikeManufacturer')}
+                                        placeholderTextColor="#616161"
+                                        className="w-full"
+                                        style={{
+                                            color: theme === 'light' ? colors.light.text : colors.dark.text
+                                        }}
+                                    />
+                                </View>
 
-                        </View>
-                        <View className="items-center mb-72 px-4">
-                            <PrimaryButton handlePress={handleSubmit} isDisabled={values.bikeManufacturer === '' ? true : false} isLoading={updateBikeManufactureMutation.isLoading} text='Save' loadingText='Saving...' />
+                                <View className="px-4">
+                                    <View className="border-[#E0E0E0] border-[0.5px] w-full" />
+                                    <ErrorMessage error={errors['bikeManufacturer']} visible={touched['bikeManufacturer']} />
+                                </View>
+
+                            </View>
+
+                            <View className="items-center">
+                                <PrimaryButton handlePress={handleSubmit} isDisabled={values.bikeManufacturer === '' ? true : false} isLoading={updateBikeManufactureMutation.isLoading} text='Save' loadingText='Saving...' />
+                            </View>
+
                         </View>
                     </>
                 )}
             </Formik>
 
             <ErrorNotificationModal showError={showErrorNotification} errorMessage={errorDetails} handleClose={toggleErrorNotificationVisibility} />
-            <SuccessNotificationModal open={showSuccessNotification} successMessage={successDetails} handleClose={toggleSuccessNotificationVisibility} />
+            <SuccessNotificationModal visible ={showSuccessNotification} successMessage={successDetails} handleClose={toggleSuccessNotificationVisibility} />
 
         </SafeAreaView>
     );

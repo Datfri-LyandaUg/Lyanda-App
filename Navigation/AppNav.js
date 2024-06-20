@@ -4,6 +4,9 @@ import jwt_decode from 'jwt-decode';
 import PrivateStack from './PrivateStack';
 import AuthStack from './AuthStack';
 import { useDispatch, useSelector } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { setCurrentStack, setToken, setUserData } from '../redux/slices/authSlice';
+import SecondSplashScreen from '../screens/SecondSplashScreen';
 import LoginScreen from '../screens/LoginScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import BikeManufactureDetailsScreen from '../screens/BikeManufactureDetailsScreen';
@@ -24,24 +27,19 @@ import BikeCapacityDetailsScreen from '../screens/BikeCapacityDetailsScreen';
 import BikePlateDetailsScreen from '../screens/BikePlateDetailsScreen';
 import LocationScreen from '../screens/LocationScreen';
 import OtpScreen from '../screens/OtpScreen';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { setToken, setUserData } from '../redux/slices/authSlice';
 import SplashScreen from '../screens/SplashScreen';
-import SecondSplashScreen from '../screens/SecondSplashScreen';
-
 
 
 const AppNav = () => {
 
-  const token = useSelector(state => state.auth.token);
-  const [isLoading, setIsLoading] = useState(false);
+  const currentStack = useSelector(state => state.auth.currentStack);
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
-  // Keeping User Authenticated.....
+  // Checking if User Is Authenticated..
   useEffect(() => {
 
     const authenticateUser = async () => {
-      setIsLoading(true);
       try {
 
         const token = await AsyncStorage.getItem("currentUserToken");
@@ -50,10 +48,11 @@ const AppNav = () => {
           dispatch(setToken(token));
           const decodedToken = jwt_decode(token);
           dispatch(setUserData(decodedToken));
+          dispatch(setCurrentStack('PrivateStack'));
+        } else {
+          dispatch(setCurrentStack('AuthStack'));
         }
-
         setIsLoading(false);
-
       } catch (error) {
         console.error("Error Retrieving Token:", error);
       }
@@ -63,15 +62,14 @@ const AppNav = () => {
 
   }, []);
 
-  if(isLoading){
-    return <SecondSplashScreen/>
+  if (isLoading) {
+    return <SecondSplashScreen />
   }
-
 
   return (
     <NavigationContainer
       // Persisting the Navigation State ...
-      persistNavigationState={async (state) => {
+      persistNavigationState={ async (state) => {
         try {
           await AsyncStorage.setItem('NAVIGATION_STATE', JSON.stringify(state));
         } catch (error) {
@@ -80,7 +78,7 @@ const AppNav = () => {
       }}
 
       // Loading the Stored Navigation state ...
-      loadNavigationState={async () => {
+      loadNavigationState={ async () => {
         try {
           const savedState = await AsyncStorage.getItem('NAVIGATION_STATE');
           return savedState ? JSON.parse(savedState) : undefined;
@@ -89,15 +87,15 @@ const AppNav = () => {
         }
       }}
     >
-      {/* {token === null ? <AuthStack /> : <PrivateStack />} */}
+      { currentStack === 'AuthStack' ? <AuthStack /> : <PrivateStack />}
       {/* <LoginScreen/> */}
       {/* <OtpScreen/> */}
       {/* <SignupLoginOptionScreen/> */}
-      {/* <TermsAndConditions/> */}
+      {/* <TermsAndConditions/>  */}
       {/* <NotificationScreen/> */}
       {/* <LocationScreen/> */}
       {/* <ProfileScreen /> */}
-      <BikeManufactureDetailsScreen/>
+      {/* <BikeManufactureDetailsScreen/> */}
       {/* <BikeCapacityDetailsScreen/> */}
       {/* <BikePlateDetailsScreen/> */}
       {/* <ProfileUser /> */}
@@ -112,8 +110,6 @@ const AppNav = () => {
       {/* <LocationSettingsScreen/> */}
     </NavigationContainer>
   );
-
-
 
 };
 

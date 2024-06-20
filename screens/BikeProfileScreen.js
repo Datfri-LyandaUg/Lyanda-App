@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import { View, Text, SafeAreaView, Pressable } from 'react-native';
-import { ChevronLeftIcon } from 'react-native-heroicons/outline'
 import { Pen } from 'lucide-react-native';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../redux/slices/authSlice';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
+import PrimaryNav from '../components/PrimaryNav';
 
 
 
@@ -21,25 +21,8 @@ const BikeProfileScreen = ({ navigation }) => {
       }}
       className='h-full'>
       <View className=''>
-        <View
-          style={{
-            backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
-          }}
-          className='flex-row items-center relative py-4 justify-center'>
-          <Pressable className='absolute left-4 w-10'
-            onPress={() => navigation.goBack()}>
-            <ChevronLeftIcon size={20} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
-          </Pressable>
-          <Text
-            style={{
-              color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-            }}
-            className='text-[17px] font-[600]'>
-            Bike profile
-          </Text>
-        </View>
-
-       { theme === 'light' && ( <View className="border-[#E0E0E0] border-[0.5px] mt-2" />)}
+      
+       <PrimaryNav title={"Bike profile"} onPress={() => navigation.goBack()}/>
 
         <View className='items-center py-4 px-2'>
 

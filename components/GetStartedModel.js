@@ -1,22 +1,14 @@
 import { View, Text } from 'react-native';
 import React, { useContext } from 'react';
-import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal';
 import PrimaryButton from './PrimaryButton';
 import { HandCoins, Route } from 'lucide-react-native';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
 
-const GetStartedModel = ({ visible, onClose }) => {
+const GetStartedModel = ({ visible, onPress }) => {
 
   const { theme } = useContext(ThemeContext);
-
-  const navigation = useNavigation();
-  
-  const handleNextNavigation = () => {
-    onClose();
-    navigation.navigate('Login');
-  };
 
   return (
     <Modal
@@ -40,7 +32,6 @@ const GetStartedModel = ({ visible, onClose }) => {
       <View
         style={{
           backgroundColor: theme === 'light' ? colors.light.background : colors.dark.background,
-          // height: '33%',
           width: '92.8%',
           shadowColor: '#000',
           shadowOffset: { width: 0, height: 10 },
@@ -51,7 +42,7 @@ const GetStartedModel = ({ visible, onClose }) => {
         }}
         className="rounded-[28px] flex items-center py-3">
 
-        <View className="flex-row  mx-3 space-x-4">
+        <View className="flex-row py-3  mx-3 space-x-4">
           <View className="flex items-center  justify-center">
             <HandCoins size={40} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
           </View>
@@ -80,7 +71,7 @@ const GetStartedModel = ({ visible, onClose }) => {
           </View>
         </View>
 
-        <View className="flex-row py-4 mx-3 space-x-4 items-center mt-3">
+        <View className="flex-row py-3 mx-3 space-x-4 items-center">
           <View className="flex items-center justify-center">
             <Route size={40} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
           </View>
@@ -111,7 +102,7 @@ const GetStartedModel = ({ visible, onClose }) => {
         </View>
 
         <View className="w-full items-center px-4">
-          <PrimaryButton handlePress={handleNextNavigation} text='Continue' />
+          <PrimaryButton handlePress={onPress} text='Continue' />
         </View>
 
       </View>

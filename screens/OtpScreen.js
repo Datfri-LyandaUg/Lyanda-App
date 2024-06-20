@@ -6,24 +6,22 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import {
-  ChevronLeftIcon,
-} from 'react-native-heroicons/solid';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import jwt_decode from 'jwt-decode';
 import { reSendOtp, verifyOtp } from '../services/userService';
 import { useMutation } from 'react-query';
 import { useDispatch } from 'react-redux';
-import { setToken, setUserData } from '../redux/slices/authSlice';
+import { setCurrentStack, setToken, setUserData } from '../redux/slices/authSlice';
 import { useRoute } from '@react-navigation/native';
-import ErrorNotificationModal from '../components/ErrorNotificationModal';
 import { ErrorMessage } from '../components/forms';
 import PrimaryButton from '../components/PrimaryButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
 import SuccessNotificationModal from '../components/SuccessNotificationModal';
+import ErrorNotificationModal from '../components/ErrorNotificationModal';
+import PrimaryNav from '../components/PrimaryNav';
 
 
 
@@ -66,6 +64,7 @@ const OtpScreen = ({ navigation }) => {
       const decodedToken = jwt_decode(token);
       dispatch(setToken(token));
       dispatch(setUserData(decodedToken));
+      dispatch(setCurrentStack('PrivateStack'));
     } catch (ex) {
       if (ex.response) {
         setErrorDetails(ex.response.data);
@@ -109,21 +108,7 @@ const OtpScreen = ({ navigation }) => {
       }}
       className="h-full">
 
-      <View
-        style={{
-          backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
-        }}
-
-        className="py-4">
-        <TouchableOpacity
-          className="mx-2.5 w-10"
-          onPress={() => navigation.goBack()}>
-          <ChevronLeftIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={26} />
-        </TouchableOpacity>
-      </View>
-
-      { theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
-
+      <PrimaryNav title={""} />
 
       <Formik
         initialValues={{ otp: '' }}
@@ -151,7 +136,6 @@ const OtpScreen = ({ navigation }) => {
                   className="font-[400] text-[17px] w-full text-center">
                   messages to verify your account
                 </Text>
-
 
               </View>
 
@@ -202,7 +186,6 @@ const OtpScreen = ({ navigation }) => {
               </View>
 
             </View>
-
           </>
         )}
       </Formik>

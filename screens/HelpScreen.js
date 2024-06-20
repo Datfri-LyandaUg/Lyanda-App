@@ -1,14 +1,24 @@
 import React, { useContext } from 'react'
-import { View, Text, SafeAreaView, TouchableOpacity, Pressable } from 'react-native'
-import { ChevronLeftIcon } from 'react-native-heroicons/solid';
+import { View, Text, SafeAreaView, Pressable, Linking } from 'react-native'
 import { ChevronRightIcon } from 'react-native-heroicons/outline';
 import { Phone, MessageCircleQuestion, Bug } from 'lucide-react-native';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
+import PrimaryNav from '../components/PrimaryNav';
 
 const HelpScreen = ({ navigation }) => {
 
   const { theme } = useContext(ThemeContext);
+
+  const handleReportProblem = () => {
+
+    const email = 'datfriapp@gmail.com';
+    const subject = 'Report Problem';
+    const body = 'Type the problem to report Here..';
+    const url = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    Linking.openURL(url).catch(err => console.error('Error opening email:', err));
+  };
 
   return (
     <SafeAreaView
@@ -16,27 +26,8 @@ const HelpScreen = ({ navigation }) => {
         backgroundColor: theme === 'light' ? colors.light.background : colors.dark.background
       }}
       className="h-full">
-      <View
-        style={{
-          backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
-        }}
-        className="flex-row items-center py-4 relative  justify-center">
-        <TouchableOpacity
-          className="absolute  left-2.5 w-10"
-          onPress={() => navigation.goBack()}>
-          <ChevronLeftIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={20} />
-        </TouchableOpacity>
-
-        <Text
-          style={{
-            color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-          }}
-          className="text-[17px] font-[600]">
-          Help
-        </Text>
-      </View>
-
-      {theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
+    
+      <PrimaryNav title={"Help"} onPress={() => navigation.goBack()}/>
 
       <View className='items-center py-4 px-2'>
 
@@ -117,7 +108,7 @@ const HelpScreen = ({ navigation }) => {
           </Pressable>
 
           <Pressable
-            onPress={() => { }}
+            onPress={handleReportProblem}
             className='my-2 flex-row justify-between items-center'>
 
             <View className='flex-row space-x-3 items-center flex-1'>

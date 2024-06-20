@@ -1,12 +1,12 @@
-import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
+import { View, Text, SafeAreaView } from 'react-native';
 import { PermissionsAndroid, Platform, Linking } from 'react-native';
 import React, { useContext } from 'react';
-import { ChevronLeftIcon } from 'react-native-heroicons/solid';
 import { ListTodo, Mailbox, MessagesSquare } from 'lucide-react-native';
 import SecondaryButton from '../components/SecondaryButton';
 import PrimaryButton from '../components/PrimaryButton';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
+import PrimaryNav from '../components/PrimaryNav';
 
 const NotificationScreen = ({ navigation }) => {
 
@@ -35,27 +35,8 @@ const NotificationScreen = ({ navigation }) => {
       }}
       className="relative flex-1">
       <View className="flex-1">
-        <View
-          style={{
-            backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
-          }}
-          className="flex-row items-center py-4 relative   justify-center">
-          <TouchableOpacity
-            className="absolute  left-2.5 w-10"
-            onPress={() => navigation.goBack()}>
-            <ChevronLeftIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={26} />
-          </TouchableOpacity>
 
-          <Text
-            style={{
-              color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-            }}
-            className="text-[17px] font-[600]">
-            Notification access
-          </Text>
-        </View>
-
-        {theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
+        <PrimaryNav title={"Notification access"} onPress={() => navigation.goBack()}/>
 
         <View className=" mt-7 mx-4">
           <Text

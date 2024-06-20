@@ -33,7 +33,7 @@ const ProfileScreen = ({ navigation }) => {
           backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
         }}
         className='flex-row py-3 px-2 items-center space-x-6 '>
-        <Pressable>
+        <Pressable className="flex items-center justify-center w-8 h-8">
           <ChevronLeftIcon size={20} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
         </Pressable>
         <Text

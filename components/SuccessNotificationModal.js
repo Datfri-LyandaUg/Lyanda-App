@@ -49,27 +49,28 @@ const SuccessNotificationModal = ({ visible, handleClose, successMessage }) => {
           elevation: 28,
           alignSelf: 'center',
         }}
-        className="rounded-[12px] items-center">
-        <View className="flex flex-row space-x-1 items-center justify-between py-2 px-4">
-          
-          <TouchableOpacity>
-            <CheckIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={20} />
-          </TouchableOpacity>
+        className="rounded-[12px] flex items-center justify-center px-3">
+       
+          <View className="flex flex-row space-x-1 items-center justify-between w-full">
+            <View className="flex items-center justify-center">
+              <CheckIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={20} />
+            </View>
 
-          <View className="items-center">
-            <Text
-              style={{
-                color: theme === 'light' ? colors.light.text : colors.dark.text
-              }}
-              className="text-[15px] font-[400] text-center">
-               { successMessage }
-            </Text>
+            <View className="items-center flex-1">
+              <Text
+                style={{
+                  color: theme === 'light' ? colors.light.text : colors.dark.text
+                }}
+                className="text-[15px] font-[400] text-center">
+                {successMessage}
+              </Text>
+            </View>
+
+            <TouchableOpacity onPress={handleClose}>
+              <XMarkIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={20} />
+            </TouchableOpacity>
           </View>
-
-          <TouchableOpacity onPress={handleClose}>
-            <XMarkIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={20} />
-          </TouchableOpacity>
-        </View>
+       
       </View>
     </Modal>
   );

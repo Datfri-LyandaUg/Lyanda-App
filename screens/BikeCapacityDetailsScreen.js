@@ -3,12 +3,8 @@ import {
     Text,
     View,
     TextInput,
-    TouchableOpacity,
 } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
-import {
-    ChevronLeftIcon,
-} from 'react-native-heroicons/solid';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useMutation } from 'react-query';
@@ -24,10 +20,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
 import SuccessNotificationModal from '../components/SuccessNotificationModal';
+import PrimaryNav from '../components/PrimaryNav';
 
 
 const validationSchema = Yup.object().shape({
-    batteryCapacity: Yup.string().required('Enter the Capacity of your Bike.').label('BikeCapacity'),
+    batteryCapacity: Yup.string().max(20).required('Enter the Capacity of your Bike.').label('BikeCapacity'),
 });
 
 const BikeCapacityDetailsScreen = ({ navigation }) => {
@@ -83,25 +80,7 @@ const BikeCapacityDetailsScreen = ({ navigation }) => {
             }}
             className="h-full">
 
-            <View
-                style={{
-                    backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
-                }}
-                className="flex-row items-center py-4 relative justify-center">
-                <TouchableOpacity
-                    className="absolute  left-2.5 w-10"
-                    onPress={() => navigation.goBack()}>
-                    <ChevronLeftIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={20} />
-                </TouchableOpacity>
-
-                <Text
-                    style={{
-                        color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-                    }}
-                    className="text-[17px] font-[600]">
-                    Bike capacity
-                </Text>
-            </View>
+            <PrimaryNav title={"Bike capacity"} onPress={() => navigation.goBack()}/>
 
             <Formik
                 initialValues={{ batteryCapacity: '' }}
@@ -112,55 +91,56 @@ const BikeCapacityDetailsScreen = ({ navigation }) => {
 
                     <>
 
-                        {theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
+                        <View className="w-full px-4">
 
-                        <View className="items-center mt-7 mb-4">
-                            <Text
-                                style={{
-                                    color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-                                }}
-                                className="font-[400] text-[17px]  mb-7">
-                                What is the capacity of your bike?
-                            </Text>
+                            <View className="flex items-center justify-center px-3 py-4 mb-3">
 
-                            <View className="flex flex-row space-x-2 w-full px-5">
-
-                                <View className="flex items-center justify-center">
-                                    <BatteryFull size={30} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
-                                </View>
-
-                                <View className="h-[48] flex-1">
-                                    <TextInput
-                                        placeholder="250Watt-hours"
-                                        onChangeText={handleChange('batteryCapacity')}
-                                        placeholderTextColor="#616161"
-                                        className="w-52"
-                                        style={{
-                                            color: theme === 'light' ? colors.light.text : colors.dark.text
-                                        }}
-                                    />
-
-                                    <View className="border-[#E0E0E0] border-[0.5px] mt-2 my-2" />
-
-                                </View>
+                                <Text
+                                    style={{
+                                        color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
+                                    }}
+                                    className="font-[400] text-[17px] w-full text-center">
+                                    What is the capacity of your bike?
+                                </Text>
 
                             </View>
 
-                        </View>
+                            <View className="">
+                                <View className="flex flex-row items-center justify-center px-4 py-3 w-full">
+                                    <View className="flex items-center justify-center">
+                                        <BatteryFull size={30} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
+                                    </View>
 
-                        <View className="pl-3">
-                            <ErrorMessage error={errors['batteryCapacity']} visible={touched['bikeCapacity']} />
-                        </View>
+                                    <View className="flex-1">
+                                        <TextInput
+                                            placeholder="250Watt-hours"
+                                            onChangeText={handleChange('batteryCapacity')}
+                                            placeholderTextColor="#616161"
+                                            className="w-full"
+                                            style={{
+                                                color: theme === 'light' ? colors.light.text : colors.dark.text
+                                            }}
+                                        />
 
-                        <View className="items-center mb-72 px-4">
-                            <PrimaryButton isDisabled={values.batteryCapacity === "" ? true : false} handlePress={handleSubmit} isLoading={updateBikeCapacityMutation.isLoading} text='Save' loadingText='Saving...' />
+                                    </View>
+                                </View>
+
+                                <View className="px-4">
+                                    <View className="border-[#E0E0E0] border-[0.5px] w-full" />
+                                    <ErrorMessage error={errors['batteryCapacity']} visible={touched['bikeCapacity']} />
+                                </View>
+                            </View>
+
+                            <View className="items-center">
+                                <PrimaryButton isDisabled={values.batteryCapacity === "" ? true : false} handlePress={handleSubmit} isLoading={ updateBikeCapacityMutation.isLoading } text='Save' loadingText='Saving...' />
+                            </View>
                         </View>
                     </>
                 )}
             </Formik>
 
             <ErrorNotificationModal showError={showErrorNotification} errorMessage={errorDetails} handleClose={toggleErrorNotificationVisibility} />
-            <SuccessNotificationModal open={showSuccessNotification} successMessage={successDetails} handleClose={toggleSuccessNotificationVisibility} />
+            <SuccessNotificationModal visible ={showSuccessNotification} successMessage={successDetails} handleClose={toggleSuccessNotificationVisibility} />
 
         </SafeAreaView>
     );

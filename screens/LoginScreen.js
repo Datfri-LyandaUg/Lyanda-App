@@ -3,12 +3,8 @@ import {
   Text,
   View,
   TextInput,
-  TouchableOpacity,
 } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
-import {
-  ChevronLeftIcon,
-} from 'react-native-heroicons/solid';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useMutation } from 'react-query';
@@ -17,9 +13,10 @@ import { ErrorMessage } from '../components/forms';
 import PrimaryButton from '../components/PrimaryButton';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
+import PrimaryNav from '../components/PrimaryNav';
 
 const validationSchema = Yup.object().shape({
-  phoneNumber: Yup.string().required('Enter a valid phone number to continue.').label('PhoneNumber'),
+  phoneNumber: Yup.string().min(10).max(13).required('Enter a valid phone number to continue.').label('PhoneNumber'),
 });
 
 const LoginScreen = ({ navigation }) => {
@@ -69,18 +66,7 @@ const LoginScreen = ({ navigation }) => {
       }}
       className="h-full">
 
-      <View
-        style={{
-          backgroundColor: theme === 'dark' ? colors.dark.container : colors.light.background
-        }}
-
-        className="py-4">
-        <TouchableOpacity
-          className="mx-2.5 w-10"
-          onPress={() => navigation.goBack()}>
-          <ChevronLeftIcon color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} size={26} />
-        </TouchableOpacity>
-      </View>
+      <PrimaryNav title={""} onPress={() => navigation.goBack()}/>
 
 
       <Formik
@@ -91,8 +77,6 @@ const LoginScreen = ({ navigation }) => {
         {({ handleChange, handleSubmit, errors, touched }) => (
 
           <>
-
-            {theme === 'light' && (<View className="border-[#E0E0E0] border-[0.5px]" />)}
 
             <View className="w-full px-4">
 
@@ -127,12 +111,12 @@ const LoginScreen = ({ navigation }) => {
                     placeholder="07.."
                     onChangeText={handleChange('phoneNumber')}
                     placeholderTextColor="#616161"
+                    keyboardType='phone-pad'
                     className="w-full"
                     style={{
                       color: theme === 'light' ? colors.light.text : colors.dark.text
                     }}
                   />
-
                 </View>
 
                 <View className="px-4">

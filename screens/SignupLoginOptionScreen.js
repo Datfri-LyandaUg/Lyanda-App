@@ -11,14 +11,20 @@ import PrimaryButton from '../components/PrimaryButton';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
 
-const SignupLoginOptionScreen = () => {
+
+const SignupLoginOptionScreen = ({ navigation }) => {
 
   const { theme } = useContext(ThemeContext);
   const [visible, setVisible] = useState(false);
 
   const toggleModalVisibility = () => {
-    setVisible(!visible);
+    setVisible(true);
   }
+
+  const handleNextNavigation = () => {
+     setVisible(false);
+    navigation.navigate('Login');
+  };
 
   return (
     <SafeAreaView
@@ -27,7 +33,7 @@ const SignupLoginOptionScreen = () => {
       }}
       className="h-full w-full flex-1">
 
-      { visible && <GetStartedModel visible={visible} onClose={() => setVisible(false)}  /> } 
+      { visible && <GetStartedModel visible={visible} onPress={handleNextNavigation} />}
 
       <View className="mt-36 items-center flex-1">
         <ImageBackground
@@ -56,6 +62,7 @@ const SignupLoginOptionScreen = () => {
             </Text>
 
           </View>
+
           <Text
             style={{
               color: theme === 'light' ? colors.light.text : colors.dark.text
