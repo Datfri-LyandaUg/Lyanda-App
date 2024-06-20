@@ -5,6 +5,7 @@ import PrimaryButton from './PrimaryButton';
 import { HandCoins, Route } from 'lucide-react-native';
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
+import CustomNotification from './CustomNotification';
 
 const GetStartedModel = ({ visible, onPress }) => {
 
@@ -42,64 +43,8 @@ const GetStartedModel = ({ visible, onPress }) => {
         }}
         className="rounded-[28px] flex items-center py-3">
 
-        <View className="flex-row py-3  mx-3 space-x-4">
-          <View className="flex items-center  justify-center">
-            <HandCoins size={40} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
-          </View>
-          <View>
-            <Text
-              style={{
-                color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-              }}
-              className="font-[400] text-[17px]">
-              Track your loans and payments
-            </Text>
-            <Text
-              style={{
-                color: theme === 'light' ? colors.light.text : colors.dark.text
-              }}
-              className="text-[13px]  font-[400] ">
-              Efficiently pay for your bike’s loan and
-            </Text>
-            <Text
-              style={{
-                color: theme === 'light' ? colors.light.text : colors.dark.text
-              }}
-              className="font-[400] ">
-              have a smoother workflow.
-            </Text>
-          </View>
-        </View>
-
-        <View className="flex-row py-3 mx-3 space-x-4 items-center">
-          <View className="flex items-center justify-center">
-            <Route size={40} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
-          </View>
-
-          <View>
-            <Text
-              style={{
-                color: theme === 'light' ? colors.light.headerText : colors.dark.headerText
-              }}
-              className="font-[400] text-[17px] ">
-              Get optimized routes
-            </Text>
-            <Text
-              style={{
-                color: theme === 'light' ? colors.light.text : colors.dark.text
-              }}
-              className="text-[13px]  font-[400]">
-              Get to the swapping stations 2X faster
-            </Text>
-            <Text
-              style={{
-                color: theme === 'light' ? colors.light.text : colors.dark.text
-              }}
-              className="font-[400] ">
-              with our route optimization technology.
-            </Text>
-          </View>
-        </View>
+        <CustomNotification Icon={<HandCoins size={40} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />} title={"Track your loans and payments"} body={"Efficiently pay for your bike’s loan and have a smoother workflow."} />
+        <CustomNotification Icon={<Route size={40} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />} title={"Get optimized routes"} body={"Get to the swapping stations 2X faster with our route optimization technology."} />
 
         <View className="w-full items-center px-4">
           <PrimaryButton handlePress={onPress} text='Continue' />

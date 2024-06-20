@@ -39,12 +39,12 @@ const AppearanceScreen = ({ navigation }) => {
 
                 </View>
 
-                <View className="w-full flex flex-row space-x-3 mt-5">
+                <View className="w-full flex flex-row space-x-3  mt-4">
                     <View className="flex items-center">
                         <Info size={18} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />
                     </View>
 
-                    <View className="flex items-center justify-center">
+                    <View className="flex items-center justify-center flex-1">
                         <Text style={{
                             color: theme === 'light' ? colors.light.text : colors.dark.text
                         }}>
