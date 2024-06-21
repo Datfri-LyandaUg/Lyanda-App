@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import React, { useContext } from 'react';
 import Modal from 'react-native-modal';
 import PrimaryButton from './PrimaryButton';
@@ -16,7 +16,7 @@ const GetStartedModel = ({ visible, onPress }) => {
       isVisible={visible}
       animationIn="bounceInUp"
       animationOut="bounceOutDown"
-      animationInTiming={900}
+      animationInTiming={1000}
       animationOutTiming={500}
       backdropTransitionInTiming={1000}
       backdropTransitionOutTiming={500}
@@ -41,7 +41,7 @@ const GetStartedModel = ({ visible, onPress }) => {
           elevation: 28,
           alignSelf: 'center',
         }}
-        className="rounded-[28px] flex items-center py-3">
+        className="rounded-[28px] flex items-center pb-3 pt-6">
 
         <CustomNotification Icon={<HandCoins size={40} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />} title={"Track your loans and payments"} body={"Efficiently pay for your bike’s loan and have a smoother workflow."} />
         <CustomNotification Icon={<Route size={40} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />} title={"Get optimized routes"} body={"Get to the swapping stations 2X faster with our route optimization technology."} />

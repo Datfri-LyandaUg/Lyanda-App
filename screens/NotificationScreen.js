@@ -64,7 +64,7 @@ const NotificationScreen = ({ navigation }) => {
           </Text>
         </View>
 
-        <View className="w-full mt-2">
+        <View className="w-full mt-2 p-2">
           <CustomNotification Icon={<ListTodo size={33} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />} title={"Order status"} body={"Never miss an update! Receive notifications about your fuel delivery."} />
           <CustomNotification Icon={<Mailbox size={33} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />} title={"Announcements and offers"} body={"Never miss a new release, grab limited-time deals, and be the first to know about exclusive events."} />
           <CustomNotification Icon={<MessagesSquare size={33} color={`${theme === 'light' ? colors.light.icon : colors.dark.icon}`} />} title={"Feedback"} body={"Get notified about bug fixes, feature additions and more. Be the first to know."} />

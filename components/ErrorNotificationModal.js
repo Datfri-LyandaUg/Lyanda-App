@@ -19,7 +19,7 @@ const ErrorNotificationModal = ({ showError , handleClose, errorMessage }) => {
       isVisible={showError}
       animationIn="bounceInDown"
       animationOut="bounceOutUp"
-      animationInTiming={900}
+      animationInTiming={1000}
       animationOutTiming={500}
       backdropTransitionInTiming={1000}
       backdropTransitionOutTiming={500}
