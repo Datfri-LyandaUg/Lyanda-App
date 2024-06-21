@@ -33,7 +33,6 @@ const TermsAndConditions = ({ navigation }) => {
 
         } else {
           // Already Checked Terms And Conditions.
-          setIsFirstLaunch(false);
           navigation.navigate('Home'); 
         }
       } catch (error) {

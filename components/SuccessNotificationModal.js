@@ -22,7 +22,7 @@ const SuccessNotificationModal = ({ visible, handleClose, successMessage }) => {
       isVisible={visible}
       animationIn="bounceInDown"
       animationOut="bounceOutUp"
-      animationInTiming={900}
+      animationInTiming={1000}
       animationOutTiming={500}
       backdropTransitionInTiming={1000}
       backdropTransitionOutTiming={500}
