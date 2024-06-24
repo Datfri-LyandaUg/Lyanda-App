@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react';
-import { SafeAreaView, Text, View, Switch } from 'react-native'
+import { SafeAreaView, Text, View } from 'react-native'
 import { ThemeContext } from '../utils/ThemeContext';
 import colors from '../config/colors';
 import PrimaryNav from '../components/PrimaryNav';
+import CustomSwitch from '../components/CustomSwitch';
 
 
 const NotificationSettingsScreen = ({ navigation }) => {
@@ -31,7 +32,7 @@ const NotificationSettingsScreen = ({ navigation }) => {
                         backgroundColor: theme === 'light' ? colors.light.container : colors.dark.container
                     }}
                     className='rounded-[12px] mt-5 py-3 px-3 w-full'>
-                    <View className="w-full flex flex-row mb-3">
+                    <View className="w-full flex flex-row space-x-1 mb-3">
                         <View className="flex-1">
                             <Text 
                             style={{
@@ -45,15 +46,15 @@ const NotificationSettingsScreen = ({ navigation }) => {
                                 deals, promotions, special offers, etc.
                             </Text>
                         </View>
-                        <View className="w-10 flex items-center justify-center">
-                            <Switch
+                        <View className="flex items-center justify-center">
+                            <CustomSwitch
                                 onValueChange={toggleMessagesSwitch}
                                 value={isMessagesEnabled}
                             />
                         </View>
                     </View>
 
-                    <View className="w-full flex flex-row mb-3">
+                    <View className="w-full flex flex-row space-x-1 mb-3">
                         <View className="flex-1">
                             <Text 
                             style={{
@@ -67,15 +68,15 @@ const NotificationSettingsScreen = ({ navigation }) => {
                                 products and campaigns.
                             </Text>
                         </View>
-                        <View className="w-10 flex items-center justify-center">
-                            <Switch
+                        <View className="flex items-center justify-center">
+                            <CustomSwitch
                                 onValueChange={toggleNewsSwitch}
                                 value={isNewsEnabled}
                             />
                         </View>
                     </View>
 
-                    <View className="w-full flex flex-row mb-3">
+                    <View className="w-full flex flex-row space-x-1 mb-3">
                         <View className="flex-1">
                             <Text 
                             style={{
@@ -88,8 +89,8 @@ const NotificationSettingsScreen = ({ navigation }) => {
                                 We will notify you of updates to your order.
                             </Text>
                         </View>
-                        <View className="w-10 flex items-center justify-center">
-                            <Switch
+                        <View className="flex items-center justify-center">
+                            <CustomSwitch
                                 onValueChange={toggleOrdersSwitch}
                                 value={isOrdersEnabled}
                             />
